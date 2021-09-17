@@ -51,6 +51,8 @@ from flask_sqlalchemy import SQLAlchemy
     # app.register_blueprint(main)  #register Blueprint
     # app.app_context().push()
     # return app
+    
+ALLOWED_HOSTS = ['https://appbo.azurewebsites.net']
 
 main = Flask(__name__, template_folder='templates')
 
