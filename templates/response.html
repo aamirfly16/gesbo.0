@@ -1,0 +1,34 @@
+
+
+
+<h3>{{numrows}} Records Found</h3>
+<table class="table table-striped custab">
+  <thead>
+      <tr>
+         <th>Cdsid</th>
+         <th>Name</th>
+         <th>Seating_location</th>
+         <th>pm_cdsid</th>
+         <th>lm_cdsid</th>
+         <th>ll5_cdsid</th>
+         <th>Location Type</th>
+         <th>Current Asset Service Tag </th>
+         <th>Asset Type </th>
+         <th>Sharing </th>
+      </tr>
+  </thead>
+  <tbody>
+{% for row in Rmlive4 %}
+   <tr>
+    <td>{{row.cdsid}}</td>
+    <td>{{row.name}}</td>
+    <td>{{row.GTBC_final_location}}</td>
+    <td>{{row.pm_cdsid}}</td>
+    <td>{{row.lm_cdsid}}</td>
+    <td>{{row.project_ll5_cdsid}}</td>
+    <td>{{row.Fixed_Sharing}}</td>
+    <td>{{row.Final_service_tag}}</td>
+    <td>{{row.Final_asset_type}}</td>
+    <td>{{row.Sharing_Y_N2}}</td>
+   </tr>
+{% endfor %}

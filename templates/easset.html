@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% include 'header.html' %}
+
+{% block title %} {% endblock %}
+
+{% block body%}
+
+<div class="container">
+    <div class="row">
+        <div class="col md-12">
+
+            <div class="jumbotron">
+                <div class="well text-center">
+              <h1 class="display-4">Easset Data</h1>
+
+            </div>
+            </div>
+</div>
+            </div>
+</div>
+                <div class="table-responsive">
+                 <table class="table table-bordered table-hover">
+
+                    <tr>
+
+                        <th>Cdsid</th>
+                        <th>company</th>
+                        <th>Project</th>
+                        <th>Project_name</th>
+                        <th>cbg</th>
+                        <th>COMPUTER_NAME</th>
+                        <th>Final asset type</th>
+
+                    </tr>
+
+                     {% for rr in resultsa %}
+
+                    <tr>
+
+                        <td>{{rr.cdsid}}</td>
+                        <td>{{rr.company}}</td>
+                        <td>{{rr.dorf_id}}</td>
+                        <td>{{rr.project_name}}</td>
+                        <td>{{rr.cbg}}</td>
+                        <td>{{rr.COMPUTER_NAME}}</td>
+                        <td>{{rr.BLUE_DOLLAR_CONFIGURATION}}</td>
+
+
+                        <td>
+<!--                            <a href="/update_bo/{{rr.id}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{rr.id}}">Edit</a>-->
+<!--                            <a href="/delete_bo/{{rr.id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')">Delete</a>-->
+                        </td>
+                    </tr>
+
+                    {%endfor%}
+                                      </table>
+                </div>
+{% endblock %}
+
+

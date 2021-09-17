@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>{% extends 'base.html' %}
+{% include 'header.html' %}
+{% block title %} {% endblock %}
+
+                {% block body%}
+
+            <div class="jumbotron">
+                <div class="well text-center">
+              <h1 class="display-4">Easset Data</h1>
+
+            </div>
+            </div>
+   <div>
+<p>
+    <a href="{{ url_for('main.importeassetxl') }}">Click here to Import Excel</a>
+</p>
+                    </div>
+<!--</div>-->
+<!--            </div>-->
+<!--</div>-->
+                <div class="table-responsive">
+                 <table class="table table-bordered table-hover">
+{{ ablive.to_html() | safe}}
+
+                    <tr>
+
+<!--                        <th>Cdsid</th>-->
+<!--                        <th>company</th>-->
+<!--                        <th>Project</th>-->
+                        <th>Request_Number</th>
+                        <th>DEVICE_USER_CDSID</th>
+                        <th>COMPUTER_NAME</th>
+                        <th>Final asset type</th>
+
+                    </tr>
+
+                     {% for rr in eafinal %}
+
+                    <tr>
+
+<!--                        <td>{{rr.cdsid}}</td>-->
+<!--                        <td>{{rr.company}}</td>-->
+<!--                        <td>{{rr.dorf_id}}</td>-->
+                        <td>{{rr.Request_Number}}</td>
+                        <td>{{rr.DEVICE_USER_CDSID}}</td>
+                        <td>{{rr.COMPUTER_NAME}}</td>
+                        <td>{{rr.BLUE_DOLLAR_CONFIGURATION}}</td>
+
+
+                        <td>
+                            <a href="/results/{{ablive.id}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{ablive.id}}">Edit</a>
+                            <a href="/delete_bo/{{rr.id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')">Delete</a>
+                        </td>
+                    </tr>
+
+                    {%endfor%}
+                                      </table>
+                </div>
+
+
+
+ {% endblock %}

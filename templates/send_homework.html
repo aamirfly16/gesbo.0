@@ -1,0 +1,484 @@
+<html lang="en">
+ <head>
+        <meta charset="utf-8">
+        <!-- Responsive meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- IE Compatibility meta -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Description meta -->
+        <meta name="description" content="...">
+        <!-- Author meta -->
+        <meta name="author" content="Bootstrap Temple">
+
+       
+        
+   <!--      Owl Carousel
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        Custom CSS
+         <link rel="stylesheet" href="css/style.default.css">  -->
+        <!-- Modernizr -->
+      <!--   <script type="text/javascript" src="js/modernizr.custom.79639.min.js"></script> -->
+      
+    </head>
+<div class="container-fluid">
+  <h3 style="text-align:center">Home Work</h3>
+  <div class="col-md-12">
+   <div class="panel panel-default">
+    <div class="panel-body">
+       <h4>Create Homework</h4>
+       
+       <section id="booking" class="booking">
+                  <div align="center">
+                  <h2></h2>
+                  </div>
+                <div class="container text-center">
+                 
+                 
+                 <div id="hidedata1">
+                            <form id="uploadHome">
+                                <div class="row">
+                                    <div class="col-md-10 col-md-push-1">
+                                    
+                                       <label for="selclass" class="col-sm-6 unique">Select Class: *
+                                               <select name="classess" id="classess" onchange="getBatches(this.value)">
+                                               
+                                               </select>
+                                            </label>
+                                          
+                                          <label for="selclass" class="col-sm-6 unique">Select Batch: *
+                                               <select name="batches" id="batches" onchange="selectSubjects(this.value)">
+                                               
+                                               </select>
+                                            </label>
+                                            
+                                            <label for="selclass" class="col-sm-12 unique">Select Subject: *
+                                               <select name="selsubject" id="selsubject">
+                                               
+                                               </select>
+                                            </label>
+                                            
+                                            
+                                            <label for="heading" class="col-sm-12 unique">Heading : *
+                                              <input name="heading" type="text" id="heading"  required>
+                                            </label>
+                                        
+                                          <label for="description" class="col-sm-12 unique">Description : *
+                                              <textarea name="description" id="discription"  required></textarea>
+                                            </label>
+                                          
+                                         
+                                            <label for="postdate" class="col-sm-6 unique"> Posted Date: *
+                                                <input name="postdate" type="text" id="postdate" required>
+                                           </label>
+                                            
+                                            <label for="excpectdate" class="col-sm-6 unique"> Expexted Date to complete: *
+                                                <input name="excpectdate" type="text" id="excpectdate" required>
+                                           </label>
+                                            
+                                            
+                                            <label for="file" class="col-sm-6 unique">Upload File :
+                                                <input name="file" type="file" id="time"  value="https://s3-ap-northeast-1.amazonaws.com/jagdeesh/Jahdeesh-SID8.jpg">
+                                            </label>
+                                            
+                                            </div>
+                                           <!--  <div class="col-sm-12" align="center" id="form1">
+                                                <button type="button" class="btn-unique" onclick="addHomework()">Submit</button>
+                                            </div> -->
+                                            <div class="col-sm-12" align="center" id="form2">
+                                                <button type="submit" class="btn-unique" value="0">Submit</button>
+                                                <button type="button" class="btn-unique" onclick="cancelData()">Cancel</button>
+                                            </div>
+                                        </div>
+                                   
+                                
+                            </form>
+                            </div>
+                          
+                        </div>
+                      
+            </section>
+            </div>
+     <!-- <form>
+        <select class="form-control">
+          <option>Select Class </option>
+        </select>
+        
+         <select class="form-control" style="margin-top:20px;">
+          <option>Select Subject </option>
+        </select>
+        <input type="text" class="form-control" placeholder="Type Heading Here" name="due_date" style="margin-top:20px;">
+        
+        <textarea placeholder="Type Description Here" class="form-control" style="margin-top:20px;"></textarea>
+        
+        <input type="date" placeholder="Due date" name="due_date" class="form-control" style="margin-top:20px;">
+        <label style="margin-top:20px;"><input type="radio" name="homework_type"> Homework</label>
+        <label><input type="radio" name="homework_type"> Project</label>
+        <label><input type="radio" name="homework_type"> Assignment</label>
+         <div class="box"> 
+       <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-1" style="display:none;" data-multiple-caption="{count} files selected" multiple />
+					<label style="margin-top:20px;" for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20"  height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Choose a file&hellip;</span></label>
+     </div><!--box--
+      </form>-->
+    </div><!--panel-body-->
+  </div><!--panel panel-default-->
+ 
+</div><!--container-fluid-->
+
+
+<div id="data">
+
+</div>
+<form action="Logout" id="check1">
+
+</form>
+<script>
+
+$(document).ready(function(){
+	getClassess();
+	$('#postdate').datetimepicker({
+        format: 'MM/DD/YYYY'
+     }); 
+	$('#excpectdate').datetimepicker({
+        format: 'MM/DD/YYYY'
+     }); 
+	});
+function getClassess()
+{
+	//alert("data");
+	var path="getActiveClassess";
+	$.ajax({
+			type: 'GET',
+			 url : 'GetDetails',
+			data : {path:path},
+			dataType: "json",
+			success : function(respo) {	
+				var html_str = '';				
+						for(var i=0; i< respo.length; i++)
+						{
+							html_str=html_str+'<option value='+respo[i].val1+'>'+respo[i].val2+'('+respo[i].val5+')</option>';
+						
+						}
+						var html_str1='<option value=0>Select Class</option>';
+						$('#classess').html(html_str1+html_str+'</table>');
+			     }
+		}); 
+}
+
+function getBatches(id)
+{
+	var path="getActiveBatches";
+	$.ajax({
+			type: 'GET',
+			 url : 'GetDetails',
+			data : {path:path,id:id},
+			dataType: "json",
+			success : function(respo) {	
+				var html_str = '';				
+						for(var i=0; i< respo.length; i++)
+						{
+							html_str=html_str+'<option value='+respo[i].val1+'>'+respo[i].val2+'</option>';
+						
+						}
+						var html_str1='<option value=0>Select Batch</option>';
+						$('#batches').html(html_str1+html_str+'</table>');
+			     }
+		}); 
+
+}
+
+
+
+function getStudents()
+{
+	//deleterows();
+	var  classid=$('#classess').val();
+	var  batchid=$('#batches').val();
+	
+	var path="getStudentsbyBatch";
+	$.ajax({
+		type: 'GET',
+		 url : 'GetDetails',
+		data : {path:path,classid:classid,batchid:batchid},
+		dataType: "json",
+		success : function(respo) 
+		{	
+			var x = document.getElementById("data");
+            x.style.display = "block";
+			// alert(respo);
+			var html_str = '';				
+				
+		      
+  	        html_str = '<table border="0" class="tableprint"><tr><th>Sr.No</th><th>Roll No</th><th>Student Name</th><th>Select<input type="checkbox"  class="theclass2" onchange="checkAll(this,'+respo.length+')"></th></tr>';
+				for(var i=0; i< respo.length; i++)
+				{
+					html_str = html_str + '<tr style="background-color:#BECFFB;"><td>'+(i+1)+'</td><td>'+respo[i].val3+'</td><td>'+respo[i].val2+'</td><td><input type="checkbox" id="check'+(i+1)+'" class="theclass" name="check" onchange="checkOne(this,this.value)" value="'+respo[i].val3+','+respo[i].val2+','+respo[i].val4+',"></td></tr>'
+				}
+				$('#data').html(html_str+'</table>'); 
+	
+		}
+	}); 
+	
+}
+
+
+function removeA(arr) {
+    var what, a = arguments, L = a.length, ax;
+    while (L > 1 && arr.length) {
+        what = a[--L];
+        while ((ax= arr.indexOf(what)) !== -1) {
+            arr.splice(ax, 1);
+        }
+    }
+    return arr;
+}
+
+var allVals = [];
+function addIntoArray(ele,le)
+{
+	var id="check";
+	 if (ele.checked)
+	 {
+		 allVals=[];
+	for(var i=0;i<le;i++)
+		{
+		 allVals.push($('#check'+(i+1)).val());
+		}
+	//alert(allVals);
+	 }
+	 else
+	 {
+		 for(var i=0;i<le;i++)
+			{
+		 removeA(allVals,$('#check'+(i+1)).val());
+			}
+		// alert(allVals);
+	 }
+}
+
+function cancelData()
+{
+	 document.getElementById("uploadHome").reset();
+	 var x = document.getElementById("data");
+     x.style.display = "none";
+}
+
+function checkAll(ele,le) 
+{
+	//alert("asdsa");
+	addIntoArray(ele,le);
+    var checkboxes = document.getElementsByTagName('input');
+    if (ele.checked) {
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].type == 'checkbox') {
+                checkboxes[i].checked = true;
+            }
+        }
+    } else {
+        for (var i = 0; i < checkboxes.length; i++) {
+            console.log(i)
+            if (checkboxes[i].type == 'checkbox') {
+                checkboxes[i].checked = false;
+            }
+        }
+    }
+}
+
+
+
+function checkOne(ele,id)
+{
+	if (ele.checked)
+		{
+		allVals.push(id);
+		}
+	else
+		{
+		 removeA(allVals,id);
+		}
+	alert(allVals);
+}
+
+
+    function change()
+    {
+	//alert("data");
+	 var x = document.getElementById("form1");
+	 var y = document.getElementById("form2");
+     x.style.display = "none";
+     y.style.display = "block";
+     allVals=[];
+		}
+    
+    
+    
+    
+    
+    
+    $("form#uploadHome").submit(function(event){
+      	 
+  	   
+    	
+    	
+      	var formData = new FormData($(this)[0]);
+      	
+      
+      	  event.preventDefault();
+      	  var result='';
+      	  result = createJson('uploadHome');
+      	  alert(result);
+      	  var data =JSON.stringify(result);
+      	  alert(data);
+      	  var path="AddHomeWorkwithoutfile";
+      	  formData.append('data',data);
+      	  formData.append('path',path);
+      	  formData.append('allVals',allVals);
+      	  console.log(formData);
+      	  $.ajax({
+                  type: 'POST',
+                  url: 'AddNewAdmin',
+                  data: formData,
+      		    //cache: false,
+      		    
+      		    contentType: false,
+      		   processData: false,
+                  success: function(respo) 
+                  {
+                  	alert(respo);
+                  	 if(respo!="0")
+                  		{
+                  		 alert("Email Sent Successfully")
+                		 document.getElementById("uploadHome").reset();
+                  		var x = document.getElementById("data");
+                        x.style.display = "none";
+                        allVals=[];
+                  		}
+                  	 else
+                  		 {
+                  		 alert("Please Resend the Mail agian");
+                  		 }
+                  }
+      	  });
+
+      	  return false;
+      	});
+    
+    
+    
+    
+    
+    function createJson(formId)
+	{
+		//alert("data");
+		var out_params = [];
+		var elements = document.getElementById(formId).elements;
+	  // alert(elements);
+		var obj ={};
+		var chk = 0;
+		for(var i = 0 ; i < elements.length ; i++){
+			var item = elements.item(i);
+			/* /* if(item.value.length <= 0)
+			{
+				//alert("inside");
+				$('input[name="'+item.name+'"]').css('borderBottom','1px solid #FF5722');
+				//return null;			
+			} */
+			/* else{ */ 
+				if(item.name == 'trans_charge'){
+					if($('#dropTrans').val() == 1){
+						if(parseInt(item.value) > 1){
+							$('input[name="'+item.name+'"]').css('borderBottom','1px solid #3aab83');
+							obj[item.name] = item.value;
+						}else{
+							alert("Transport Charges required!");
+							$('input[name="'+item.name+'"]').css('borderBottom','1px solid #FF5722');
+							return null;
+						}
+					} else{
+						$('input[name="'+item.name+'"]').css('borderBottom','1px solid #3aab83');
+						obj[item.name] = item.value;
+					}
+				} else{
+					$('input[name="'+item.name+'"]').css('borderBottom','1px solid #3aab83');
+					obj[item.name] = item.value;
+				}			
+			}	
+	
+		//alert(obj);
+		out_params.push(obj);			
+		return out_params;
+	}
+    
+    
+    function addHomework()
+    {
+        var classid=$('#classess').val();
+        var batchid=$('#batches').val();
+        var head=$('#heading').val();
+        var discription=$('#discription').val();
+        var postdate=$('#postdate').val();
+        var expectdate=$('#expectdate').val();
+        
+        var path="AddHomeWorkwithoutfile";
+    	$.ajax({
+    		type: 'GET',
+    		 url : 'AddNewAdmin',
+    		data : {path:path,classid:classid,batchid:batchid,head:head,discription:discription,postdate:postdate,expectdate:expectdate,allVals:allVals},
+    		dataType: "json",
+    		success : function(respo) 
+    		{	
+    			
+    		}
+    	}); 
+    }
+    
+    
+    
+    function selectSubjects(id)
+    {
+    	getStudents();
+    	if(id==0)
+    	{
+			
+            var path="getSubjects";
+        	$.ajax({
+        			type: 'GET',
+        			 url : 'GetDetails',
+        			data : {path:path,id:id},
+        			dataType: "json",
+        			success : function(respo) {	
+        				var html_str = '';				
+        						for(var i=0; i< respo.length; i++)
+        						{
+        							html_str=html_str+'<option value='+respo[i].val3+'>'+respo[i].val2+'</option>';
+        						
+        						}
+        						var html_str1='<option value=0>Select Subject</option>';
+        						$('#selsubject').html(html_str1+html_str);
+        			     }
+        		}); 
+    	}
+    	else
+    		{
+    		
+	        	var path="getSubjects";
+	        	$.ajax({
+	        			type: 'GET',
+	        			 url : 'GetDetails',
+	        			data : {path:path,id:id},
+	        			dataType: "json",
+	        			success : function(respo) {	
+	        				var html_str = '';				
+	        						for(var i=0; i< respo.length; i++)
+	        						{
+	        							html_str=html_str+'<option value='+respo[i].val3+'>'+respo[i].val2+'</option>';
+	        						
+	        						}
+	        						var html_str1='<option value=0>Select Subject</option>';
+	        						$('#selsubject').html(html_str1+html_str);
+	        			     }
+	        		}); 
+    		}
+    	getStudents();
+    }
+    
+</script>

@@ -1,0 +1,575 @@
+{% extends 'base.html' %}
+{% include 'header.html' %}
+
+{% block title %} {% endblock %}
+
+{% block body%}
+
+<div class="container">
+    <div class="row">
+        <div class="col md-12">
+
+            <div class="jumbotron jumbotron-fluid">
+                  <div class="container">
+
+
+                <h2>Manage <b>Employees </b>  <button type="button"  class="btn btn-success float-right"
+                data-toggle="modal" data-target="#mymodal">Add New Employees</button> </h2>
+            </div>
+
+            </div>
+            <form class="" action="data" method="post">
+    <input type="file" name="upload-file" value="">
+    <input type="submit" name="" value="Submit">
+</form>
+<!--                              <h2>Export Excel Report</h2>-->
+<!--<p>-->
+<!--    <a href="{{ url_for('main.display_rm') }}">Generate Excel Report</a>-->
+<!--</p>-->
+</div>
+            </div>
+
+</div>
+                <div class="table-responsive">
+                 <table class="table table-bordered table-hover">
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>CDSID</th>
+                        <th>Name</th>
+                        <th>Company</th>
+                        <th>Gender</th>
+                        <th>Billing status</th>
+                        <th>Project</th>
+                        <th>Project Name</th>
+                        <th>Project_category</th>
+                        <th>Seating Location</th>
+                        <th>Pm CDSID</th>
+                        <th>Lm CDSID</th>
+                        <th>Job Family</th>
+                        <th>Month of Joining GES</th>
+                        <th>Year of Joining GES</th>
+                        <th>Previous Experience</th>
+                        <th>Project LL5 CDSID</th>
+                        <th>Grade</th>
+                        <th>Workstation Number</th>
+                        <th>Education</th>
+                        <th>Education Details</th>
+                        <th>Funding Organisation</th>
+                        <th>Funding Function</th>
+                        <th>Funding Region</th>
+                        <th>Phase</th>
+                        <th>Attribute</th>
+                        <th>Product</th>
+                        <th>Process</th>
+                        <th>Method Domain</th>
+                        <th>TMM</th>
+                        <th>Primary Tool</th>
+                        <th>Level</th>
+                        <th>Remarks</th>
+                        <th>GTBC Final Location</th>
+                        <th>Final Service Tag</th>
+                        <th>Final Asset type</th>
+                        <th>Seat Count</th>
+                        <th>Sharing Y/N</th>
+                        <th>Fixed / Mobile</th>
+                        <th>Machine Count</th>
+                        <th>GES Experience</th>
+                        <th>Total Experiance</th>
+
+                    </tr>
+
+                     {% for rm in rmtestb %}
+
+                    <tr>
+
+                        <td>{{rm.id}}</td>
+                        <td>{{rm.cdsid}}</td>
+                        <td>{{rm.name}}</td>
+                        <td>{{rm.company}}</td>
+                        <td>{{rm.gender}}</td>
+                        <td>{{rm.billing_status}}</td>
+                        <td>{{rm.dorf_id}}</td>
+                        <td>{{rm.project_name}}</td>
+                        <td>{{rm.project_category}}</td>
+                        <td>{{rm.seating_location}}</td>
+                        <td>{{rm.pm_cdsid}}</td>
+                        <td>{{rm.lm_cdsid}}</td>
+                        <td>{{rm.job_family}}</td>
+                        <td>{{rm.month_of_joining_ges}}</td>
+                        <td>{{rm.year_of_joining_ges}}</td>
+                        <td>{{rm.previous_experience}}</td>
+                        <td>{{rm.project_ll5_cdsid}}</td>
+                        <td>{{rm.grade}}</td>
+                        <td>{{rm.workstation_number}}</td>
+                        <td>{{rm.education}}</td>
+                        <td>{{rm.education_details}}</td>
+                        <td>{{rm.funding_organisation}}</td>
+                        <td>{{rm.funding_function}}</td>
+                        <td>{{rm.funding_region}}</td>
+                        <td>{{rm.phase}}</td>
+                        <td>{{rm.attribute}}</td>
+                        <td>{{rm.product}}</td>
+                        <td>{{rm.process}}</td>
+                        <td>{{rm.method_domain}}</td>
+                        <td>{{rm.tmm}}</td>
+                        <td>{{rm.Primary}}</td>
+                        <td>{{rm.level}}</td>
+                        <td>{{rm.remarks}}</td>
+                        <td>{{rm.GTBC_Final_Location}}</td>
+                        <td>{{rm.COMPUTER_NAME}}</td>
+                        <td>{{rm.BLUE_DOLLAR_CONFIGURATION}}</td>
+                        <td>{{rm.primary_tool}}</td>
+                        <td>{{rm.primary_tool}}</td>
+                        <td>{{rm.primary_tool}}</td>
+                        <td>{{rm.primary_tool}}</td>
+                        <td>{{rm.ges_experience}}</td>
+                        <td>{{rm.total_experience}}</td>
+
+
+                        <td>
+                            <a href="/update/{{rm.id}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{rm.id}}">Edit</a>
+                            <a href="/delete/{{rm.id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')">Delete</a>
+                        </td>
+
+                    </tr>
+                     {%endfor%}
+                 </table>
+                </div>
+
+                  <!-- Modal Add Employee-->
+
+
+<div id="mymodal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+
+            <h4 class="modal-title">Add Employee</h4>
+         </div>
+         <div class="modal-body">
+
+            <form action="{{url_for('main.insert')}}" method="POST">
+
+
+               <div class="form-group">
+
+                  <label>Id:</label>
+                  <input type="id" class="form-control" name="id" required="1">
+
+
+               </div>
+
+
+                <div class="form-group">
+
+
+                  <label>Cdsid:</label>
+                  <input type="cdsid" class="form-control" name="cdsid" required="1">
+
+
+               </div>
+
+
+                <div class="form-group">
+
+
+                  <label>Name:</label>
+                  <input type="name" class="form-control" name="name" required="1">
+
+
+               </div>
+
+               <div class="form-group">
+
+
+                  <label>Company:</label>
+                  <input type="company" class="form-control" name="company" required="1">
+
+
+               </div>
+
+                               <div class="form-group">
+
+
+                  <label>gender:</label>
+                  <input type="gender" class="form-control" name="gender" required="1">
+
+
+               </div>
+
+                               <div class="form-group">
+
+
+                  <label>billing_status:</label>
+                  <input type="billing_status" class="form-control" name="billing_status" required="1">
+
+
+               </div>
+
+                               <div class="form-group">
+
+
+                  <label>project:</label>
+                  <input type="project" class="form-control" name="project" required="1">
+
+
+               </div>
+
+                               <div class="form-group">
+
+
+                  <label>project_name:</label>
+                  <input type="project_name" class="form-control" name="project_name" required="1">
+
+
+               </div>
+
+               <div class="form-group">
+
+
+                  <label>seating_location:</label>
+                  <input type="seating_location" class="form-control" name="seating_location" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>pm_cdsid:</label>
+                  <input type="pm_cdsid" class="form-control" name="pm_cdsid" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>lm_cdsid:</label>
+                  <input type="lm_cdsid" class="form-control" name="lm_cdsid" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>job_family:</label>
+                  <input type="job_family" class="form-control" name="job_family" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>month_of_joining_ges:</label>
+                  <input type="month_of_joining_ges" class="form-control" name="month_of_joining_ges" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>year_of_joining_ges:</label>
+                  <input type="year_of_joining_ges" class="form-control" name="year_of_joining_ges" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>previous_experience:</label>
+                  <input type="previous_experience" class="form-control" name="previous_experience" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>modified:</label>
+                  <input type="modified" class="form-control" name="modified" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>modified_by:</label>
+                  <input type="modified_by" class="form-control" name="modified_by" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>project_ll5_cdsid:</label>
+                  <input type="project_ll5_cdsid" class="form-control" name="project_ll5_cdsid" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>grade:</label>
+                  <input type="grade" class="form-control" name="grade" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>workstation_number:</label>
+                  <input type="workstation_number" class="form-control" name="workstation_number" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>education:</label>
+                  <input type="education" class="form-control" name="education" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>education_details:</label>
+                  <input type="education_details" class="form-control" name="education_details" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>item_type:</label>
+                  <input type="item_type" class="form-control" name="item_type" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>path:</label>
+                  <input type="path" class="form-control" name="path" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>funding_organisation:</label>
+                  <input type="funding_organisation" class="form-control" name="funding_organisation" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>funding_function:</label>
+                  <input type="funding_function" class="form-control" name="funding_function" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>funding_region:</label>
+                  <input type="funding_region" class="form-control" name="funding_region" required="1">
+
+
+               </div>
+
+               <div class="form-group">
+
+
+                  <label>phase:</label>
+                  <input type="phase" class="form-control" name="phase" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>attribute:</label>
+                  <input type="attribute" class="form-control" name="attribute" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>product:</label>
+                  <input type="product" class="form-control" name="product" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>process:</label>
+                  <input type="process" class="form-control" name="process" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>method_domain:</label>
+                  <input type="method_domain" class="form-control" name="method_domain" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>tmm:</label>
+                  <input type="tmm" class="form-control" name="tmm" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>primary_tool:</label>
+                  <input type="primary_tool" class="form-control" name="primary_tool" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>level:</label>
+                  <input type="level" class="form-control" name="level" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>remarks:</label>
+                  <input type="remarks" class="form-control" name="remarks" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>wb:</label>
+                  <input type="wb" class="form-control" name="wb" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>aaa:</label>
+                  <input type="aaa" class="form-control" name="aaa" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>project2:</label>
+                  <input type="project2" class="form-control" name="project2" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>cbg:</label>
+                  <input type="cbg" class="form-control" name="cbg" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>discipline:</label>
+                  <input type="discipline" class="form-control" name="discipline" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>column1:</label>
+                  <input type="column1" class="form-control" name="column1" required="1">
+
+
+               </div>
+
+                               <div class="form-group">
+
+
+                  <label>month_year_joining:</label>
+                  <input type="month_year_joining" class="form-control" name="month_year_joining" required="1">
+
+
+               </div>
+                               <div class="form-group">
+
+
+                  <label>ges_experience:</label>
+                  <input type="ges_experience" class="form-control" name="ges_experience" required="1">
+
+
+               </div>
+                               <div class="form-group">
+
+
+                  <label>total_experience:</label>
+                  <input type="total_experience" class="form-control" name="total_experience" required="1">
+
+
+               </div>
+                               <div class="form-group">
+
+
+                  <label>column2:</label>
+                  <input type="column2" class="form-control" name="column2" required="1">
+
+
+               </div>
+
+
+
+               <div class="form-group">
+
+
+                  <button class="btn btn-primary" type="submit">Add Employee</button>
+
+
+               </div>
+
+
+            </form>
+
+
+         </div>
+
+
+         <div class="modal-footer">
+
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+
+         </div>
+
+
+      </div>
+
+
+   </div>
+
+
+</div>
+
+<!--    {% for rm in rmtest %}-->
+<!--        <h4>id: {{rm.id}}</h4>-->
+<!--        <h4>cdsid: {{rm.cdsid}}</h4>-->
+<!--        <p>Name: {{rm.name}}</p>-->
+<!--    {% endfor %}-->
+{% endblock %}

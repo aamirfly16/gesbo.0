@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% include 'header.html' %}
+
+
+
+{% block body%}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col md-12">
+
+            <div class="jumbotron">
+                <div class="well text-center">
+              <h1 class="display-4">Bo Queue Ticket Tracker</h1>
+
+                </div>
+                 <div>
+<p>
+    <a href="{{ url_for('importxl') }}">Click here to Import Excel</a>
+</p>
+                    </div>
+            </div>
+</div>
+            </div>
+
+</div>
+
+<br><br>
+
+                <div class="table-responsive">
+
+                 <table class="table table-bordered table-hover">
+
+                    <tr>
+
+                        <th>CDSID</th>
+                        <th>pm_request_time</th>
+                        <th>request_type</th>
+                        <th>new_assert_type</th>
+                        <th>service_tag</th>
+                        <th>Request_Number</th>
+                        <th>It Connect Stage</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                     {% for rr in rrtestbo %}
+
+                    <tr>
+
+                        <td>{{rr.cdsid}}</td>
+                        <td>{{rr.pm_request_time}}</td>
+                        <td>{{rr.request_type}}</td>
+                        <td>{{rr.new_assert_type}}</td>
+                        <td>{{rr.service_tag}}</td>
+                        <td>{{rr.Request_Number}}</td>
+                        <td>{{rr.Assigned_Group_QueueName}}</td>
+                        <td>{{rr.Status}}</td>
+
+                        <td>
+                            <a href="/update_bo/{{rr.id}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{rr.id}}">Edit</a>
+                            <a href="/delete_bo/{{rr.id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')">Delete</a>
+                        </td>
+                    </tr>
+
+
+
+<div id="modaledit{{rr.id}}" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+
+            <h4 class="modal-title">Update </h4>
+         </div>
+         <div class="modal-body">
+
+            <form action="{{url_for('bopage_r1')}}" method="POST">
+
+
+               <div class="form-group">
+
+                  <label>it_request_number:</label>
+                  <input type="hidden" name="id" value="{{rr.id}}" >
+                  <input type="text" class="form-control" name="it_request_number" value="{{rr.it_request_number}}">
+
+               </div>
+               <div class="form-group">
+
+                  <label>unshare_it_req_number:</label>
+                  <input type="text" class="form-control" name="unshare_it_req_number" value="{{rr.unshare_it_req_number}}">
+
+               </div>
+
+                               <div class="form-group">
+
+                  <label>it_connect_stage:</label>
+                  <input type="text" class="form-control" name="it_connect_stage" value="{{rr.it_connect_stage}}">
+
+               </div>
+                                               <div class="form-group">
+
+                  <label>Bo_status:</label>
+                  <input type="text" class="form-control" name="bo_status" value="{{rr.bo_status}}">
+
+               </div>
+                          <div class="form-group">
+
+                  <label>remarks:</label>
+                  <input type="text" class="form-control" name="remarks" value="{{rr.remarks}}">
+
+               </div>
+
+                <div class="form-group">
+
+
+                  <button class="btn btn-primary" type="submit">update</button>
+
+
+               </div>
+
+
+            </form>
+
+
+                         <div class="modal-footer">
+
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+   </div>
+
+
+</div>
+</div>
+</div>
+
+                    {%endfor%}
+                                      </table>
+
+
+                </div>
+
+{% endblock %}

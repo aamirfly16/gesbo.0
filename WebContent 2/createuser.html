@@ -1,0 +1,274 @@
+
+<div class="container-fluid">
+<div class="row">
+		<div class="col-md-12">
+			<h2 style="text-align: center;color: #A8766B;">Create User</h2>
+		</div>
+   </div>
+<form id="createuser">
+<div class="row">
+		<div class="col-md-12">
+			<label class="control-label col-md-2" style="margin-top:8px; " > UserName/Id:</label>
+			<div class="col-md-4">
+				<input type="text" name="username" class="form-control" style="margin-bottom:20px;" id="username" value=""/>
+			</div>
+			<label class="control-label col-md-2" style="margin-top:8px; " >Password:</label>
+			<div class="col-md-4">
+				<input type="password" name="password" class="form-control" style="margin-bottom:20px;" id="pwd" value=""/>
+			</div>
+		</div>
+   </div>
+
+
+<!-- <div class="row">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="col-md-10" style="float: right;">
+				
+				<label>To Date:</label>
+				
+			</div>
+		</div>
+	</div>*/-->
+	
+	
+	<div class="row">
+		<div class="col-md-12">
+			<label class="control-label col-md-2" style="margin-top:8px; " > User Type:</label>
+			<div class="col-md-4">
+				<select name="reptype" class="form-control" id="righttype">
+					<option value="1">Admin</option>
+					<option value="S1">Shop-1(User)</option>
+					<option value="S2">Shop-2(User)</option>
+				</select>
+			</div>
+		</div>
+   </div>
+	
+	</form>
+	
+	
+	<div align="center">
+	<br>	
+	<button type="button" id="createuser" class=" btn btn-info" onclick="createUserac()">Create</button>
+				
+			<br><br>	
+	
+</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="showFilterSalesdata">
+				
+			</div>
+		</div>
+	</div>
+
+  
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog" style="width:800px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" >Change Password</h4>
+        </div>
+        <input type="hidden" id="hold" value="" name="hold">
+        <input type="hidden" id="hsno" value="" name="hsno">
+        <div class="modal-body">
+        <form id="edit_customer_grp">  
+          <div class="container-fluid">	
+		<div class="row">
+						<label class="control-label col-md-4" >Old Password:</label>
+				<div class="col-md-4">
+				         <input type="password" class="form-control" style="margin-bottom:20px;" name="old" id="old" value="" />
+				</div>
+			</div>
+			
+				
+		<div class="row">
+						<label class="control-label col-md-4" >New Password:</label>
+				<div class="col-md-4">
+                        <input type="password" class="form-control" style="margin-bottom:20px;" name="new" id="new" value="" />				</div>
+			</div>
+		
+	
+		<div class="row">
+			<div class="col-md-2">
+				<input type="button" value="Change" id="save_edited_data" onclick="changePassword()" class="btn btn-success form-control btn-md " >
+			</div>
+		</div>
+		</div>
+		</form>	
+        </div>
+        <div class="modal-footer" align="center">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="close">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+     
+</div><!--container fluid-->
+
+<script>
+	
+$(document).ready(function()
+{
+	console.log("data");
+	getallusers();
+});
+
+function getallusers()
+{
+	console.log("from getusers");
+	var path="getAllusers";
+	$.ajax({
+        type: 'GET',
+        url : 'RetrieveServlet',
+        dataType: "json",
+        data:{path:path},
+        success : function(respo)
+        {
+        	console.log(respo);
+        	if(respo.length > 0){
+                var html_str = '<table cellpadding="0" id="tblExport1" cellspacing="0" class="db-table" align="center"><thead><tr><th>Sr.No</th><th>UserName</th><th>ChangePassword</th><th>Delete</th></tr></thead><tbody>';
+                for(var i=0;i<respo.length;i++)
+                {
+                     html_str = html_str +'<tr><td>'+(i+1)+'</td><td>'+respo[i].val2+'</td><td><input type="button" data-toggle="modal" data-target="#myModal" class="tab_button_edit" onClick="get_customergroup(\''+respo[i].val3+'\',\''+respo[i].val1+'\')"></td><td><input type="button"  class="tab_button_delete" onClick="delete_user(\''+respo[i].val1+'\')"></td></tr>';
+                 }
+                 $('.showFilterSalesdata').html(html_str+'</tbody></table>');    
+             }else{
+             }
+        }
+	});
+}
+
+
+function get_customergroup(pass,id)
+{
+	$('#hold').val(pass);
+	$('#hsno').val(id);
+	//alert(id);
+	console.log($('#hsno').val(id));
+//alert(pass);
+}
+
+
+function delete_user(id)
+{
+	var answer = confirm ("Are you sure you want to delete User?");
+	if(answer)
+		{
+		var path="deleteUser"
+	$.ajax({
+        type: 'POST',
+        url : 'UpdateServlet',
+        dataType: "json",
+        data : {sno:id,path:path},
+        success : function(respo)
+        {
+        	console.log(respo);
+        	if(respo=="1")
+        		{
+        		alert("User Deleted Successfully !.");
+        		getallusers();
+        		}
+        	else
+        		{
+        		
+        		}
+        }
+	});
+		}
+	else
+		{
+		
+		}
+}
+
+function changePassword()
+{
+var hold=$('#hold').val();
+var sno=$('#hsno').val();
+console.log(sno);
+var old=$('#old').val();
+var neo=$('#new').val();
+if(hold==old)
+	{
+	var path="changepassword";
+	$.ajax({
+        type: 'POST',
+        url : 'UpdateServlet',
+        dataType: "json",
+        data : {npass:neo,sno:sno,path:path},
+        success : function(respo)
+        {
+        	console.log(respo);
+        	if(respo=="1")
+        		{
+        		alert("Password Updated Successfully !.");
+        		$('#edit_customer_grp')[0].reset();
+        		$('#close').trigger('click');
+        		getallusers();
+        		}
+        	else
+        		{
+        		
+        		}
+        }
+	});
+	}
+else
+	{
+	alert("Please Enter the Correct Old Password");
+	}
+}
+
+function createUserac()
+{
+var path="adduser";
+var username=$('#username').val();
+var pass=$('#pwd').val();
+var rights=$('#righttype').val();
+if(username=='' || pass=='')
+	{
+	alert("Please Fill all the Feilds");
+	}
+else if(username.length<8)
+		{
+		alert("Username Must have atleast 8 Charecters");
+		}
+else if(pass.length<5)
+	{
+	alert("Password Must have atleast 5 Charecters");
+	}
+else
+	{
+	$.ajax({
+        type: 'GET',
+        url : 'AddServlet',
+        dataType: "json",
+        data : {path:path,username:username,pwd:pass,rights:rights},
+        success : function(respo)
+        {
+        	if(respo=="1")
+        		{
+        		alert("User Created Successfully");
+        		$('#username').val('');
+        		$('#pwd').val('');
+        		$('#righttype').val(0);
+        	//	$('#createuser')[0].reset();
+        		getallusers();
+        		}
+        	else
+        		{
+        		
+        		}
+        }
+	});
+	}
+}
+
+</script>
+

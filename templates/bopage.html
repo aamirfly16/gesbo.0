@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% include 'header.html' %}
+
+
+
+{% block body%}
+
+<div class="container">
+    <div class="row">
+        <div class="col md-12">
+
+            <div class="jumbotron">
+                <div class="well text-center">
+              <h1 class="display-4">Bo Queue Ticket Tracker</h1>
+                </div>
+            </div>
+</div>
+            </div>
+</div>
+                <div class="table-responsive">
+                 <table class="table table-bordered table-hover">
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>CDSID</th>
+                        <th>pm_request_time</th>
+                        <th>request_type</th>
+                        <th>new_location</th>
+                        <th>new_assert_type</th>
+                        <th>service_tag</th>
+                        <th>sharing</th>
+                        <th>unshare</th>
+
+                    </tr>
+
+                     {% for rr in rrtest %}
+
+                    <tr>
+
+                        <td>{{rr[0]}}</td>
+                        <td>{{rr[1]}}</td>
+                        <td>{{rr[2]}}</td>
+                        <td>{{rr[3]}}</td>
+                        <td>{{rr[4]}}</td>
+                        <td>{{rr[5]}}</td>
+                        <td>{{rr[6]}}</td>
+                        <td>{{rr[7]}}</td>
+                        <td>{{rr[8]}}</td>
+
+   <td>
+                            <a href="/edit/{{rr[0]}}" class="btn btn-warning btn-xs"data-toggle="modal">Edit</a>
+
+                            <a href="/delete_bo/{{rr[0]}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')">Delete</a>
+                        </td>
+                    </tr>
+                                          {%endfor%}
+                 </table>
+                </div>
+
+
+    {% endblock %}
+
+

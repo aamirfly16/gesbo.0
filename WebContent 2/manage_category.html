@@ -1,0 +1,691 @@
+<div class="container-fluid">
+    <div class="tab_div" style="margin-bottom: 20px;">
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Category Details</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-7"></div>
+
+			<div class="col-md-4">
+				<div class="col-md-8">
+					<input type="text" class="form-control" name="comp_srch" value="" />
+				</div>
+				<div class="col-md-4">
+					<input type="button" class="btn btn-primary form-control" style="" value="Search" />
+				</div>				
+			</div>
+			<div class="col-md-1">
+				<input type="button" data-toggle="modal"
+					data-target="#myModal" class="tab_button_plus"
+					onClick="clearFields('category')">
+			</div>
+
+		</div>
+
+	</div>
+    <div class="get_tabel"></div>
+   
+    <!--add data modal box-->
+    <!-- Modal -->
+     <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog" style="width:1148px;">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header" >
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Category</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                     <form id="category">
+                        <div class="row">                           
+                                <div class="col-md-8">
+                                <div class="row">
+                                       <!--  <label class="control-label col-md-4" > Select Category:</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" style="margin-bottom:20px;" name="name" value="" />
+                                            <select name="category" id="category">
+                                            </select>
+                                        </div> -->
+                                    </div>
+                                    <div class="row">
+                                        <label class="control-label col-md-4" > Name:</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" style="margin-bottom:20px;" name="name" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="control-label col-md-4" >Description:</label>
+                                        <div class="col-md-4">
+                                            <textarea class="form-control" style="margin-bottom:20px;" name="description" placeholder="Optional" value="" /></textarea>
+                                        </div>
+                                    </div>
+                                    	<div class="row">
+                             <!--  <label class="control-label col-md-4" > eShop Dsiplay Index:</label>
+                              <div class="col-md-4">
+                                     <input type="text" class="form-control" style="margin-bottom:20px;" name="eshop_display_index" value="" />
+                              </div> -->
+                              </div>
+                              
+                              <div class="row">
+                              <div class="col-md-4"></div>
+                              <!-- <div class="col-md-4">
+                              <label class="control-label col-md-4" style="margin-top:8px;"  ><input type="checkbox" checked >Not for eShop</label>
+                              </div> -->
+                              </div><br>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <input type="button" value="Save" id="save_category" class="btn btn-success form-control btn-md ">
+                                        </div>
+                                    </div>
+                                </div>
+                        	</div>
+                        </form>
+                    </div>
+                   
+                </div>
+                <div class="modal-footer" >
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!--edit data modal box-->
+    <!-- Modal -->
+     <div class="modal fade" id="yModal" role="dialog">
+        <div class="modal-dialog" style="width:1148px;">
+          <!--   Modal content -->
+            <div class="modal-content">
+                <div class="modal-header" >
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Category</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="edit_category">
+                        <input type="hidden" value="0" name="category_id" />
+                        <div class="container-fluid">
+                            <div class="row">
+                                 <div class="col-md-8">
+                                    <div class="row">
+                                        <label class="control-label col-md-4" > Name:</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" style="margin-bottom:20px;" name="name" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="control-label col-md-4" >Description:</label>
+                                        <div class="col-md-4">
+                                            <textarea class="form-control" style="margin-bottom:20px;" name="description" placeholder="Optional" value="" /></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <input type="button" value="Update" id="save_edited_data" class="btn btn-success form-control btn-md ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer" >
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- edit data modal box -->
+</div> 
+<!--container fluid-->
+
+<div class="container-fluid">
+    <div class="tab_div" style="margin-bottom: 20px;">
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Sub-Category Details</h3>
+			</div>
+		</div>
+		 <div class="row">
+			 <div class="col-md-7"></div>
+
+			<div class="col-md-4">
+				<div class="col-md-8">
+					<input type="text" class="form-control" name="comp_srch" value="" />
+				</div>
+				<div class="col-md-4">
+					<input type="button" class="btn btn-primary form-control" style="" value="Search" />
+				</div>				
+			</div>  
+			<div class="col-md-1">
+				<input type="button" data-toggle="modal"
+					data-target="#myModal1" class="tab_button_plus"
+					onClick="clearFields('category')">
+			</div>
+
+		</div>
+
+	</div>
+    <div class="get_tabel1"></div>
+    </div>
+       <div class="modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog" style="width:1148px;">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header" >
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Sub-Category</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                     <form id="subcategory">
+                        <div class="row">                           
+                                <div class="col-md-8">
+                                <div class="row">
+                                         <label class="control-label col-md-4" > Select Category:</label>
+                                        <div class="col-md-4">
+                                            <!-- <input type="text" class="form-control" style="margin-bottom:20px;" name="name" value="" /> -->
+                                            <select name="categorylist" id="categorylist" class="form-control">
+                                            </select>
+                                        </div> 
+                                    </div><br>
+                                    <div class="row">
+                                        <label class="control-label col-md-4" > Name:</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" style="margin-bottom:20px;" name="name" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="control-label col-md-4" >Description:</label>
+                                        <div class="col-md-4">
+                                            <textarea class="form-control" style="margin-bottom:20px;" name="description" placeholder="Optional" value="" /></textarea>
+                                        </div>
+                                    </div>
+                                    	<div class="row">
+                             <!--  <label class="control-label col-md-4" > eShop Dsiplay Index:</label>
+                              <div class="col-md-4">
+                                     <input type="text" class="form-control" style="margin-bottom:20px;" name="eshop_display_index" value="" />
+                              </div> -->
+                              </div>
+                              
+                              <div class="row">
+                              <div class="col-md-4"></div>
+                              <!-- <div class="col-md-4">
+                              <label class="control-label col-md-4" style="margin-top:8px;"  ><input type="checkbox" checked >Not for eShop</label>
+                              </div> -->
+                              </div><br>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <input type="button" value="Save" id="save_subcategory" class="btn btn-success form-control btn-md ">
+                                        </div>
+                                    </div>
+                                </div>
+                        	</div>
+                        </form>
+                    </div>
+                   
+                </div>
+                <div class="modal-footer" >
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!--edit data modal box-->
+    <!-- Modal -->
+     <div class="modal fade" id="yModal1" role="dialog">
+        <div class="modal-dialog" style="width:1148px;">
+          <!--   Modal content -->
+            <div class="modal-content">
+                <div class="modal-header" >
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Sub-Category</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="edit_subcategory">
+                        <input type="hidden" value="0" name="subcategory_id" id="subcategory_id"/>
+                        <div class="container-fluid">
+                            <div class="row">
+                                 <div class="col-md-8">
+                                    <div class="row">
+                                        <label class="control-label col-md-4" > Name:</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" style="margin-bottom:20px;" name="name1" id="name1" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="control-label col-md-4" >Description:</label>
+                                        <div class="col-md-4">
+                                            <textarea class="form-control" style="margin-bottom:20px;" name="description1" id="description1" placeholder="Optional" value="" /></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <input type="button" value="Update" id="save_edited_subdata" class="btn btn-success form-control btn-md ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer" >
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- edit data modal box -->
+
+
+<script>
+    $(document).ready(function() {
+    	refresh();
+    	getCategories();
+    	 refresh1();
+        //code for saving data	
+        $('#save_category').on('click', function() {
+            var path = "add_category";
+            var vals = createJson('category');
+            if (vals == null) {
+				$('#snackbar').html('Please fill all fields!');
+				$('#snackbar').addClass('show');
+				setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+            } else {
+                vals = JSON.stringify(vals);
+                $.ajax({
+                    type: 'POST',
+                    url: 'AddServlet',
+                    //dataType: "json",
+                    data: {
+                        data: vals,
+                        path: path
+                    },
+                    success: function(respo) {
+                        if (respo == '1') {
+                            $('#snackbar').html('New category created successfully!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+							$('#myModal').modal('toggle');
+							$('#category')[0].reset();
+							
+                        } else {
+                            $('#snackbar').html('Oops!, something went wrong. Try again!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                            $('#category')[0].reset();
+                        }
+                        refresh();
+                    }
+
+                });
+            }
+        });
+
+        
+        $('#save_subcategory').on('click', function() {
+            var path = "add_subcategory";
+            var vals = createJson('subcategory');
+            if (vals == null) {
+    			$('#snackbar').html('Please fill all fields!');
+    			$('#snackbar').addClass('show');
+    			setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+            } else {
+                vals = JSON.stringify(vals);
+                $.ajax({
+                    type: 'POST',
+                    url: 'AddServlet',
+                    //dataType: "json",
+                    data: {
+                        data: vals,
+                        path: path
+                    },
+                    success: function(respo) {
+                        if (respo == '1') {
+                            $('#snackbar').html('New Sub-category created successfully!');
+    						$('#snackbar').addClass('show');
+    						setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+    						$('#myModal1').modal('toggle');
+    						$('#subcategory')[0].reset();
+    						
+                        } else {
+                            $('#snackbar').html('Oops!, something went wrong. Try again!');
+    						$('#snackbar').addClass('show');
+    						setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                            $('#category')[0].reset();
+                        }
+                        refresh1();
+                    }
+
+                });
+            }
+        }); 
+        
+        $('#save_edited_subdata').on('click', function() {
+            var path = "updateSubcategory";
+            var vals = createJson('edit_subcategory');
+            //console.log('Result:\t'+JSON.stringify(vals));
+            if (vals == null) {
+                $('#snackbar').html('Please fill all fields!');
+    			$('#snackbar').addClass('show');
+    			setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+            } else {
+                vals = JSON.stringify(vals);
+                $.ajax({
+                    type: 'POST',
+                    url: 'UpdateServlet',
+                    //dataType: "json",
+                    data: {
+                        data: vals,
+                        path: path
+                    },
+                    success: function(respo) {
+                       if (respo == '1') {
+                            $('#snackbar').html('Details updated successfully!');
+    						$('#snackbar').addClass('show');
+    						setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                            $('#edit_subcategory')[0].reset();
+    						$('#yModal1').modal('toggle'); 
+                        } else {
+                            $('#snackbar').html('Oops!, something went wrong. Try again!');
+    						$('#snackbar').addClass('show');
+    						setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                            $('#edit_category')[0].reset();
+                        }
+                        refresh1();
+                    }
+
+                });
+            }
+        });
+
+        
+        function createJson(formId) {
+            var out_params = [];
+            var elements = document.getElementById(formId).elements;
+            var obj = {};
+            var chk = 0;
+            console.log(formId);
+            for (var i = 0; i < elements.length; i++) {
+                var item = elements.item(i);
+                if (item.value.length <= 0) {
+                   if(item.name == 'description'){
+						$('input[name="'+item.name+'"]').removeAttr("style");
+						$('input[name="'+item.name+'"]').css('marginBottom','20px');
+						obj[item.name] = item.value;
+					}else{
+						$('input[name="'+item.name+'"]').css('borderBottom','1px solid #FF5722 ');
+						return null; 
+					}	
+                } else {
+                    $('input[name="'+item.name+'"]').removeAttr("style");
+					$('input[name="'+item.name+'"]').css('marginBottom','20px');
+                    obj[item.name] = item.value;
+				}
+
+            }
+            out_params.push(obj);
+            return out_params;
+        }
+
+
+        //Save data after Edit
+
+        $('#save_edited_data').on('click', function() {
+            var path = "updatecategory";
+            var vals = createJson('edit_category');
+            //console.log('Result:\t'+JSON.stringify(vals));
+            if (vals == null) {
+                $('#snackbar').html('Please fill all fields!');
+				$('#snackbar').addClass('show');
+				setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+            } else {
+                vals = JSON.stringify(vals);
+                $.ajax({
+                    type: 'POST',
+                    url: 'UpdateServlet',
+                    //dataType: "json",
+                    data: {
+                        data: vals,
+                        path: path
+                    },
+                    success: function(respo) {
+                       if (respo == '1') {
+                            $('#snackbar').html('Details updated successfully!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                            $('#edit_category')[0].reset();
+							$('#yModal').modal('toggle'); 
+                        } else {
+                            $('#snackbar').html('Oops!, something went wrong. Try again!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                            $('#edit_category')[0].reset();
+                        }
+                        refresh();
+                    }
+
+                });
+            }
+        });
+
+
+    });
+
+    
+    
+   
+    
+    //date picker
+
+    $(function() {
+        $("#datepicker").datepicker();
+    });
+
+    //reset field
+     function clearFields(id) {
+        /* $('#' + id)[0].reset(); */
+    }
+ 
+
+    //function for edit	
+    function get_category(id) {
+        //alert(id);
+        var path = "editcategory";
+        $.ajax({
+            type: 'GET',
+            url: 'EditServlet',
+            dataType: "json",
+            data: {
+                path: path,
+                id: id
+            },
+            success: function(respo) {
+
+                //alert(JSON.stringify(respo));
+                $('input[name="category_id"]').val(id);
+                $('input[name="name"]').val(respo[0].val2);
+               // $('input[name="barcode_prefix"]').val(respo[0].val3);
+                $('textarea[name="description"]').val(respo[0].val4);
+                //alert(respo[0].val1+respo[0].val2+respo[0].val3+respo[0].val4);
+            }
+        });
+    }
+
+
+    function delete_category(id) {
+        var path = "deletecategory";
+        var answer = confirm("Are you sure you want to delete?");
+        if (answer) {
+            $.ajax({
+                type: 'GET',
+                url: 'DeleteServlet',
+                dataType: "json",
+                data: {
+                    path: path,
+                    id: id
+                },
+                success: function(respo) {
+                    if (respo == '1') {
+                        alert('Success');
+                    } else {
+                        alert('Failed');
+                    }
+                    refresh();
+                }
+            });
+        }
+
+    }
+
+	function refresh(){
+		 var path = "getcategories";
+	        $.ajax({
+	            type: 'GET',
+	            url: 'RetrieveServlet',
+	            dataType: "json",
+	            data: {
+	                path: path
+	            },
+	            success: function(respo) 
+	            {
+
+	                if (respo.length > 0) {
+	                    var html_str = '<table cellpadding="0" id="tblExport1" cellspacing="0" class="db-table" align="center"><thead><tr><th>Sr.No</th><th>Name</th><th>Description</th><th>Edit</th><th>Delete</th></tr></thead><tbody>';
+	                    for (var i = 0; i < respo.length; i++) {
+	                        html_str = html_str + '<tr><td>' +(i+1)+ '</td><td>' + respo[i].val1+ '</td><td>' + respo[i].val2 + '</td><td><input type="button" data-toggle="modal" data-target="#yModal" class="tab_button_edit" onClick="get_category(' + respo[i].val3 + ')"></td><td><input type="button"  class="tab_button_delete" onClick="delete_category(' + respo[i].val3 + ')"></td></tr>';
+	                    }
+	                   
+	                } else {
+	                    //alert('No ads associated with this customer!');
+	                }
+	                $('.get_tabel').html(html_str + '</tbody></table>');
+	                //   alert(respo);
+	            }
+	        });
+	        getCategories();
+	}
+	
+	
+	function getCategories()
+	{
+		 var path = "getcategories";
+	        $.ajax({
+	            type: 'GET',
+	            url: 'RetrieveServlet',
+	            dataType: "json",
+	            data: {
+	                path: path
+	            },
+	            success: function(respo) 
+	            {
+
+	            	var html_str='';
+	                   console.log(respo);
+	                   for (var i = 0; i < respo.length; i++) 
+	                   {
+	                       html_str = html_str + '<option value='+ respo[i].val4 +','+respo[i].val1+'>' + respo[i].val1 + '</option>';
+	                   }
+	                   var html_str1='<option value=0>Select Category</option>'
+	                   $('#categorylist').html(html_str1+html_str);
+	            }
+	        });
+	}
+
+    //show and hide on check box
+    $(".hide_check").show();
+
+    $(".coupon_question").click(function() {
+        if ($(this).is(":checked")) {
+            $(".hide_check").show();
+        } else {
+            $(".hide_check").hide();
+        }
+    });
+
+    // preview image
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function() {
+        readURL(this);
+    });
+    
+    
+    
+   
+    
+    function refresh1(){
+		 var path = "getSubcategories";
+	        $.ajax({
+	            type: 'GET',
+	            url: 'RetrieveServlet',
+	            dataType: "json",
+	            data: {
+	                path: path
+	            },
+	            success: function(respo) 
+	            {
+
+	                if (respo.length > 0) {
+	                    var html_str = '<table cellpadding="0" id="tblExport1" cellspacing="0" class="db-table" align="center"><thead><tr><th>Sr.No</th><th>SubCategory</th><th>Category</th><th>Edit</th><th>Delete</th></tr></thead><tbody>';
+	                    for (var i = 0; i < respo.length; i++) {
+	                        html_str = html_str + '<tr><td>' +(i+1)+ '</td><td>' + respo[i].val1+ '</td><td>' + respo[i].val6 + '</td><td><input type="button" data-toggle="modal" data-target="#yModal1" class="tab_button_edit" onClick="get_subcategory(\''+ respo[i].val5 + '\',\''+ respo[i].val1 + '\',\''+ respo[i].val2 + '\')"></td><td><input type="button"  class="tab_button_delete" onClick="delete_subcategory(\''+ respo[i].val5 + '\')"></td></tr>';
+	                    }
+	                   
+	                } else {
+	                    //alert('No ads associated with this customer!');
+	                }
+	                $('.get_tabel1').html(html_str + '</tbody></table>');
+	                //   alert(respo);
+	            }
+	        });
+	        getCategories();
+	}
+	
+    
+    function delete_subcategory(id)
+    {
+    	var path = "deleteSubcategory";
+        var answer = confirm("Are you sure you want to delete?");
+        if (answer) {
+            $.ajax({
+                type: 'GET',
+                url: 'DeleteServlet',
+                dataType: "json",
+                data: {
+                    path: path,
+                    id: id
+                },
+                success: function(respo) {
+                    if (respo == '1') {
+                        alert('Success');
+                    } else {
+                        alert('Failed');
+                    }
+                    refresh1();
+                }
+            });
+        }
+    }
+    
+    
+    function get_subcategory(subid,name,discription)
+    {
+    	$('#name1').val(name);
+    	$('#description1').val(discription);
+    	$('#subcategory_id').val(subid);
+    }
+    
+</script>

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% include 'header.html' %}
+
+{% block title %} {% endblock %}
+
+{% block body%}
+        <h1> Pre-Check </h1>
+<form action={{ url_for('main.precheck')}} method='post'>
+      <input type="text" name="cdsid" placeholder="Search for CDS-ID"> <br><br>
+      <input type="text" name="Name" placeholder="Search for name"> <br><br>
+      <input type="submit" placeholder="Submit"> <br><br>
+
+</form>
+
+{%endblock%}

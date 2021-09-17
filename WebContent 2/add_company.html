@@ -1,0 +1,742 @@
+
+<div class="container-fluid">
+
+	<div class="tab_div" style="margin-bottom: 20px;">
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Company Details</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-7"></div>
+
+			<div class="col-md-4">
+				<div class="col-md-8">
+					<input type="text" class="form-control" name="comp_srch" value="" />
+				</div>
+				<div class="col-md-4">
+					<input type="button" class="btn btn-primary form-control" style="" value="Search" />
+				</div>				
+			</div>
+			<div class="col-md-1">
+				<input type="button" data-toggle="modal"
+					data-target="#myModal" class="tab_button_plus"
+					onClick="clearFields('add_company')">
+			</div>
+		</div>
+	</div>
+
+	<div class="get_tabel"></div>
+
+
+	<!--add data modal box-->
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog" style="width: 1148px;">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Add Company</h4>
+				</div>
+				<div class="modal-body">
+					<form id="add_company">
+						<div class="container-fluid">
+							<div class="col-md-12">
+								<h4>Company Details</h4>
+							</div>
+							<div class="col-md-6">
+								<div class="row">
+									<label class="control-label col-md-4"> Company
+										Name:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="company_name" value="" />
+									</div>
+								</div>
+
+
+								<!--<div class="row">
+									<label class="control-label col-md-4">Tin
+										Number:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="tin_number" value="" />
+									</div>
+								</div>-->
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Alternate
+										Company Name:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="alternate_company_name" placeholder="Optional" value="" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Tan
+										Number:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="tan_number" value="" />
+									</div>
+								</div>
+
+							</div>
+							<!--col md 6-->
+							<!--col md 6-->
+							<div class="col-md-6">
+
+								<div class="row">
+									<label class="control-label col-md-4">Pan
+										Number:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="pan_number" value="" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Iso
+										Certificate Number:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="iso_cert_num" value="" placeholder="Optional" />
+									</div>
+								</div>
+
+								<div class="row">
+									<label class="control-label col-md-4">Excise
+										Duty Number:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="exc_duty_num" value="" />
+									</div>
+								</div>
+							</div>
+							<!-- col md 6-->
+
+
+							<!--contact Details-->
+
+							<div class="col-md-12">
+								<h4>Contact Details</h4>
+							</div>
+							<div class="col-md-6">
+
+								<div class="row">
+									<label class="control-label col-md-4"> Address
+										Line 1:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="add_line_1" value="" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4"> Address
+										Line 2:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="add_line_2" value="" placeholder="Optional"/>
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">City:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="city_addcompany" value="" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">State:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="state_addcompany" value="" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Country:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="country_addcompany" value="" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Pin:</label>
+									<div class="col-md-8">
+										<input type="number" class="form-control" style="margin-bottom: 20px;" name="pin_addcompany" value="" />
+									</div>
+								</div>
+
+
+							</div>
+							<!--col md 6-->
+							<!--col md 6-->
+							<div class="col-md-6">
+
+								<div class="row">
+									<label class="control-label col-md-4">Phone
+										Number:</label>
+									<div class="col-md-8">
+										<input type="number" class="form-control" style="margin-bottom: 20px;" name="phone_num" value="" placeholder="Optional" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Mobile
+										Number:</label>
+									<div class="col-md-8">
+										<input type="number" class="form-control" style="margin-bottom: 20px;" name="mob_num" value="" />
+									</div>
+								</div>
+
+								<div class="row">
+									<label class="control-label col-md-4">Fax
+										Number:</label>
+									<div class="col-md-8">
+										<input type="number" class="form-control" style="margin-bottom: 20px;" name="fax_num" value="" placeholder="Optional" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Email:</label>
+									<div class="col-md-8">
+										<input type="email" class="form-control" style="margin-bottom: 20px;" name="email_company" value="" placeholder="Optional" />
+									</div>
+								</div>
+
+								<div class="row">
+									<label class="control-label col-md-4">Website:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="website_company" value="" placeholder="Optional" />
+									</div>
+								</div>
+
+							</div>
+							<!-- col md 6-->
+
+							<!--contact details-->
+							<div class="row">
+								<div class="col-md-12">
+									<div class="col-md-2">
+										<input type="button" value="Save" id="save_company" class="btn btn-primary form-control btn-md ">
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--edit data modal box-->
+
+	<!-- Modal -->
+	<div class="modal fade" id="yModal" role="dialog">
+		<div class="modal-dialog" style="width: 1148px;">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Edit Company</h4>
+				</div>
+				<div class="modal-body">
+					<form id="edit_company">
+						<input type="hidden" value="0" name="company_id" />
+						<div class="container-fluid">
+							<div class="col-md-12">
+								<h4>Company Details</h4>
+							</div>
+							<div class="col-md-6">
+
+								<div class="row">
+									<label class="control-label col-md-4"> Company
+										Name:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="company_name" value="" />
+									</div>
+								</div>
+
+
+								<!--<div class="row">
+									<label class="control-label col-md-4">Tin
+										Number:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="tin_num" value="" />
+									</div>
+								</div>-->
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Alternate
+										Company Name:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="alternate_company_name" placeholder="Optional" value="" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Tan
+										Number:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="tan_num" value="" />
+									</div>
+								</div>
+
+
+
+							</div>
+							<!--col md 6-->
+							<!--col md 6-->
+							<div class="col-md-6">
+
+								<div class="row">
+									<label class="control-label col-md-4">Pan
+										Number:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="pan_num" value="" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Iso
+										Certificate Number:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="iso_certificate_num" placeholder="Optional" value="" />
+									</div>
+								</div>
+
+								<div class="row">
+									<label class="control-label col-md-4">Excise
+										Duty Number:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="excise_duty_num" value="" />
+									</div>
+								</div>
+							</div>
+							<!-- col md 6-->
+
+
+							<!--contact Details-->
+
+							<div class="col-md-12">
+								<h4>Contact Details</h4>
+							</div>
+							<div class="col-md-6">
+
+								<div class="row">
+									<label class="control-label col-md-4"> Address
+										Line 1:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="add_line_1" value="" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4"> Address
+										Line 2:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="add_line_2" value="" placeholder="Optional" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">City:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="city" value="" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">State:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="state" value="" />
+									</div>
+								</div>
+
+								<div class="row">
+									<label class="control-label col-md-4">Country:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="country" value="" />
+									</div>
+								</div>
+
+								<div class="row">
+									<label class="control-label col-md-4">Pin:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="pin" value="" placeholder="Optional"/>
+									</div>
+								</div>
+							</div>
+							<!--col md 6-->
+							<!--col md 6-->
+							<div class="col-md-6">
+
+								<div class="row">
+									<label class="control-label col-md-4">Phone
+										Number:</label>
+									<div class="col-md-8">
+										<input type="number" class="form-control" style="margin-bottom: 20px;" name="phone_num" value="" placeholder="Optional" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Mobile
+										Number:</label>
+									<div class="col-md-8">
+										<input type="number" class="form-control" style="margin-bottom: 20px;" name="mobile_num" value="" />
+									</div>
+								</div>
+
+								<div class="row">
+									<label class="control-label col-md-4">Fax
+										Number:</label>
+									<div class="col-md-8">
+										<input type="number" class="form-control" style="margin-bottom: 20px;" name="fax_num" value="" placeholder="Optional" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Email:</label>
+									<div class="col-md-8">
+										<input type="email" class="form-control" style="margin-bottom: 20px;" name="email" value="" />
+									</div>
+								</div>
+
+								<div class="row">
+									<label class="control-label col-md-4">Website:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="website" value="" placeholder="Optional" />
+									</div>
+								</div>
+
+
+							</div>
+							<!-- col md 6-->
+
+
+							<!--contact details-->
+							<div class="row">
+								<div class="col-md-12">
+									<div class="col-md-2">
+										<input type="button" value="Update" id="save_edited_data" class="btn btn-primary form-control btn-md ">
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!--edit data modal box-->
+
+</div>
+<!--container fluid-->
+
+<script>
+	$(document).ready(function() {
+		refresh();
+
+		//CODE THE SAVE NEW USER/DATA
+
+		$('#save_company').on('click', function() {
+			var path = "add_company";
+			var vals = createJson('add_company');
+			//console.log('Result:\t'+JSON.stringify(vals));
+			if (vals == null) {
+				$('#snackbar').html('Fill required fields to proceed next!');
+				$('#snackbar').addClass('show');
+				setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+			} else {
+				vals = JSON.stringify(vals);
+				$.ajax({
+					type : 'POST',
+					url : 'AddServlet',
+					data : {
+						data : vals,
+						path : path
+					},
+					success : function(respo) {
+						if (respo == '1') {
+							$('#snackbar').html('New company added successfully!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+							$('#add_company')[0].reset();
+							$('#myModal').modal('toggle'); 
+							refresh();
+						} else {
+							$('#snackbar').html('Oops!, Something went wrong. Please check input once again!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+							$('#add_company')[0].reset();
+						}
+					}
+
+				});
+			}
+		});
+		function createJson(formId) {
+			var out_params = [];
+			var elements = document.getElementById(formId).elements;
+			var obj = {};
+			var chk = 0;
+			console.log(formId);
+			for (var i = 0; i < elements.length; i++) {
+				var item = elements.item(i);
+				if(item.value.length <= 0){
+						if(item.name == 'alternate_company_name' || item.name == 'iso_cert_num' || item.name== 'add_line_2'|| item.name== 'phone_num'|| item.name== 'website_company' || item.name== 'iso_certificate_num' || item.name== 'website' || item.name == 'fax_num' || item.name=='email_company' || item.name == 'email'){
+							$('input[name="'+item.name+'"]').removeAttr("style");
+							$('input[name="'+item.name+'"]').css('marginBottom','20px');
+							obj[item.name] = item.value;
+						}else{
+							$('input[name="'+item.name+'"]').css('borderBottom','1px solid #FF5722 ');
+							return null;  
+						}
+				}
+				else{ 
+					$('input[name="'+item.name+'"]').removeAttr("style");
+					$('input[name="'+item.name+'"]').css('marginBottom','20px');
+					obj[item.name] = item.value;
+				}
+
+			}
+			out_params.push(obj);
+			return out_params;
+		}
+
+
+		$('#save_edited_data').on('click', function() {
+			var path = "updatecompany";
+			var vals = createJson('edit_company');
+			if (vals == null) {
+				alert('Please fill the fields to Edit!');
+			} else {
+				vals = JSON.stringify(vals);
+				$.ajax({
+					type : 'POST',
+					url : 'UpdateServlet',
+					data : {
+						data : vals,
+						path : path
+					},
+					success : function(respo) {
+						if (respo == '1') {
+							$('#snackbar').html('Data updated successfully!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+							refresh();
+							$('#yModal').modal('toggle'); 
+							$('#edit_company')[0].reset();
+						} else {
+							$('#snackbar').html('Updation failed!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+							$('#edit_company')[0].reset();
+						}
+					}
+
+				});
+			}
+		});
+
+	});
+
+	function refresh() {
+		var path = "getcompany";
+		$
+				.ajax({
+					type : 'GET',
+					url : 'RetrieveServlet',
+					dataType : "json",
+					data : {
+						path : path
+					},
+					success : function(respo) {
+
+						if (respo.length > 0) {
+							var html_str = '<table cellpadding="0" id="tblExport1" cellspacing="0" class="db-table" width="100%" align="center"><thead><tr><th>Sr.No</th><th>Company Name</th><th>Alternate Company Name</th><th>Tan No</th><th>ISO Certificate Number</th><th>Excise Number</th><th>Address Line 1</th><th>Address Line 2</th><th>City</th><th>State</th><th>India</th><th>PIN</th><th>Phone Number</th><th>Mobile Number</th><th>Fax Number</th><th>Email</th><th>Website</th><th>Edit</th><th>Delete</th></tr></thead><tbody>';
+							for (var i = 0; i < respo.length; i++) {
+								html_str = html_str
+										+ '<tr><td>'
+										+ (i+1)
+										+ '</td><td>'
+										+ respo[i].val2
+										+ '</td><td>'
+										+ respo[i].val3
+										+ '</td><td>'
+										+ respo[i].val4
+										+ '</td><td>'
+										+ respo[i].val5
+										+ '</td><td>'
+										+ respo[i].val6
+										+ '</td><td>'
+										+ respo[i].val7
+										+ '</td><td>'
+										+ respo[i].val8
+										+ '</td><td>'
+										+ respo[i].val9
+										+ '</td><td>'
+										+ respo[i].val10
+										+ '</td><td>'
+										+ respo[i].val11
+										+ '</td><td>'
+										+ respo[i].val12
+										+ '</td><td>'
+										+ respo[i].val13
+										+ '</td><td>'
+										+ respo[i].val14
+										+ '</td><td>'
+										+ respo[i].val15
+										+ '</td><td>'
+										+ respo[i].val16
+										+ '</td><td>'
+										+ respo[i].val17
+										+ '</td><td><input type="button" data-toggle="modal" data-target="#yModal" onClick="get_company('
+										+ respo[i].val1
+										+ ')" class="tab_button_edit"></td><td><input type="button" class="tab_button_delete" onClick="delete_company('
+										+ respo[i].val1 + ')"></td></tr>';
+							}
+							$('.get_tabel').html(html_str + '</tbody></table>');
+						} else {
+							//alert('No ads associated with this customer!');
+							$('#snackbar').html('No data available!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+						}
+
+						//   alert(respo);
+					}
+				});
+	}
+
+	//date picker
+
+	$(function() {
+		$("#datepicker").datepicker();
+	});
+
+	//reset field
+	function clearFields(id) {
+		$('#' + id)[0].reset();
+	}
+
+	//function for edit	
+
+	function get_company(id) {
+		var path = "editcompany";
+		$.ajax({
+			type : 'GET',
+			url : 'EditServlet',
+			dataType : "json",
+			data : {
+				path : path,
+				id : id
+			},
+			success : function(respo) {
+
+				//alert(JSON.stringify(respo));
+				$('input[name="company_id"]').val(id);
+				$('input[name="company_name"]').val(respo[0].val2);
+				$('input[name="alternate_company_name"]').val(respo[0].val3);
+				$('input[name="tan_num"]').val(respo[0].val4);
+				$('input[name="pan_num"]').val(respo[0].val18);
+				$('input[name="iso_certificate_num"]').val(respo[0].val5);
+				$('input[name="excise_duty_num"]').val(respo[0].val6);
+				$('input[name="add_line_1"]').val(respo[0].val7);
+				$('input[name="add_line_2"]').val(respo[0].val8);
+				$('input[name="city"]').val(respo[0].val9);
+				$('input[name="state"]').val(respo[0].val10);
+				$('input[name="country"]').val(respo[0].val11);
+				$('input[name="pin"]').val(respo[0].val12);
+				$('input[name="phone_num"]').val(respo[0].val13);
+				$('input[name="mobile_num"]').val(respo[0].val14);
+				$('input[name="fax_num"]').val(respo[0].val15);
+				$('input[name="email"]').val(respo[0].val16);
+				$('input[name="website"]').val(respo[0].val17);
+			}
+		});
+	}
+
+	//CODE TO DELETE THE PARTICULAR DATA
+	function delete_company(id) {
+		var path = "deletecompany";
+		var answer = confirm("Are you sure you want to delete from the database?");
+		if (answer) {
+			$.ajax({
+				type : 'GET',
+				url : 'DeleteServlet',
+				dataType : "json",
+				data : {
+					path : path,
+					id : id
+				},
+				success : function(respo) {
+					if (respo == '1') {
+						refresh();
+						$('#snackbar').html('Deleted successfully!');
+						$('#snackbar').addClass('show');
+						setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+					} else {
+						$('#snackbar').html('Oops! Something went wrong. Try again!');
+						$('#snackbar').addClass('show');
+						setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+					}
+				}
+			});
+		}
+
+	}
+
+	//show and hide on check box
+	$(".hide_check").show();
+
+	$(".coupon_question").click(function() {
+		if ($(this).is(":checked")) {
+			$(".hide_check").show();
+		} else {
+			$(".hide_check").hide();
+		}
+	});
+
+	// preview image
+	function readURL(input) {
+
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+				$('#blah').attr('src', e.target.result);
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	$("#imgInp").change(function() {
+		readURL(this);
+	});
+</script>
+

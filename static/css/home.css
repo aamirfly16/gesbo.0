@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,600');
+/*@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(fonts/icons.woff2) format('woff2');
+}
+
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	-webkit-font-feature-settings: 'liga';
+	-webkit-font-smoothing: antialiased;
+}*/
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body
+{
+	font-family: 'Nunito', sans-serif;
+	/* font-weight: 600; */
+	font-size: 16px;
+	letter-spacing: 0.03em;
+}
+.main_div
+{
+	width: 98%;
+	padding: 1%;
+	float: left;
+}
+.row1
+{
+	width: 100%;
+	float: left;
+}
+.row1 > hr
+{
+	border: none;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	margin: 10px 0px;
+}
+.col1
+{
+	width: 100%;
+	float: left;
+}
+.cus_blk
+{
+	width: 96%;
+    margin: 1%;
+    padding: 6% 1% 1% 1%;
+    text-align: center;
+    display: block;
+    float: left;
+    min-height: 100px;
+    background-color: #FFF;
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.26);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.26);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.26);
+    border-radius: 5px;
+}
+b
+{
+	display: block;
+}
+label
+{
+	font-weight: 500;
+	color: #555;
+	font-size: 16px;
+}
+.add_button{
+	float:right;
+	background:url(../images/plus.png) center no-repeat;
+	border:none;
+	height:32px;
+	border:none;
+	width:32px;
+	border-radius:100%;
+	box-shadow:0px 2px 2px 0px;
+	margin-top:20px;
+	border-radius: 50%;
+	
+}
+.edit_button{
+	background:url(../images/edit.png) center no-repeat;
+	border:none;
+	height: 30px;
+	border:none;
+	width: 30px;
+	opacity: 0.4;
+	border-radius: 50%;
+}
+
+.del_button{
+	background:url(../images/delete.png) center no-repeat;
+	border:none;
+	height: 30px;
+	border:none;
+	width: 30px;
+	opacity: 0.6;
+	border-radius: 50%;
+}
+.cus_blk img
+{
+	max-height: 50px!important;
+}
+::-webkit-scrollbar
+{
+  width: 6px; 
+  height: 6px;
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background-color: #51c6bf;
+  border-radius:6px;
+  min-height: 40px;
+}
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #FFF;
+    color: #2e6da4;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 3000;
+    left: 50%;
+    bottom: 100px;
+    font-size: 17px;
+	-moz-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.26);
+	-webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.26);
+	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.26);
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 100px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 100px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {top: 100px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 100px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}

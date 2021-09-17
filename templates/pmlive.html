@@ -1,0 +1,917 @@
+{% extends 'base.html' %}
+{% include 'header.html' %}
+
+
+
+{% block body%}
+
+<div class="container">
+    <div class="row">
+        <div class="col md-12">
+
+                        <div class="jumbotron jumbotron-fluid">
+                  <div class="container">
+
+
+                <h2>P M <b>Master </b>  <button type="button"  class="btn btn-success float-right"
+                data-toggle="modal" data-target="#mymodal">Add New PM</button> </h2>
+            </div>
+            </div>
+
+                 <div>
+<p>
+    <a href="{{ url_for('importxl') }}">Click here to Import Excel</a>
+</p>
+                    </div>
+</div>
+            </div>
+</div>
+                <div class="table-responsive">
+                 <table class="table table-bordered table-hover">
+                    <tr>
+
+                        <th>fecode</th>
+                        <th>project_name</th>
+                        <th>dorf_id</th>
+                        <th>cbg</th>
+                        <th>customer_contact</th>
+                        <th>csat_customer_contact</th>
+                        <th>customer_contact_secondary</th>
+                        <th>project_manager</th>
+                        <th>manager</th>
+                        <th>actual_forecast</th>
+                        <th>project_subcategory</th>
+                        <th>project_category</th>
+                        <th>discipline</th>
+                        <th>pm_cdsid</th>
+                        <th>lm_cdsid</th>
+                        <th>ll5_cdsid</th>
+                        <th>po_value</th>
+                        <th>currency</th>
+                        <th>po_number_sow_number</th>
+                        <th>year</th>
+                        <th>csr_required</th>
+                        <th>jan_offshore</th>
+                        <th>jan_onsite</th>
+                        <th>feb_offshore</th>
+                        <th>feb_onsite</th>
+                        <th>mar_offshore</th>
+                        <th>mar_onsite</th>
+                        <th>apr_offshore</th>
+                        <th>apr_onsite</th>
+                        <th>may_offshore</th>
+                        <th>may_onsite</th>
+                        <th>jun_offshore</th>
+                        <th>jun_onsite</th>
+                        <th>jul_offshore</th>
+                        <th>jul_onsite</th>
+                        <th>aug_offshore</th>
+                        <th>aug_onsite</th>
+                        <th>sep_offshore</th>
+                        <th>sep_onsite</th>
+                        <th>oct_offshore</th>
+                        <th>oct_onsite</th>
+                        <th>nov_offshore</th>
+                        <th>nov_onsite</th>
+                        <th>dec_offshore</th>
+                        <th>dec_onsite</th>
+                        <th>pd_non_pd</th>
+                        <th>acc_code</th>
+                        <th>gsdb_code</th>
+                        <th>sub_acct_code</th>
+                        <th>po_received_date</th>
+                        <th>previous_year_dorfid</th>
+                        <th>quote_submission_date</th>
+                        <th>dept_cost_center</th>
+                        <th>remarks</th>
+                        <th>funding_function</th>
+                        <th>funding_organisation</th>
+
+                    </tr>
+
+                     {% for rr in pmall.items %}
+
+                    <tr>
+
+                        <td>{{rr.fecode}}</td>
+                        <td>{{rr.project_name}}</td>
+                        <td>{{rr.dorf_id}}</td>
+                        <td>{{rr.cbg}}</td>
+                        <td>{{rr.customer_contact}}</td>
+                        <td>{{rr.csat_customer_contact}}</td>
+                        <td>{{rr.customer_contact_secondary}}</td>
+                        <td>{{rr.project_manager}}</td>
+                        <td>{{rr.manager}}</td>
+                        <td>{{rr.actual_forecast}}</td>
+                        <td>{{rr.project_subcategory}}</td>
+                        <td>{{rr.project_category}}</td>
+                        <td>{{rr.discipline}}</td>
+                        <td>{{rr.pm_cdsid}}</td>
+                        <td>{{rr.lm_cdsid}}</td>
+                        <td>{{rr.ll5_cdsid}}</td>
+                        <td>{{rr.po_value}}</td>
+                        <td>{{rr.currency}}</td>
+                        <td>{{rr.po_number_sow_number}}</td>
+                        <td>{{rr.year}}</td>
+                        <td>{{rr.csr_required}}</td>
+                        <td>{{rr.jan_offshore}}</td>
+                        <td>{{rr.jan_onsite}}</td>
+                        <td>{{rr.feb_offshore}}</td>
+                        <td>{{rr.feb_onsite}}</td>
+                        <td>{{rr.mar_offshore}}</td>
+                        <td>{{rr.mar_onsite}}</td>
+                        <td>{{rr.apr_offshore}}</td>
+                        <td>{{rr.apr_onsite}}</td>
+                        <td>{{rr.may_offshore}}</td>
+                        <td>{{rr.may_onsite}}</td>
+                        <td>{{rr.jun_offshore}}</td>
+                        <td>{{rr.jun_onsite}}</td>
+                        <td>{{rr.jul_offshore}}</td>
+                        <td>{{rr.jul_onsite}}</td>
+                        <td>{{rr.aug_offshore}}</td>
+                        <td>{{rr.aug_onsite}}</td>
+                        <td>{{rr.sep_offshore}}</td>
+                        <td>{{rr.sep_onsite}}</td>
+                        <td>{{rr.oct_offshore}}</td>
+                        <td>{{rr.oct_onsite}}</td>
+                        <td>{{rr.nov_offshore}}</td>
+                        <td>{{rr.nov_onsite}}</td>
+                        <td>{{rr.dec_offshore}}</td>
+                        <td>{{rr.dec_onsite}}</td>
+                        <td>{{rr.pd_non_pd}}</td>
+                        <td>{{rr.acc_code}}</td>
+                        <td>{{rr.gsdb_code}}</td>
+                        <td>{{rr.sub_acct_code}}</td>
+                        <td>{{rr.po_received_date}}</td>
+                        <td>{{rr.previous_year_dorfid}}</td>
+                        <td>{{rr.quote_submission_date}}</td>
+                        <td>{{rr.dept_cost_center}}</td>
+                        <td>{{rr.remarks}}</td>
+                        <td>{{rr.funding_function}}</td>
+                        <td>{{rr.funding_organisation}}</td>
+
+
+                        <td>
+                            <a href="/update_bo/{{rr.id}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{rr.id}}">Edit</a>
+                            <a href="/delete_bo/{{rr.id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')">Delete</a>
+                        </td>
+                    </tr>
+
+    {% endfor %}
+                     <ul class="pagination">
+  {% if pmall.has_prev %}
+   <li class="page-item"><a class="page-link" href="{{ url_for('pm_call', page_num=pmall.prev_num) }}">Previous</a></li>
+  {% else %}
+   <li class="page-item disabled"><span class="page-link">Previous</span>
+  {% endif %}
+   </li>
+
+  {% for page in pmall.iter_pages(left_edge=3, right_edge=3) %}
+  {% if page %}
+   <li class="page-item"><a class="page-link" href="{{ url_for('pm_call', page_num=page) }}">{{ page }}</a></li>
+  {% else %}
+   <li class="page-item disabled" id="example_ellipsis"><a href="#" class="page-link">…</a></li>
+  {% endif %}
+  {% endfor %}
+
+  {% if pmall.has_next %}
+   <li class="page-item"><a class="page-link" href="{{ url_for('pm_call', page_num=pmall.next_num) }}">Next</a></li>
+  {% else %}
+   <li class="page-item disabled"><span class="page-link">Next</span>
+  {% endif %}
+   </ul>
+
+
+<div id="mymodal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+
+            <h4 class="modal-title">Add Pm</h4>
+         </div>
+         <div class="modal-body">
+
+            <form action="{{url_for('insertpm')}}" method="POST">
+
+
+               <div class="form-group">
+
+                  <label>fecode:</label>
+                  <input type="fecode" class="form-control" name="fecode" required="1">
+
+
+               </div>
+
+
+                <div class="form-group">
+
+
+                  <label>project_name:</label>
+                  <input type="project_name" class="form-control" name="project_name" required="1">
+
+
+               </div>
+
+
+                <div class="form-group">
+
+
+                  <label>dorf_id:</label>
+                  <input type="dorf_id" class="form-control" name="dorf_id" required="1">
+
+
+               </div>
+
+               <div class="form-group">
+
+
+                  <label>cbg:</label>
+<!--                  <input type="cbg" class="form-control" name="cbg" required="1">-->
+                   <select id="slct1" name="cbg" onchange="populate(this.id,'slct2')">
+<!--        <select name="request_type">-->
+        <option value="">Select</option>
+        <option value="FNA">FNA</option>
+        <option value="FOE">FOE</option>
+        <option value="FSAO">FSAO</option>
+        <option value="FOA">FOA</option>
+        <option value="IMG">IMG</option>
+        <option value="IND">IND</option>
+        <option value="CN">CN</option>
+        <option value="FOT">FOT</option>
+        <option value="NOT Applicable">NOT Applicable</option>
+        </select>
+
+
+               </div>
+
+                               <div class="form-group">
+
+
+                  <label>customer_contact:</label>
+                  <input type="customer_contact" class="form-control" name="customer_contact" required="1">
+
+
+               </div>
+
+                               <div class="form-group">
+
+
+                  <label>csat_customer_contact:</label>
+                  <input type="csat_customer_contact" class="form-control" name="csat_customer_contact" required="1">
+
+
+               </div>
+
+                               <div class="form-group">
+
+
+                  <label>customer_contact_secondary:</label>
+                  <input type="customer_contact_secondary" class="form-control" name="customer_contact_secondary" required="1">
+
+
+               </div>
+
+                               <div class="form-group">
+
+
+                  <label>project_manager:</label>
+                  <input type="project_manager" class="form-control" name="project_manager" required="1">
+
+
+               </div>
+
+               <div class="form-group">
+
+
+                  <label>manager:</label>
+                  <input type="manager" class="form-control" name="manager" required="1">
+               </div>
+
+                <div class="form-group">
+
+
+                  <label>actual / forecast:</label>
+<!--                  <input type="cbg" class="form-control" name="cbg" required="1">-->
+                   <select id="slct1" name="actual / forecast" onchange="populate(this.id,'slct2')">
+<!--        <select name="request_type">-->
+        <option value="">Select</option>
+        <option value="ACTUAL">ACTUAL</option>
+        <option value="FORECAST">FORECAST</option>
+        <option value="PROPOSAL SENT / PO WIP">PROPOSAL SENT / PO WIP</option>
+        <option value="COMPLETED PROJECT">COMPLETED PROJECT</option>
+        <option value="INVALID PROJECTS">INVALID PROJECTS</option>
+        <option value="MOVED TO GMS">MOVED TO GMS</option>
+        <option value="MOVED TO EMM">MOVED TO EMM</option>
+
+        </select>
+                </div>
+
+
+                <div class="form-group">
+
+                  <label>Project_subcategory::</label>
+<!--                  <input type="cbg" class="form-control" name="cbg" required="1">-->
+                   <select id="slct1" name="project_subcategory:" onchange="populate(this.id,'slct2')">
+<!--        <select name="request_type">-->
+        <option value="">Select</option>
+        <option value="Active Safety">Active Safety</option>
+        <option value="All PMT">All PMT</option>
+        <option value="Body Analysis">Body Analysis</option>
+        <option value="Body Interior Analysis">Body Interior Analysis</option>
+        <option value="Body Interior Modelling">Body Interior Modelling</option>
+        <option value="Body Interior Mold Flow">Body Interior Mold Flow</option>
+        <option value="Body Modelling">Body Modelling</option>
+        <option value="Brakes Analysis">Brakes Analysis</option>
+        <option value="Brakes Modelling">Brakes Modelling</option>
+        <option value="Closures Analysis">Closures Analysis</option>
+        <option value="Closures Modeling">Closures Modeling</option>
+        <option value="Chassis Analysis">Chassis Analysis</option>
+        <option value="EDS">EDS</option>
+        <option value="EESE Testing">EESE Testing</option>
+        <option value="EPAS">EPAS</option>
+        <option value="EPE Analysis">EPE Analysis</option>
+        <option value="EPE Modelling">EPE Modelling</option>
+        <option value="EPE - BECM">EPE - BECM</option>
+        <option value="Exterior Analysis">Exterior Analysis</option>
+        <option value="Exterior Modelling">Exterior Modelling</option>
+        <option value="Exterior Mold Flow">Exterior Mold Flow</option>
+        <option value="Frames Analysis">Frames Analysis</option>
+        <option value="Frames Modelling">Frames Modelling</option>
+        <option value="Fuel Economy Prediction">Fuel Economy Prediction</option>
+        <option value="MBD Methods">MBD Methods</option>
+        <option value="MDO">MDO</option>
+        <option value="Modelling & Analysis">Modelling & Analysis</option>
+        <option value="Paint Simulation Analysis">Paint Simulation Analysis</option>
+        <option value="PMT1">PMT1</option>
+        <option value="PMT2">PMT2</option>
+        <option value="PMT3">PMT3</option>
+        <option value="PMT4">PMT4</option>
+        <option value="PMT5">PMT5</option>
+        <option value="PMT7">PMT7</option>
+        <option value="Pre Program / Basic Design">Pre Program / Basic Design</option>
+        <option value="Pre Program / Basic Design- Safety">Pre Program / Basic Design- Safety</option>
+        <option value="PT Analytical Benchmarking">PT Analytical Benchmarking</option>
+        <option value="PT Dura Analysis">PT Dura Analysis</option>
+        <option value="PT MBD Analysis">PT MBD Analysis</option>
+        <option value="PT Safety Modelling">PT Safety Modelling</option>
+        <option value="PT NVH Analysis">PT NVH Analysis</option>
+        <option value="Safety Modelling">Safety Modelling</option>
+        <option value="Seats Analysis">Seats Analysis</option>
+        <option value="Stamping">Stamping</option>
+        <option value="Suspension Analysis">Suspension Analysis</option>
+        <option value="Suspension Modelling">Suspension Modelling</option>
+        <option value="TASE Analysis">TASE Analysis</option>
+        <option value="Tools & Automation">Tools & Automation</option>
+        <option value="Vehicle / System HIL">Vehicle / System HIL</option>
+        <option value="UN HIL">UN HIL</option>
+        <option value="UP Climate">UP Climate</option>
+        <option value="UP Cluster">UP Cluster</option>
+        <option value="Vehicle NVH Analysis">Vehicle NVH Analysis</option>
+        <option value="Vehicle NVH Modelling">Vehicle NVH Modelling</option>
+        <option value="Wheels Analysis">Wheels Analysis</option>
+        <option value="Wheels Modelling">Wheels Modelling</option>
+        <option value="Interior Modelling">Interior Modelling</option>
+        <option value="Illustration">Illustration</option>
+        <option value="Powertrain Controls">Powertrain Controls</option>
+        <option value="VSA">VSA</option>
+        <option value="Infotainment Testing">Infotainment Testing</option>
+        <option value="Component HIL/ MIL testing">Component HIL/ MIL testing</option>
+        <option value="Component HIL testing">Component HIL testing</option>
+        <option value="Controls & Automated system development">Controls & Automated system development</option>
+        <option value="Modelling/Simulation">Modelling/Simulation</option>
+        <option value="Test Suite/Tool development">Test Suite/Tool development</option>
+        <option value="SIL testing">SIL testing</option>
+        <option value="Modelling/MIL testing">Modelling/MIL testing</option>
+        <option value="FORECAST/SHADOW RESOURCE - CAD">FORECAST/SHADOW RESOURCE - CAD</option>
+        <option value="FORECAST/SHADOW RESOURCE - CAE">FORECAST/SHADOW RESOURCE - CAE</option>
+        <option value="Powertrain NVH/EPE Modeling">Powertrain NVH/EPE Modeling</option>
+        </select>
+
+
+               </div>
+
+                <div class="form-group">
+
+
+ <label>project_category:</label>
+                  <input type="project_category" class="form-control" name="project_category" required="1">
+
+            <label>Project category:</label>
+<!--                  <input type="cbg" class="form-control" name="cbg" required="1">-->
+                   <select id="slct1" name="project_category" onchange="populate(this.id,'slct2')">
+<!--        <select name="request_type">-->
+        <option value="">Select</option>
+        <option value="AVBOM / WERS">AVBOM / WERS</option>
+        <option value="Body & Exterior">Body & Exterior</option>
+        <option value="Body Interiors">Body Interiors</option>
+        <option value="C3PNG Methods/TCE Support">C3PNG Methods/TCE Support</option>
+        <option value="Carryover parts">Carryover parts</option>
+        <option value="CDV">CDV</option>
+        <option value="Chassis">Chassis</option>
+        <option value="DAT">DAT</option>
+        <option value="DPA">DPA</option>
+        <option value="DPA 4">DPA 4</option>
+        <option value="DPA 5">DPA 5</option>
+        <option value="DPA 6">DPA 6</option>
+        <option value="Electrical">Electrical</option>
+        <option value="Electrification">Electrification</option>
+        <option value="EMM">EMM</option>
+        <option value="FORECAST / SHADOW / BILLABILITY EXEMPTED RESOURCE">FORECAST / SHADOW / BILLABILITY EXEMPTED RESOURCE</option>
+        <option value="HIL">HIL</option>
+        <option value="Illustration">Illustration</option>
+        <option value="Metrics/Program Mgt">Metrics/Program Mgt</option>
+        <option value="Methods">Methods</option>
+        <option value="New Part Development">New Part Development</option>
+        <option value="Others CAE">Others CAE</option>
+        <option value="Post FDJ & OPD">Post FDJ & OPD</option>
+        <option value="Power Train">Power Train</option>
+        <option value="Program Management">Program Management</option>
+        <option value="PROJECT MANAGER">PROJECT MANAGER</option>
+        <option value="Remastering/Remodelling">Remastering/Remodelling</option>
+        <option value="Research & Analysis - AV">Research & Analysis - AV</option>
+        <option value="Research & Analysis - PT">Research & Analysis - PT</option>
+        <option value="Safety">Safety</option>
+        <option value="Systems Engineering">Systems Engineering</option>
+        <option value="TDE">TDE</option>
+        <option value="Vehicle Engineering">Vehicle Engineering</option>
+        <option value="Virtual Manufacturing">Virtual Manufacturing</option>
+        <option value="CAE Modelling">CAE Modelling</option>
+        <option value="Analysis">Analysis</option>
+        <option value="Cluster">Cluster</option>
+        <option value="Connected Vehicle">Connected Vehicle</option>
+        <option value="MBSE">MBSE</option>
+         </select>
+                </div>
+
+                <div class="form-group">
+
+
+
+        <label>dicipline:</label>
+<!--                  <input type="cbg" class="form-control" name="cbg" required="1">-->
+                    <select id="slct1" name="dicipline" onchange="populate(this.id,'slct2')">
+<!--        <select name="request_type">-->
+        <option value="">Select</option>
+        <option value="CAD">CAD</option>
+        <option value="CAE">CAE</option>
+        <option value="MBSE & MBD">MBSE & MBD</option>
+         </select>
+
+               </div>
+
+
+
+               <div class="form-group">
+
+
+                  <label>pm_cdsid:</label>
+                  <input type="pm_cdsid" class="form-control" name="pm_cdsid" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>lm_cdsid:</label>
+                  <input type="lm_cdsid" class="form-control" name="lm_cdsid" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>ll5_cdsid:</label>
+                  <input type="ll5_cdsid" class="form-control" name="ll5_cdsid" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>po_value:</label>
+                  <input type="po_value" class="form-control" name="po_value" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>currency:</label>
+                  <input type="currency" class="form-control" name="currency" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>grade:</label>
+                  <input type="grade" class="form-control" name="grade" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>po_number_sow_number:</label>
+                  <input type="po_number_sow_number" class="form-control" name="po_number_sow_number" required="1">
+
+
+               </div>
+
+                <div>
+
+                                    <label>year:</label>
+<!--                  <input type="cbg" class="form-control" name="cbg" required="1">-->
+                   <select id="slct1" name="year" onchange="populate(this.id,'slct2')">
+<!--        <select name="request_type">-->
+        <option value="">Select</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+        <option value="2015">2015</option>
+        <option value="2014">2014</option>
+        <option value="2013">2013</option>
+        <option value="2012">2012</option>
+        <option value="2011">2011</option>
+                   </select>
+
+
+               </div>
+
+               <div class="form-group">
+
+
+                  <label>csr_required:</label>
+                  <input type="csr_required" class="form-control" name="csr_required" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>jan_offshore:</label>
+                  <input type="jan_offshore" class="form-control" name="jan_offshore" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>jan_onsite:</label>
+                  <input type="jan_onsite" class="form-control" name="jan_onsite" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>feb_offshore:</label>
+                  <input type="feb_offshore" class="form-control" name="feb_offshore" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>feb_onsite:</label>
+                  <input type="feb_onsite" class="form-control" name="feb_onsite" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>mar_offshore:</label>
+                  <input type="mar_offshore" class="form-control" name="mar_offshore" required="1">
+
+
+               </div>
+
+               <div class="form-group">
+
+
+                  <label>mar_onsite:</label>
+                  <input type="mar_onsite" class="form-control" name="mar_onsite" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>apr_offshore:</label>
+                  <input type="apr_offshore" class="form-control" name="apr_offshore" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>apr_onsite:</label>
+                  <input type="apr_onsite" class="form-control" name="apr_onsite" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>may_offshore:</label>
+                  <input type="may_offshore" class="form-control" name="may_offshore" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>may_onsite:</label>
+                  <input type="may_onsite" class="form-control" name="may_onsite" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>jun_offshore:</label>
+                  <input type="jun_offshore" class="form-control" name="jun_offshore" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>jun_onsite:</label>
+                  <input type="jun_onsite" class="form-control" name="jun_onsite" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>jul_offshore:</label>
+                  <input type="jul_offshore" class="form-control" name="jul_offshore" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>jul_onsite:</label>
+                  <input type="jul_onsite" class="form-control" name="jul_onsite" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>aug_offshore:</label>
+                  <input type="aug_offshore" class="form-control" name="aug_offshore" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>aug_onsite:</label>
+                  <input type="aug_onsite" class="form-control" name="aug_onsite" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>sep_offshore:</label>
+                  <input type="sep_offshore" class="form-control" name="sep_offshore" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>sep_onsite:</label>
+                  <input type="sep_onsite" class="form-control" name="sep_onsite" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>oct_offshore:</label>
+                  <input type="oct_offshore" class="form-control" name="oct_offshore" required="1">
+
+
+               </div>
+               <div class="form-group">
+
+
+                  <label>oct_onsite:</label>
+                  <input type="oct_onsite" class="form-control" name="oct_onsite" required="1">
+
+
+               </div>
+
+                               <div class="form-group">
+
+
+                  <label>nov_offshore:</label>
+                  <input type="nov_offshore" class="form-control" name="nov_offshore" required="1">
+
+
+               </div>
+                               <div class="form-group">
+
+
+                  <label>nov_onsite:</label>
+                  <input type="nov_onsite" class="form-control" name="nov_onsite" required="1">
+
+
+               </div>
+                               <div class="form-group">
+
+
+                  <label>dec_offshore:</label>
+                  <input type="dec_offshore" class="form-control" name="dec_offshore" required="1">
+
+
+               </div>
+                               <div class="form-group">
+
+
+                  <label>dec_onsite:</label>
+                  <input type="dec_onsite" class="form-control" name="dec_onsite" required="1">
+
+
+               </div>
+
+                               <div class="form-group">
+
+
+                  <label>pd_non_pd:</label>
+                  <input type="pd_non_pd" class="form-control" name="pd_non_pd" required="1">
+
+
+               </div>
+
+                                               <div class="form-group">
+
+
+                  <label>acc_code:</label>
+                  <input type="acc_code" class="form-control" name="acc_code" required="1">
+
+
+               </div>
+
+                                               <div class="form-group">
+
+
+                  <label>gsdb_code:</label>
+                  <input type="gsdb_code" class="form-control" name="gsdb_code" required="1">
+
+
+               </div>
+
+                                               <div class="form-group">
+
+
+                  <label>sub_acct_code:</label>
+                  <input type="sub_acct_code" class="form-control" name="sub_acct_code" required="1">
+
+
+               </div>
+
+                                               <div class="form-group">
+
+
+                  <label>po_received_date:</label>
+                  <input type="po_received_date" class="form-control" name="po_received_date" required="1">
+
+
+               </div>
+
+                                               <div class="form-group">
+
+
+                  <label>previous_year_dorfid:</label>
+                  <input type="previous_year_dorfid" class="form-control" name="previous_year_dorfid" required="1">
+
+
+               </div>
+
+                                               <div class="form-group">
+
+
+                  <label>quote_submission_date:</label>
+                  <input type="quote_submission_date" class="form-control" name="quote_submission_date" required="1">
+
+
+               </div>
+
+                                               <div class="form-group">
+
+
+                  <label>dept_cost_center:</label>
+                  <input type="dept_cost_center" class="form-control" name="dept_cost_center" required="1">
+
+
+               </div>
+
+                                               <div class="form-group">
+
+
+                  <label>remarks:</label>
+                  <input type="remarks" class="form-control" name="remarks" required="1">
+
+
+               </div>
+
+                <div class="form-group">
+
+
+
+<label>funding_organisation:</label>
+<!--                  <input type="cbg" class="form-control" name="cbg" required="1">-->
+                   <select id="slct1" name="funding_organisation" onchange="populate(this.id,'slct2')">
+<!--        <select name="request_type">-->
+        <option value="">Select</option>
+        <option value="FVA">FVA</option>
+        <option value="Vehicle Engineering">Vehicle Engineering</option>
+        <option value="Body Interior">Body Interior</option>
+        <option value="Body Exterior">Body Exterior</option>
+        <option value="Chassis">Chassis</option>
+        <option value="EESE">EESE</option>
+        <option value="EPE">EPE</option>
+        <option value="R&A - PT">R&A - PT</option>
+        <option value="System Engineering">System Engineering</option>
+        <option value="PCCN">PCCN</option>
+        <option value="VEV">VEV</option>
+        <option value="R&A-AV">R&A-AV</option>
+        <option value="Powertrain Installation">Powertrain Installation</option>
+        <option value="Central Software">Central Software</option>
+        <option value="CVPP">CVPP</option>
+        <option value="VI">VI</option>
+        <option value="TDE">TDE</option>
+         </select>
+
+               </div>
+
+
+                        <div class="form-group">
+
+
+
+<label>funding_function:</label>
+<!--                  <input type="cbg" class="form-control" name="cbg" required="1">-->
+                   <select id="slct1" name="funding_function" onchange="populate(this.id,'slct2')">
+<!--        <select name="request_type">-->
+        <option value="">Select</option>
+        <option value="VAE">VAE</option>
+        <option value="VCSE">VCSE</option>
+        <option value="Powertrain">Powertrain</option>
+        <option value="R&A">R&A</option>
+        <option value="Mobility">Mobility</option>
+        <option value="India PD">India PD</option>
+         </select>
+
+               </div>
+
+
+
+               <div class="form-group">
+
+
+                  <button class="btn btn-primary" type="submit">Add PM</button>
+
+
+               </div>
+
+
+            </form>
+
+
+         </div>
+
+
+         <div class="modal-footer">
+
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+
+         </div>
+
+
+      </div>
+
+
+
+   </div>
+
+
+
+</div>
+
+
+
+
+                     {%endblock%}

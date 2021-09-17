@@ -1,0 +1,155 @@
+
+<div class="container-fluid">
+<div class="row">
+		<div class="col-md-12">
+			<h2 style="text-align: center;color: #A8766B;">Send Mail</h2>
+		</div>
+   </div>
+<form id="data">
+    <div class="row">
+		<div class="col-md-12">
+			<label class="control-label col-md-2" style="margin-top:8px; " > Select Customer:</label>
+			<div class="col-md-4">
+				<select name="cus_name" class="form-control" id="select_cus_name" onchange="" required="required">
+					<option>Select Customer</option>
+				</select>
+			</div>
+			<label class="control-label col-md-2" style="margin-top:8px; " >Select Invoice</label>
+			<div class="col-md-4">
+				<input type="file" name="media[]" class="form-control" style="margin-bottom:20px;" id="file" value=""/>
+			</div>
+		</div>
+   </div>
+   
+   
+	<div align="center">
+	<br>	
+	
+	            <input type="submit" value="Send Invoice" class=" btn btn-danger">
+	            
+	            <!-- <button type="button" id="filterSalesReport" class=" btn btn-danger">Send Invoice</button>
+				
+				<button type="button" id="exportReports" class="btn btn-info">Export Reports</button>
+				<button type="button" id="printReports" class="btn btn-info">Print Reports</button> -->
+	
+</div>
+</form>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="showFilterSalesdata">
+				
+			</div>
+		</div>
+	</div>
+	
+	
+	                        <div align="center">
+								<img src="images/ajax-loader (1).gif" style="display: none;height: 250px;width: 400px;" id="loadingmessage1">
+							</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			  	<div class="col-md-6">
+			  		<div class="row">
+			  			<div class="col-md-12">
+			  				<div class="get_tabel4">	</div>
+			  			</div>
+				  		
+					</div>
+					</div>	
+				<div class="col-md-6">
+		  			<div class="row">
+			  			<div class="col-md-12">
+			  				<div class="get_tabel2">	</div>
+			  			</div>
+					</div>
+				</div>
+			</div>
+	</div>
+ <!-- show report details-->
+  <div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog" style="width:1148px;">
+	    
+		    <!-- Modal content-->
+		    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Report Details</h4>
+			      </div>
+			      <div class="modal-body">
+				  	<div class="container-fluid">
+				  	<div class="col-md-12">
+			  			<div class="get_tabel3"></div>
+					</div>									
+				 </div>  				
+			    </div>
+			        <div class="modal-footer" >
+			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        </div>
+		      </div>
+	    </div>
+  </div>
+   </div>
+
+ <!-- show report details -->
+     
+</div><!--container fluid-->
+
+<script>
+$(document).ready(function()
+	{
+	getCustomersList();
+	});
+function getCustomersList(){
+		
+		var path = "getcustomer"
+		  $.ajax({
+				type: 'POST',
+				url : 'RetrieveServlet',
+				dataType: "json",
+				data : {path:path},
+				success : function(respo) {
+					var drop = '';
+	                for (var i = 0; i < respo.length; i++) {
+	                    drop = drop + '<option value="' + respo[i].val19 + '">' +respo[i].val3 + '</option>';
+	                }
+	                var drop1 = '<option value="0">Select Customer</option>';
+	                $('#select_cus_name').html(drop1+drop);
+				}
+			});
+	}
+	
+$("form#data").submit(function(event){
+	 
+	document.getElementById("loadingmessage1").style.display = "block";
+	var formData = new FormData($(this)[0]);
+	
+	  //disable the default form submission
+	  event.preventDefault();
+	 
+	  console.log(formData);
+	  $.ajax({
+            type: 'POST',
+            url: 'SendMailapp',
+            data: formData,
+            contentType: false,
+			processData: false,
+            success: function(respo) 
+            {
+            	document.getElementById("loadingmessage1").style.display = "none";
+            	 if(respo=="1")
+            		{
+            		 alert("Email Sent Successfully")
+            		 document.getElementById("data").reset();
+            		}
+            	 else
+            		 {
+            		 alert("Please Resend the Mail agian");
+            		 }
+            }
+	  });
+
+	  return false;
+	});
+</script>
+

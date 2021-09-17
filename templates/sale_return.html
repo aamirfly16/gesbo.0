@@ -1,0 +1,597 @@
+<div class="container-fluid">
+   <div class="row">
+		<div class="col-md-12">
+			<h3 style="text-align: center;">SALES RETURN</h3>
+			<b style="font-weight: 600; color: #008b8b;">Sales Return</b>
+		</div>
+   </div>
+   
+    <div class="row">
+    <div id="shops" style="display: none;">
+		<div class="col-md-12">
+			<label class="control-label col-md-2" style="margin-top:8px; " >Select Shop:</label>
+			<div class="col-md-3">
+				<select name="selshop" class="form-control" id="selshop" onchange="addShopValue(this.value)" required="required">
+					<option>Select Shop</option>
+				</select>
+			</div>
+		<input type="hidden" name="shopval" id="shopval" value="0">
+		</div>
+		</div>
+   </div><br>
+   
+   <div class="row">
+		<div class="col-md-12">
+			<label class="control-label col-md-2" style="margin-top:8px; " >Invoice No:</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control" style="margin-bottom:20px;" value="" onblur="getInvoice(this.value)" name="cus_invoice" />
+			</div>
+		</div>
+   </div>
+   <form id="main_frm">
+   <div class="row">
+		<div class="col-md-12">
+			<label class="control-label col-md-2" style="margin-top:8px; " >Customer Name:</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control" style="margin-bottom:20px;" value="" name="cus_name" readonly />
+			</div>
+			<label class="control-label col-md-2" style="margin-top:8px; " >Contact:</label>
+			<div class="col-md-4">
+				<input type="number" class="form-control" style="margin-bottom:20px;" name="cus_num" value="" readonly />
+			</div>
+		</div>
+   </div>
+    <div class="row">
+		<div class="col-md-12">
+			<label class="control-label col-md-2" style="margin-top:8px; " >Customer Address:</label>
+			<div class="col-md-4">
+				<textarea class="form-control" style="margin-bottom:20px;" name="cus_addr" readonly ></textarea>
+			</div>
+			<label class="control-label col-md-2" style="margin-top:8px; " >e-Mail:</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control" style="margin-bottom:20px;" name="cus_mail" value="" readonly />
+			</div>
+		</div>
+   </div>
+    <div class="row">
+		<div class="col-md-12">
+			<label class="control-label col-md-2" style="margin-top:8px; " >Date:</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control" style="margin-bottom:20px;" name="cus_date" value="" />
+			</div>
+			<label class="control-label col-md-2" style="margin-top:8px; " >Time:</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control" style="margin-bottom:20px;" name="cus_time" value="" />
+			</div>
+		</div>
+   </div>
+   <div class="row">
+		<div class="col-md-12">
+			<div class="col-md-10">
+			</div>
+			<div class="col-md-1">
+				<input type="button" class="btn btn-success form-control" style="margin-bottom:20px;" onclick="saveData()" name="cus_save" value="Save" />
+			</div>
+			<div class="col-md-1">
+				<input type="button" class="btn btn-danger form-control" style="margin-bottom:20px;" onclick="cancelData()" name="cus_cancel" value="Cancel" />
+			</div>
+		</div>
+   </div>
+   </form>
+   <div class="row">
+		<div class="col-md-12">
+			<table id="main_table">
+				<tr><td>
+					<!-- <table><tr><th style="width: 60px">S. No</th>
+					<th style="width: 100px">Imei</th>
+					<th style="width: 100px">Barcode</th>
+					<th style="width: 100px">Item Name</th>
+					<th style="width: 40px">Qty</th>
+					<th style="width: 60px">Unit Price</th>
+					<th style="width: 60px">Total Price</th>
+					</tr></table> -->
+					<table id="main_table1"><tr><th style="width: 10%">S. No</th>
+					<th style="width: 15%">Barcode</th>
+					<th style="width: 15%">Category</th>
+					<th style="width: 15%">Brand</th>
+					<th style="width: 15%">Varity</th>
+					<th style="width: 10%">Qty</th>
+					<th style="width: 10%">UnitPrice</th>
+					<th style="width: 10%">Total Price</th>
+					</tr></table>
+					</td>
+					<td>
+						<span onclick="addRow()" class="add_button" style="float:none; margin:0;display: block;"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<!--  <form id="sub_frm1"><table><tr>
+						<td style="width:60px;"><input type="number" class="cus_input" name="sno" value="1" readonly /></td>
+						<td style="width:100px;"><input type="text" class="cus_input" name="imei" id="imei1" value="" /></td>
+						<td style="width:100px;"><input type="text" class="cus_input" name="barcode" id="barcode1" value="" /></td>
+						<td style="width:100px;"><input list="liitem1" id="item1" class="cus_input" name="item" value="" oninput="getItems(this.id)" onblur="fillFields(this.id)"/>
+						<datalist id="liitem1"><option>One</option><option>Two</option></datalist></td>
+						<td style="width:40px;"><input type="number" class="cus_input" name="qty" id="qty1" oninput="checkQty(this.id)" value="0" /></td>
+						<td style="width:60px;"><input type="number" class="cus_input" name="unit_price" id="unit_price1" value="0" readonly /></td>
+						<td style="width:60px;"><input type="number" class="cus_input" name="total" id="total1" value="0" readonly /></td>
+						</tr>
+					</table></form>-->
+					</td>
+					<td>
+						<span id="del_row" class="remCF del_button" style="float:none; margin:0;display: block;"></span>
+					</td>
+				</tr>
+				
+			</table>
+		</div>
+   </div>
+</div>
+<!--container fluid-->
+<script>
+
+	var avai_qty = 0;
+    $(document).ready(function() 
+    		{
+    	var eid=localStorage.getItem('eid');
+    	var x = document.getElementById("shops");
+    	if(eid==1)
+    		{
+    	        x.style.display = "block";
+    		}
+    	else
+    		{
+    		getShopDetails(eid);
+    		x.style.display = "none";
+    		}
+    	deleterows();
+    	getShops();
+		   $("#main_table").on('click', '.remCF', function() {
+				$(this).parent().parent().remove();
+			});
+       var months = [
+	  'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Oct', 'November', 'December'
+	];
+
+	var days = [
+	  'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
+	];
+
+	function update(){
+	  var date = new Date();
+	  
+	  var ampm = date.getHours() < 12
+				 ? 'AM'
+				 : 'PM';
+	  
+	  var hours = date.getHours() == 0
+				  ? 12
+				  : date.getHours() > 12
+					? date.getHours() - 12
+					: date.getHours();
+	  
+	  var minutes = date.getMinutes() < 10 
+					? '0' + date.getMinutes() 
+					: date.getMinutes();
+	  
+	  var seconds = date.getSeconds() < 10 
+					? '0' + date.getSeconds() 
+					: date.getSeconds();
+	  
+	  var dayOfWeek = days[date.getDay()];
+	  var month = date.getMonth();
+	  var day = date.getDate();
+	  var year = date.getFullYear();
+	  
+	  var dateString = year+'-'+ month + '-' + day;
+	  
+		$('input[name="cus_time"]').val(hours +':'+ minutes +' '+ ampm);		
+	} 
+	update();
+	window.setInterval(update, 1000);
+	
+	$('input[name="cus_date"]').datepicker({
+		dateFormat: 'yy-mm-dd'
+	});
+	   
+        
+
+    });
+
+    //date picker
+	function readTable(formId){
+		var elements = document.getElementById(formId).elements;
+		var obj ={};
+		var chk = 0;
+		for(var i = 0; i < elements.length ; i++){
+			var item = elements.item(i);
+			if(item.value.length <= 0){
+				$('input[name="'+item.name+'"]').css('borderBottom','1px solid #FF5722 ');
+				return null;            
+			}
+			else{
+				$('input[name="'+item.name+'"]').removeAttr("style");
+				obj[item.name] = item.value;
+			}
+		}
+		return obj;
+	}
+    
+	function createJson(formId) {
+        var out_params = [];
+        var elements = document.getElementById(formId).elements;
+        var obj = {};
+        var chk = 0;
+        console.log(formId);
+        for (var i = 0; i < elements.length; i++) {
+            var item = elements.item(i);
+           /*  if (item.value.length <= 0) {
+            	$('input[name="' + item.name + '"]').css('borderBottom', '1px solid #FF5722 ');
+               	return null;
+            } else {
+            	 $('input[name="'+item.name+'"]').removeAttr("style");
+ 				$('input[name="'+item.name+'"]').css('marginBottom','20px'); */
+                 obj[item.name] = item.value;
+         //   }
+
+        }
+        out_params.push(obj);
+        return out_params;
+    }
+	
+    function clearFields(id) 
+    {
+        $('#' + id)[0].reset();
+        deleterows();
+    }
+
+    function delete_category(id) {
+        var path = "deletecategory";
+        var answer = confirm("Are you sure you want to delete from the database?");
+        if (answer) {
+            $.ajax({
+                type: 'GET',
+                url: 'DeleteServlet',
+                dataType: "json",
+                data: {
+                    path: path,
+                    id: id
+                },
+                success: function(respo) {
+                    if (respo == '1') {
+                        alert('Success');
+                    } else {
+                        alert('Failed');
+                    }
+                }
+            });
+        }
+
+    }
+    
+    
+    
+    function getDatabyInvoice(invno)
+	{
+
+	console.log(barcode);
+	
+	 var path="getDatabyInvoiceforrtn";
+	//var shopdata=$('#shopval').val();	
+	deleterows();
+			$.ajax({
+	            type: 'GET',
+	            url: 'RetrieveServlet',
+	            dataType: "json",
+	            data: {path:path,invno:invno},
+	            success: function(respo) 
+	            {
+	            	console.log(respo);
+	            	
+	            	for(var i = 0; i < respo.length; i++)
+            		{
+                	var table = document.getElementById("main_table");
+                    var forms = table.getElementsByTagName("form");
+                    var onunitprice=parseFloat(respo[i].val9)/parseFloat(respo[i].val7);
+                  //  alert(onunitprice);
+        		    $('#main_table > tbody:last-child').append('<tr><td><form id="sub_frm'+(forms.length+1)+'"><table><tr>'
+        					+'<td style="width:10%;"><input type="number" class="cus_input" name="sno" value="'+(forms.length+1)+'" readonly /></td>'
+        					+'<td style="width:15%;"><input type="text" class="cus_input" name="barcode" id="barcode'+(forms.length+1)+'" value="' + respo[i].val3 + '" readonly /></td>'
+        					+'<td style="width:15%;"><input type="text" class="cus_input" name="category" id="category'+(forms.length+1)+'" value="' + respo[i].val4 + '" /></td>'
+        					+'<td style="width:15%;"><input list="liitem'+(forms.length+1)+'" type="text"  id="brand'+(forms.length+1)+'" class="cus_input" name="brand" value="' + respo[i].val5 + '"/>'
+        					+'<datalist id="liitem'+(forms.length+1)+'"><option>One</option><option>Two</option></datalist></td>'
+        					+'<td style="width:15%;"><input type="text" class="cus_input" name="varity" id="varity'+(forms.length+1)+'" value="' + respo[i].val6 + '"/></td>'
+        					+'<td style="width:10%;"><input type="number" class="cus_input" name="qty" id="qty'+(forms.length+1)+'" oninput="calculateTotalbyqty(this.id,this.value)" value="' + respo[i].val7 + '" /></td>'
+        					+'<td style="width:10%;"><input type="text" class="cus_input" name="saleprice" id="saleprice'+(forms.length+1)+'"  value="' +onunitprice + '"  /></td>'
+        					+'<td style="width:10%;"><input type="number" class="cus_input" name="total" id="total'+(forms.length+1)+'" value="' + respo[i].val9 + '" readonly /></td>'
+        					+'<input type="hidden" class="cus_input" name="oneunit" id="oneunit'+(forms.length+1)+'" value="' + onunitprice + '" />'
+        					/* +'<input type="hidden" class="cus_input" name="pruchaseprice" id="purchaseprice'+(forms.length+1)+'" value="' + respo[i].val9 + '" />'
+        					+'<input type="hidden" class="cus_input" name="totalpruchaseprice" id="totalpruchaseprice'+(forms.length+1)+'" value="' + respo[i].val9 + '" />'
+        					+'<input type="hidden" class="cus_input" name="smargin" id="salemargin'+(forms.length+1)+'" value="' + respo[i].val9 + '" readonly />' */
+        					+'<input type="hidden" class="cus_input" name="shopid" id="shopid'+(forms.length+1)+'" value="' + respo[i].val10 + '" />'
+        					+'<input type="hidden" class="cus_input" name="shopname" id="shopname'+(forms.length+1)+'" value="' + respo[i].val11 + '" readonly />'
+        				
+        					+'</tr></table></form></td><td>'
+        				+'<span id="del_row"  type="button" class="remCF del_button" style="float:none; margin:0;display: block;"></span>'
+        				+'</td></tr>');
+                           }
+	            }
+	            });
+	}
+    
+    
+    
+    
+    function calculateTotalbyqty(id,id1)
+    {
+    	if(id==0||id=='')
+		{
+		
+		}
+	else
+		{
+			var string = id;
+			var numbers = string.match(/\d+/g).map(Number);
+            var onprice=$('#oneunit'+numbers).val();
+	        var total=parseFloat(onprice)*parseFloat(id1);
+	        $('#total'+numbers).val(total);
+		}
+	    }
+    
+	function getItems(id){
+		var path = 'getreturnSalesItems';
+		var inv = $('input[name="cus_invoice"]').val();
+		if(inv.length > 3){
+			var srch = $('#'+id).val();
+			$.ajax({
+				type: 'POST',
+				url: 'RetrieveServlet',
+				dataType: "json",
+				data: {
+					path: path,
+					search: srch,
+					inv: inv
+				},
+				success: function(respo) {
+					if(respo.length > 0){
+						var opt_list = '';
+						for(var i=0; i< respo.length; i++){
+							opt_list = opt_list+'<option>'+respo[i].val3+'</option>';
+						}
+						$('#li'+id).html(opt_list);
+					} else{
+						alert('No data available for given item name!');
+					}
+				}
+			});
+		}else{
+			alert('Fill invoice number then proceed!');
+		}
+		
+	}
+	
+	function fillFields(id){
+		var path = 'getreturnItemsDetails';
+		var inv = $('input[name="cus_invoice"]').val();
+		if(inv.length > 3){
+			var srch = $('#'+id).val();
+			var last = id.charAt(id.length-1);
+			$.ajax({
+				type: 'POST',
+				url: 'RetrieveServlet',
+				dataType: "json",
+				data: {
+					path: path,
+					search: srch,
+					inv: inv
+				},
+				success: function(respo) {
+					if(respo.length > 0){
+						var qty = parseInt(respo[0].val5);
+						var unit_price = parseFloat(respo[0].val6).toFixed(2);
+						$('#barcode'+last).val(respo[0].val3);
+						$('#item'+last).val(respo[0].val4);
+						avai_qty = parseInt(respo[0].val5);
+						$('#qty'+last).val(respo[0].val5);
+						$('#imei'+last).val(respo[0].val7);
+						$('#unit_price'+last).val(respo[0].val6);
+						var total = qty*unit_price;
+						$('#total'+last).val(total);
+					}					
+				}
+			});		
+		}else{
+			alert('Fill invoice number then proceed!');
+		}
+	}
+	
+	function checkQty(id){
+		var last = id.charAt(id.length-1);
+		var usr_qty = parseInt($('#'+id).val());
+		if(usr_qty > avai_qty || usr_qty < 1){
+			alert('Available Stock is: '+avai_qty);
+			$('#'+id).val(1);
+		} 
+		var qty = parseInt($('#'+id).val());
+		var unit_price = parseFloat($('#unit_price'+last).val()).toFixed(2);
+		var total = qty*unit_price;
+		$('#total'+last).val(total);
+	}
+	
+	function addRow(){
+		var table = document.getElementById("main_table");
+        var forms = table.getElementsByTagName("form");
+		$('#main_table > tbody:last-child').append('<tr><td><form id="sub_frm'+(forms.length+1)+'"><table><tr>'
+					+'<td style="width:60px;"><input type="number" class="cus_input" name="sno" value="'+(forms.length+1)+'" readonly /></td>'
+					+'<td style="width:60px;"><input type="text" class="cus_input" name="imei" value="" id="imei'+(forms.length+1)+'"/></td>'
+					+'<td style="width:100px;"><input type="text" class="cus_input" name="barcode" id="barcode'+(forms.length+1)+'" value="" /></td>'
+					+'<td style="width:100px;"><input list="liitem'+(forms.length+1)+'" id="item'+(forms.length+1)+'" class="cus_input" name="item" value="" oninput="getItems(this.id)" onblur="fillFields(this.id)"/>'
+					+'<datalist id="liitem'+(forms.length+1)+'"><option>One</option><option>Two</option></datalist></td>'
+					+'<td style="width:40px;"><input type="number" class="cus_input" name="qty" id="qty'+(forms.length+1)+'" oninput="checkQty(this.id)" value="0" /></td>'
+					+'<td style="width:60px;"><input type="number" class="cus_input" name="unit_price" id="unit_price'+(forms.length+1)+'" value="0" readonly /></td>'
+					+'<td style="width:60px;"><input type="number" class="cus_input" name="total" id="total'+(forms.length+1)+'" value="0" readonly /></td>'
+				+'</tr></table></form></td><td>'
+				+'<span id="del_row"  type="button" class="remCF del_button" style="float:none; margin:0;display: block;"></span>'
+				+'</td></tr>');
+	}
+	
+	function cancelData()
+	{
+		clearFields('main_frm');
+		
+	}
+	
+	function saveData(){
+		var path = "return_sale_invoice";
+		var obj_aaary = [];
+		var vals = createJson("main_frm");
+		var table_data = "";
+		var inv = $('input[name="cus_invoice"]').val();
+		if(vals == null){
+			alert("Please fill all fields!");
+		} else{
+			var table = document.getElementById("main_table");
+	        var forms = table.getElementsByTagName("form");
+	        for(var i=0; i< forms.length; i++){
+	        	var tb_data = readTable(forms[i].getAttribute('id'));
+	        	if(tb_data == null){
+	        		alert("Please fill grid fields!");
+	        		break;
+	        	}else{
+	        		obj_aaary.push(tb_data);
+	        	}	        	
+	        }
+	        vals = JSON.stringify(vals);
+	        table_data = JSON.stringify(obj_aaary);
+	        console.log(table_data+'\t'+vals);
+	         $.ajax({
+				type: 'POST',
+				url : 'AddServlet',
+				data : {data:vals, path:path, table_data: table_data,inv: inv},
+				success : function(respo) {
+					if(respo=='1'){
+						alert('Success');
+						$('#main_frm')[0].reset();
+						deleterows();
+					}else{
+						alert('Failed');
+					}
+				}
+				
+			}); 
+		}
+	}
+	
+	function getInvoice(id){
+		var path = 'salesInvoiveinfo';
+		var shopdata=$('#shopval').val();
+		if(shopdata==0)
+			{
+			  alert("Please Select the Shop");
+			}
+		else
+			{
+		var srch = id;
+		if(id.length > 3){
+			$.ajax({
+				type: 'POST',
+				url: 'RetrieveServlet',
+				dataType: "json",
+				data: {
+					path: path,
+					search: srch,shopdata:shopdata 
+				},
+				success: function(respo) {
+					if(respo.length > 0){
+					//	alert(respo[0].val13);
+						$('input[name="cus_name"]').val(respo[0].val13);
+						$('input[name="cus_num"]').val(respo[0].val2);
+						getDatabyInvoice(id);
+					} else{
+						$('input[name="cus_name"]').val('');
+						$('input[name="cus_num"]').val('');
+						$('textarea[name="cus_addr"]').val('');
+						$('input[name="cus_mail"]').val('');
+						alert('Please check your Invoice no!');
+					}
+					
+				}
+			});	
+		}		
+			}
+	}
+	
+	function deleterows()
+	{
+		console.log("from data");
+        $("#main_table").find("tr:gt(1)").remove();
+    }
+	
+	
+	function getShops()
+	{
+       var path="getShops"
+  			
+  			$.ajax({
+  	            type: 'GET',
+  	            url: 'RetrieveServlet',
+  	            dataType: "json",
+  	            data: {path:path},
+  	            success: function(respo) 
+  	            {
+  	            	 var html_str='';
+                     console.log(respo);
+                     for (var i = 0; i < respo.length; i++) 
+                     {
+                         html_str = html_str + '<option value="' + respo[i].val2 + ','+ respo[i].val3 +'" >' + respo[i].val3 + '</option>';
+                     }
+                     var html_str1 = html_str1 + '<option value=0 >Select Shop</option>';
+                     $('#selshop').html(html_str1+html_str);
+                 } 
+  	            
+  	            });
+	}
+	
+	
+	function getShopDetails(eid)
+	{
+		if(eid=='S1')
+			{
+			 var path="getShops1"
+		  			
+		  			$.ajax({
+		  	            type: 'GET',
+		  	            url: 'RetrieveServlet',
+		  	            dataType: "json",
+		  	            data: {path:path},
+		  	            success: function(respo) 
+		  	            {
+		  	            	$('#shopval').val(respo[0].val2+','+respo[0].val3);
+		                 } 
+		  	            
+		  	            });
+			}
+		else if(eid=='S2')
+				{
+			 var path="getShops2"
+		  			
+		  			$.ajax({
+		  	            type: 'GET',
+		  	            url: 'RetrieveServlet',
+		  	            dataType: "json",
+		  	            data: {path:path},
+		  	            success: function(respo) 
+		  	            {
+		  	            	$('#shopval').val(respo[0].val2+','+respo[0].val3);
+		                } 
+		  	            
+		  	            });
+				}
+	}
+	
+	
+	function addShopValue(id)
+	{
+		$('#shopval').val(id);
+	}
+</script>

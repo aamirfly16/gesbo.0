@@ -1,0 +1,858 @@
+<div class="container-fluid">
+  <div class="row">
+  <header class="col-md-12" id="header">
+  <div class="col-md-12 button_tab">
+     <input type="button" id="" data-toggle="modal" data-target="#myModal" class="tab_button_plus" >
+     
+     <input type="button" id=""  class="tab_button_search">
+     
+     <input type="button" id="" class="tab_button_info" style="float:right;">
+  
+  </div><!--button tab-->
+  
+    <!--radio buttons-->
+      
+   <!--  <div class="col-md-3">
+       <label>From Date:</label>
+          <input type="text" name="from_date" id="from_date">
+       </div>
+       
+     <div class="col-md-3">
+       <label>To Date:</label>
+          <input type="text" name="todate" id="to_date">
+      </div> -->
+    
+    <!--radio buttons-->
+ 
+    <!--  <input type="button" class="btn-primary" style="float:right; padding:10px 20px 10px 20px; border:none; border-radius:5px;" value="Search">
+   <div class="col-md-3" style="float:right;">
+     <input type="text" class="form-control" style="float:right;">
+   </div> -->
+  </header>
+</div><!--row-->
+<div class="showrptable">
+</div>
+    
+<!--add data modal box-->
+
+ <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog" style="width:1148px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="background:#607D8B;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Receive Payemnts</h4>
+        </div>
+        <div class="modal-body">
+        <form id="rp_form">
+              <div class="container-fluid">
+		<div class="row">	
+			  <legend>Recieve Payment Number</legend>
+			  	<div class="row">
+					<label class="control-label col-md-2" style="margin-top:8px;" >Recieved Payment Number:</label>
+					<div class="col-md-4">
+							 <input type="text" class="form-control" style="margin-bottom:8px;" name="rp_number" value="" id="rp_number" readonly="readonly"/>
+					</div>
+					<label class="control-label col-md-2" style="margin-top:8px;" >Date:</label>
+					<div class="col-md-4">
+						<input type="text" class="form-control" style="margin-bottom:8px;" name="pay_date" value="" id="date" />
+					</div>				
+				</div>
+					
+				<div class="row">
+					<label class="control-label col-md-2" style="margin-top:8px;" >Buisness Location:</label>
+					<div class="col-md-4">
+						  <select class="form-control" style="margin-bottom:8px;" id="business_loc" name="rp_business_loc">
+                         <option>Select Business loc</option>
+                      </select>
+					</div>
+					<label class="control-label col-md-2" style="margin-top:8px;" >Select Cash Register:</label>
+				<div class="col-md-4">
+					 <select class="form-control" style="margin-bottom:8px;" id="select_cash_register" name="rp_cash_register">
+                         <option>Select cash Register</option>
+                      </select>
+				</div>						
+				</div>				
+				</div>
+				
+	 	<div class="row">	
+		
+		  <legend>Customer Info</legend>
+		  
+		        <div class="row">
+		        <input type="hidden" name="cust_inv_num" id="cust_inv_num" value="">
+		        	
+					<label class="control-label col-md-2" style="margin-top:8px;" >Customer:</label>
+					<div class="col-md-4">
+						 <select class="form-control" style="margin-bottom:8px;" id="select_cus_name" onchange="getCustomersData(this.value)" name="rp_cust_code">
+                                <option>Select Customer</option>
+                             </select>
+					</div>	
+						<label class="control-label col-md-2" style="margin-top:8px;" >Customer Email:</label>
+					<div class="col-md-4">
+							 <input type="text" class="form-control" style="margin-bottom:8px;" name="rp_cus_mail" value="" id="" readonly="readonly">
+							  <input type="hidden" name="invhidden" id="invhidden" value="">
+							  <input type="hidden" name="pamthidden" id="pamthidden" value="">
+					</div>
+								
+				</div> 
+				   
+			<div class="row">	
+				 <label class="control-label col-md-2" style="margin-top:8px;" >Customer Mobile No: </label>
+				<div class="col-md-4">
+						 <input type="text" class="form-control" style="margin-bottom:8px;" name="rp_cus_num" value="" id="" readonly="readonly">
+				</div>
+					<label class="control-label col-md-2" style="margin-top:8px;" >Current Payable Amount: </label>
+				<div class="col-md-3">
+						 <input type="text" class="form-control" style="margin-bottom:8px;" name="rp_currt_pybl_amt" value="" id="currt_pybl_amt" readonly="readonly">
+				</div>
+			
+			<div class="col-md-1">
+				<span style="font-weight:bold; font-size: 20px;">&#x20A8;</span>
+			</div>
+				
+			 </div>
+			 
+			 <div class="row">	
+				 <label class="control-label col-md-2" style="margin-top:8px;" >Credit Limit: </label>
+				<div class="col-md-3">
+						 <input type="text" class="form-control" style="margin-bottom:8px;" name="rp_cus_credit_limit" value="" id="credit_limit" readonly="readonly">
+				</div>
+				<div class="col-md-1">
+				<span style="font-weight:bold; font-size: 20px;">&#x20A8;</span>
+			</div>
+			 </div>
+		
+	</div>	
+				
+				 <div class="row">
+					  <legend>Invoice Info</legend>
+					<div class="showinvoice"></div>
+				</div><br>
+				
+				
+		<div class="row">	
+					 <legend>Payment Detail</legend>
+		<div class="col-md-12">
+			<div class="container">
+					  <ul class="nav nav-tabs">
+					    <li class="active"><a data-toggle="tab" href="#home">Cash</a></li>
+					    <li><a data-toggle="tab" href="#menu1">Card</a></li>
+					    <li><a data-toggle="tab" href="#">Store Credit</a></li>
+					    <li><a data-toggle="tab" href="#menu3">Bank Transfer</a></li>
+					    <li><a data-toggle="tab" href="#menu4">Cheque</a></li>
+					  </ul>
+					
+					  <div class="tab-content">
+					    <div id="home" class="tab-pane fade in active">
+					      <h3></h3>
+					      <div class="col-md-6">
+	
+							<div class="row">
+								<label class="control-label col-md-4"> Received Amount</label>
+								<div class="col-md-8">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="cash_received_amt" oninput="calculatePendingAmount(this.value)" value="" placeholder="0.00" />
+								</div>
+							</div>
+						</div>
+					
+					    </div>
+					    <div id="menu1" class="tab-pane fade">
+					      <h3></h3>
+					      <div class="col-md-10">
+							<div class="row">
+								<label class="control-label col-md-2">Amount</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="card_received_amt" oninput="calculatePendingAmount(this.value)" id="casmode_amt_received" value="" />
+								</div>
+								<label class="control-label col-md-2"> Card Hoder Name:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="card_holder_name" value="" placeholder="Optional"/>
+								</div>
+							</div>
+	
+							<div class="row">
+								<label class="control-label col-md-2"> Bank Name:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="card_bank_name" value="" placeholder="Optional"/>
+								</div>
+								<label class="control-label col-md-2">Approval Number:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="card_approval_num" value="" placeholder="Optional"/>
+								</div>
+							</div>
+						</div>
+					
+					    </div>
+					    
+					    <div id="menu2" class="tab-pane fade">
+					      <h3></h3>
+					      <div class="col-md-6">
+	
+							<div class="row">
+								<label class="control-label col-md-4"> Available Credit Amount:</label>
+								<div class="col-md-8">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="store_ava_credit_amt" value="" readonly="readonly"/>
+								</div>
+							</div>
+	
+							<div class="row">
+								<label class="control-label col-md-4"> Use Credit Amount:</label>
+								<div class="col-md-8">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="store_use_credit_amt" id="creditamt" oninput="calculatePendingAmount(this.value)" value="" />
+								</div>
+							</div>
+	                                
+						</div>
+					
+					    </div>
+					    
+					     <div id="menu3" class="tab-pane fade">
+					      <h3></h3>
+					         <div class="col-md-10">
+	
+							<div class="row">
+								<label class="control-label col-md-2">Amount</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="banktransfer_amt_received" id="banktransfer_amt_received" oninput="calculatePendingAmount(this.value)" value="" />
+								</div>
+								<label class="control-label col-md-2">Bank Name:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="banktransfer_bank_name" value="" placeholder="Optional"/>
+								</div>
+							</div>
+	
+							<div class="row">
+								<label class="control-label col-md-2">Bank Account:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="banktransfer_account" value="" placeholder="Optional"/>
+								</div>
+								<label class="control-label col-md-2">Approval Number:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="banktransfer_approval_num" value="" placeholder="Optional"/>
+								</div>
+							</div>
+							
+							<div class="row">
+								<label class="control-label col-md-2">Transfer Date:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="banktransfer_date" value="" placeholder="Optional"/>
+								</div>
+								
+							</div>
+						</div>
+					
+					    </div>
+					    
+					      <div id="menu4" class="tab-pane fade">
+					      <h3></h3>
+					       <div class="col-md-10">
+	
+							<div class="row">
+								<label class="control-label col-md-2">Amount</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="check_amt_received" oninput="calculatePendingAmount(this.value)" value="" />
+								</div>
+								<label class="control-label col-md-2">Cheque Number:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="check_num" value="" placeholder="Optional"/>
+								</div>
+							</div>
+	
+							<div class="row">
+								<label class="control-label col-md-2">Bank Name:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="check_bank_name" value="" placeholder="Optional"/>
+								</div>
+								<label class="control-label col-md-2">Cheque Date:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="check_date" value="" placeholder="Optional"/>
+								</div>
+							</div>
+						</div>
+					    </div>
+					    
+					  </div>
+					</div>
+
+		</div>
+			 
+		</div>
+		<div class="col-md-12">
+		<legend>Summary</legend>
+			<div class="row">	
+			  <label class="control-label col-md-4" style="margin-top:8px;" >Total Selected Payable Amount:</label>
+					<div class="col-md-4">
+					<input type="text" class="form-control" style="margin-bottom:8px;" name="summary_paid_amount" value="" id="summary_paid_amount" readonly="readonly" />
+				</div>
+				<div class="col-md-1">
+					<span style="font-weight:bold; font-size: 20px;">&#x20A8;</span>
+				</div>
+			</div>
+			<div class="row">
+				<label class="control-label col-md-4" style="margin-top:8px;" >Pending Amount:</label>
+				<div class="col-md-4">
+					<input type="text" class="form-control" style="margin-bottom:8px;" name="summary_pending_amount" value="" id="summary_pending_amount" readonly="readonly"/>
+				</div>
+				<div class="col-md-1">
+					<span style="font-weight:bold; font-size: 20px;">&#x20A8;</span>
+				</div>
+		   </div>
+			<div class="row">
+					<label class="control-label col-md-4" style="margin-top:8px;" >Note:</label>
+					<div class="col-md-4">
+						 <textarea class="form-control" style="margin-bottom:8px;" name="rp_note" value="" id="" /></textarea>
+					</div>
+			</div>
+		</div>
+									
+	</div>
+				
+	<div class="row">
+           <div class="col-md-8"></div>
+		<!-- <div class="col-md-2">
+			<input type="button" id="saveandprint" value="Save & Print" class="btn btn-primary form-control btn-md " >
+		</div> -->		
+		<div class="col-md-2">
+			<input type="button" id="saveReceivePay" value="SaveandPay" class="btn btn-primary form-control btn-md " >
+		</div>	
+	</div>	
+			
+		</form>		
+	</div>
+    </div>
+        <div class="modal-footer" style="background:#607D8B;">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    <!--edit data modal box-->
+
+ <!-- Modal -->
+  <div class="modal fade" id="yModal" role="dialog">
+    <div class="modal-dialog" style="width:1148px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="background:#607D8B;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" >Edit Bank</h4>
+        </div>
+      <div class="modal-body">
+          <div class="container-fluid">
+		<form>
+		<div class="row">	
+					
+					  <legend>Recieve Payment Number</legend>
+					  	<div class="row">
+									<label class="control-label col-md-2" style="margin-top:8px;" >Recieved Payment Number:</label>
+							<div class="col-md-2">
+											 <input type="text" class="form-control" style="margin-bottom:8px;" name="recieved_payment_number" value="" id="" />
+									</div>
+								<label class="control-label col-md-2" style="margin-top:8px;" >Date:</label>
+							<div class="col-md-2">
+									 <input type="text" class="form-control" style="margin-bottom:8px;" name="date" value="" id="" />
+							</div>				
+							</div>
+							
+							<div class="row">
+									<label class="control-label col-md-2" style="margin-top:8px;" >Buisness Location:</label>
+							<div class="col-md-2">
+											 <input type="text" class="form-control" style="margin-bottom:8px;" name="buisness_location" value="" id="" />
+									</div>
+								<label class="control-label col-md-2" style="margin-top:8px;" >Select Cash Register:</label>
+							<div class="col-md-2">
+									 <select class="form-control" style="margin-bottom:8px;" name="select_cash_register">
+                                        <option>Select cash Register</option>
+                                     </select>
+							</div>						
+							</div>				
+					
+				</div>	
+				
+	    	<div class="row">
+					
+					  <legend>Customer Info</legend>
+					  
+					        <div class="row">	
+									<label class="control-label col-md-1" style="margin-top:8px;" >Customer:</label>
+							<div class="col-md-2">
+											 <select class="form-control" style="margin-bottom:8px;" name="customer">
+                                                <option>Select Customer</option>
+                                             </select>
+									</div>	
+								<label class="control-label col-md-2" style="margin-top:8px;" >Customer Email:</label>
+							<div class="col-md-2">
+									 <input type="text" class="form-control" style="margin-bottom:8px;" name="customer_email" value="" id="" />
+									 
+							</div>
+						    <div class="col-md-2">
+							   <label class="control-label " style="margin-top:8px;" ><input type="checkbox">Send Email To Customer</label>
+							   </div>				
+							   </div> 
+							   
+							
+							 <div class="row">	
+									<label class="control-label col-md-2" style="margin-top:8px;" >Other Pending Amount:0.00</label>
+							<div class="col-md-2">
+							   <label class="control-label " style="margin-top:8px;" > <input type="checkbox" /disabled></label>
+							 </div>
+								<label class="control-label col-md-2" style="margin-top:8px;" >Customer Mobile No: </label>
+							<div class="col-md-2">
+									 <input type="text" class="form-control" style="margin-bottom:8px;" name="customer_mobile_no" value="" id="" /disabled>
+							</div>
+						    <div class="col-md-2">
+							   <label class="control-label " style="margin-top:8px;" > <input type="checkbox" /disabled>Send SMS To Customer</label>
+							   </div>				
+							   </div>
+							   
+							   
+							<div class="row">	
+									<label class="control-label col-md-2" style="margin-top:8px;" >Clear Other Pending Amount:0.00</label>
+							<div class="col-md-2">
+							   <label class="control-label " style="margin-top:8px;" > <input type="checkbox" /disabled></label>
+							 </div>
+								<label class="control-label col-md-2" style="margin-top:8px;" >Current Payable Amount: </label>
+							<div class="col-md-2">
+									 <input type="text" class="form-control" style="margin-bottom:8px;" name="current_payable_amount" value="" id="" /disabled>
+							</div>
+						    <div class="col-md-2">
+							   <label class="control-label " style="margin-top:8px;" > <input type="checkbox" /disabled>Show Customer Pending Cheque</label>
+							   </div>				
+							   </div>
+							   
+							   			
+					
+				</div>	
+				
+				<div class="row">	
+					
+					  <legend>Invoice Info</legend>	
+				
+				<div class="row">	
+									<table class="table table-bordered">
+							<thead>
+							  <tr>
+								<th>Firstname</th>
+								<th>Lastname</th>
+								<th>Email</th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <tr>
+								<td>John</td>
+								<td>Doe</td>
+								<td>john@example.com</td>
+							  </tr>
+							  <tr>
+								<td>Mary</td>
+								<td>Moe</td>
+								<td>mary@example.com</td>
+							  </tr>
+							  <tr>
+								<td>July</td>
+								<td>Dooley</td>
+								<td>july@example.com</td>
+							  </tr>
+							</tbody>
+						  </table>
+	
+	            </div>
+					
+				</div>	<br>
+				
+				
+				
+				
+				
+				<div class="row">	
+				<div class="col-md-12">			
+					
+					  <legend>Payment Detail</legend>
+					 <div class="row">	
+					
+					  <label class="control-label col-md-4" style="margin-top:8px;" >Total Selected Payable Amount:</label>
+							<div class="col-md-4">
+											 <select class="form-control" style="margin-bottom:8px;" name="toatl_selected_payable_amount">
+                                             <option>Total Selected</option>
+                                             </select>
+									</div>
+							</div>
+						<div class="row">		
+							<label class="control-label col-md-4" style="margin-top:8px;" >Pending Amount:</label>
+							<div class="col-md-4">
+											 <select class="form-control" style="margin-bottom:8px;" name="pending_amount">
+                                                <option>Pending Amount</option>
+                                             </select>
+									</div>
+							     </div>
+							
+							
+							
+				<div class="col-md-12">
+				  <ul class="nav nav-tabs">
+							<li ><a data-toggle="tab" href="#1 Reference">Cash</a></li>
+							<li><a data-toggle="tab" href="#3 Transportation">Card</a></li>
+							<li><a data-toggle="tab" href="#5 Remarks">Store Credit</a></li>
+							<li><a data-toggle="tab" href="#5 Remarks">Discount</a></li>
+							<li><a data-toggle="tab" href="#5 Remarks">Gift Card</a></li>
+							<li><a data-toggle="tab" href="#5 Remarks">Bank Transfer</a></li>
+							<li><a data-toggle="tab" href="#5 Remarks">Cheque</a></li>
+							<li><a data-toggle="tab" href="#5 Remarks">Food Cupon</a></li>
+							<li><a data-toggle="tab" href="#5 Remarks">Exchange</a></li>
+							<li><a data-toggle="tab" href="#5 Remarks">Financial Account</a></li>
+						  </ul><br>
+
+				  <div class="tab-content">
+					<div id="1 Reference" class="tab-pane fade in active">
+							<div class="row">
+								<div class="col-md-12">
+										 <input type="text" class="form-control" style="margin-bottom:10px; height:200px;" value="" id="" />
+								</div>
+							  </div>
+							</div>
+						</div>
+				</div>
+							
+					<div class="row">		
+							<label class="control-label col-md-1" style="margin-top:8px;" >Note:</label>
+							<div class="col-md-8">
+											 <textarea class="form-control" style="margin-bottom:8px;" name="note" value="" id="" /></textarea>
+									</div>
+							<div class="col-md-2">
+									<a href="#" class="btn btn-info" role="button" style="margin-top:0px;">Pick Message</a>
+							</div>
+							</div>
+							
+				</div>	
+				</div><br>
+					
+					
+				
+		<div class="row">	
+				<label class="control-label col-md-2" style="margin-top:8px;" >Remaining Amount After This Payment:</label>
+			<div class="col-md-2">
+				<input type="text" class="form-control" style="margin-bottom:8px;" name="remaining_amount_after_this_payment" value="" id="" />
+				</div>
+			<label class="control-label col-md-2" style="margin-top:8px;" >Total Recieved Amount:</label>
+			<div class="col-md-2">
+				<input type="text" class="form-control" style="margin-bottom:8px;" name="total_recieved_amount" value="" id="" />
+			</div>
+			</div>
+			<div class="row">
+				<label class="control-label col-md-2" style="margin-top:8px;" >Returndable Balance:</label>
+				<div class="col-md-2">
+				<input type="text" class="form-control" style="margin-bottom:8px;" name="returnable_balance" value="" id="" />
+				</div>
+				<label class="control-label col-md-2" style="margin-top:8px;" >Total Comission Expense:</label>
+				<div class="col-md-2">
+				<input type="text" class="form-control" style="margin-bottom:8px;" name="total_comission_expense" value="" id="" />
+				</div>
+			</div>
+									
+</div>
+				
+						<div class="row">
+				            <div class="col-md-6"></div>
+							<div class="col-md-2">
+								<input type="button"  value="Save & Print" class="btn btn-primary form-control btn-md " >
+							</div>		
+							<div class="col-md-2">
+								<input type="button"  value="Save" class="btn btn-primary form-control btn-md " >
+							</div>	
+					</div>	
+			
+		</form>		
+	</div>
+      
+      </div>
+        <div class="modal-footer" style="background:#607D8B;">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<!--edit data modal box-->
+     
+</div><!--container fluid-->
+
+<script>
+	$(document).ready(function(){
+		
+		getCustomersList();
+		fetch_cashregister();
+		fetch_businessloc();
+		randomPaymentNumber();
+		getReceivePaymentList();
+		
+		
+		$('#saveReceivePay').on('click', function() {
+			var path = "add_receive_payment";
+			var invno=$('#invhidden').val();
+			var peamt=$('#pamthidden').val();
+			var amtpay=$('#summary_paid_amount').val();
+			var dat=$('#date').val();
+			console.log(dat);
+			if(dat=='')
+				{
+				alert("Please Select Date");
+				}
+			else
+				{
+			if(invno=='')
+				{
+				alert("Please Select the Invoice to Pay");
+				}
+			else
+				{
+				console.log(amtpay+"  "+peamt);
+				if(parseFloat(amtpay)>parseFloat(peamt))
+					{
+					
+					}
+				else
+					{
+			var vals = createJson('rp_form');
+			console.log('RP DATA:\t'+JSON.stringify(vals));
+			 if (vals == null) {
+				$('#snackbar').html('Fill required fields to proceed next!');
+				$('#snackbar').addClass('show');
+				setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+			} else {
+				vals = JSON.stringify(vals);
+				$.ajax({
+					type : 'POST',
+					url : 'AddServlet',
+					data : {
+						data : vals,
+						path : path
+					},
+					success : function(respo) {
+						if (respo == '1') {
+							$('#snackbar').html('Payment added successfully!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+							$('#rp_form')[0].reset();
+							$('#myModal').modal('toggle'); 
+							randomPaymentNumber();
+						} else {
+							alert('failed');
+						}
+						getReceivePaymentList();
+					}
+
+				});
+			}
+			} 
+				}
+				}
+		});
+		function createJson(formId) {
+			var out_params = [];
+			var elements = document.getElementById(formId).elements;
+			var obj = {};
+			var chk = 0;
+			console.log(formId);
+			for (var i = 0; i < elements.length; i++) {
+				var item = elements.item(i);
+				obj[item.name] = item.value;
+			}
+			out_params.push(obj);
+			return out_params;
+		}
+		
+	});
+			
+//date picker
+		
+$('input[name="pay_date"]').datepicker({
+			dateFormat: 'yy-mm-dd'
+		});
+
+$( function() {
+    $( "#from_date" ).datepicker();
+	$( "#to_date" ).datepicker();
+	$( "#date" ).datepicker();
+  } );
+	
+	
+
+function getReceivePaymentList(){
+	
+	var path = "getrplist"
+	  $.ajax({
+			type: 'POST',
+			url : 'RetrieveServlet',
+			dataType: "json",
+			data : {path:path},
+			success : function(respo) {
+				
+	        	 var html_str = '<table><thead><tr><th>Sr.No</th><th>Receive Pay #</th><th>Invoice #</th><th>Pay Date</th><th>Paid Amount</th><th>Customer Code</th><th>Pay Mode</th><th>Pay Status</th><th>Pending Amount</th></tr></thead><tbody>';
+	                if(respo.length > 0){
+	                   for(var i=0;i<respo.length;i++){
+	                 	  html_str = html_str +'<tr><td>'+respo[i].val1+'</td><td>'+respo[i].val2+'</td><td>'+respo[i].val3+'</td><td>'+respo[i].val4+'</td><td>'+respo[i].val5+'</td><td>'+respo[i].val7+'</td><td>'+respo[i].val8+'</td><td>'+respo[i].val9+'</td><td>'+respo[i].val10+'</td></tr>';
+	                   }
+	                }else{
+	                     html_str = html_str +'<tr><td>No Invoice</td><td>No Invoice</td><td>No Invoice</td><td>No Inovice</td><td>No Inovice</td><td>No Invoice</td><td>No Invoice</td><td>No Invoice</td><td>No Invoice</td><td>No Invoice</td></tr>';
+	                }
+	                $('.showrptable').html(html_str+'</tbody></table>');
+			}
+		});
+}
+	
+
+				
+	function getCustomersList(){
+		
+		var path = "getcustomer"
+		  $.ajax({
+				type: 'POST',
+				url : 'RetrieveServlet',
+				dataType: "json",
+				data : {path:path},
+				success : function(respo) {
+					var drop = '';
+	                for (var i = 0; i < respo.length; i++) {
+	                    drop = drop + '<option value="' + respo[i].val2 + '">' +respo[i].val3 + '</option>';
+	                }
+	                $('#select_cus_name').html(drop);
+				}
+			});
+	}
+	
+function getCustomersData(cust_code){
+		var path = "getcustomerbycode"
+			getSaleInvoiceByCustomerCode(cust_code);
+		 $.ajax({
+				type: 'POST',
+				url : 'RetrieveServlet',
+				dataType: "json",
+				data : {path:path, cust_code:cust_code},
+				success : function(respo) {
+					if(respo.length > 0){
+						$('input[name="rp_cus_num"]').val(respo[0].val14);
+						$('input[name="rp_cus_mail"]').val(respo[0].val19);
+						$('input[name="rp_cus_credit_limit"]').val(respo[0].val10);
+						$('input[name="store_ava_credit_amt"]').val(respo[0].val10);
+					} else{
+						alert('No records of customer!');
+					}
+				}
+			});
+	}
+	
+function fetch_cashregister() {
+
+    var path = "getcashregister";
+    $.ajax({
+        type: 'GET',
+        url: 'RetrieveServlet',
+        dataType: "json",
+        data: {
+            path: path
+        },
+        success: function(respo) {
+
+        //    console.log(JSON.stringify(respo));
+            var drop = '';
+            for (var i = 0; i < respo.length; i++) {
+                drop = drop + '<option value="' + respo[i].val3 + '">' +respo[i].val4 + '</option>';
+            }
+            $('#select_cash_register').html(drop);
+
+        }
+    });
+}
+
+function fetch_businessloc() {
+	var drop = '';
+	var path = "getbusinessloc";
+	$.ajax({
+		type : 'GET',
+		url : 'RetrieveServlet',
+		dataType : "json",
+		data : {
+			path : path
+		},
+		success : function(respo) {
+			for (var i = 0; i < respo.length; i++) {
+				drop = drop + '<option value="'+respo[i].val2+'">'
+						+ respo[i].val2 + '</option>';
+			}
+			$('#business_loc').html(drop);
+			$('#delivery_to').html(drop);
+		}
+	});
+}
+
+function randomPaymentNumber() {
+    var x = Math.floor((Math.random() * 189898) + 1);
+    $("#rp_number").val('RP'+x);
+}
+
+function getSaleInvoiceByCustomerCode(custmr_code){
+	var path = "getSalesInvByCustCode";
+	var total_arr = [];
+	$.ajax({
+        type: 'GET',
+        url : 'RetrieveServlet',
+        dataType: "json",
+        data : {path:path,custmr_code:custmr_code},
+        success : function(respo) {
+        //	console.log(JSON.stringify(respo));
+        	 var html_str = '<table><thead><tr><th>Select</th><th>Sr.No</th><th>Customer Code</th><th>Invoice #</th><th>Inv Date</th><th>Total Amount</th><th>Pending Amount</th><th>Inv Status</th></tr></thead><tbody>';
+                if(respo.length > 0){
+                   for(var i=0;i<respo.length;i++)
+                   {
+                	   if(respo[i].val5=='1')
+             	        {
+                 	  html_str = html_str +'<tr><td><input type="radio" name="invno" onclick="selectInvno(\''+respo[i].val2+'\',\''+respo[i].val7+'\')" value="'+respo[i].val2+'"></td><td>'+(i+1)+'</td><td>'+respo[i].val3+'</td><td>'+respo[i].val2+'</td><td>'+respo[i].val6+'</td><td>'+respo[i].val4+'</td><td>'+respo[i].val7+'</td><td>'+respo[i].val5+'</td></tr>';
+                    	  console.log(respo[i].val5);
+                 	  total_arr.push(respo[i].val7);
+                    	  }
+                      else
+                    	  {
+                    	  
+                    	  }
+                 	 $('#cust_inv_num').val(respo[i].val2);
+                   }
+                  
+                }else{
+                     html_str = html_str +'<tr><td>No Invoice</td><td>No Invoice</td><td>No Invoice</td><td>No Inovice</td><td>No Inovice</td><td>No Invoice</td><td>No Invoice</td><td>No Invoice</td></tr>';
+                }
+                $('.showinvoice').html(html_str+'</tbody></table>');
+                
+                for(var j=0; j<=total_arr.length ; j++){
+              //  	 console.log("Total values "+total_arr);
+                	 var sum = total_arr.reduce(function(a, b) { return parseInt(a) + parseInt(b); }, 0);
+                }
+                $('#currt_pybl_amt').val(sum);
+           //     console.log("Sum "+sum);
+        }
+    });
+}
+
+
+function selectInvno(id,pamt)
+{
+$('#invhidden').val(id);
+$('#pamthidden').val(pamt);
+}
+
+function calculatePendingAmount(receivedAmt)
+{
+	console.log(receivedAmt);
+	var curr_paybl_amt = $('#currt_pybl_amt').val();
+	
+	var pendingAmt =parseInt(curr_paybl_amt) -  parseInt(receivedAmt);
+	$('#summary_paid_amount').val(receivedAmt);
+	$('#summary_pending_amount').val(pendingAmt);
+}
+				
+</script>

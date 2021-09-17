@@ -1,0 +1,78 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	background-image :"images/Finallogo.png";
+}
+
+body
+{
+	float: left;
+	width: 100%;
+	padding: 2%;
+	margin-left:20px;
+}
+table
+{
+	width: 100%;
+}
+table, .table
+{
+	width: 100%;
+	border-collapse: collapse;
+}
+.table th
+{
+	padding: 5px;
+	border: 1px solid #c4c1bc;
+}
+.table td
+{
+	padding: 2px 6px;
+    font-size: 13px;
+    border: 1px solid #c4c1bc;
+}ar
+
+.div1 {
+    width: 300px;
+    height: 350px;
+    border: 2px solid blue;
+    float:left;
+}
+
+.div2 {
+    width: 900px;
+    height: 50px;    
+    padding: 50px;
+   border: 0px solid ;
+}
+
+
+.ta {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+
+.row { display:table-row; }
+
+.cell {
+  display:table-cell;
+  padding:5px;
+  background-color: gold;
+}
+.inline { 
+ 
+
+}
+.nav {
+  vertical-align: top;
+  display: inline-block;
+ 
+}
+.column {
+  
+  
+  vertical-align: top;
+  display: inline-block;
+  
+}

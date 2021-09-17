@@ -1,0 +1,493 @@
+
+<div class="container-fluid">
+
+	<div class="tab_div" style="margin-bottom: 20px;">
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Bank Details</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-7"></div>
+
+			<div class="col-md-4">
+				<div class="col-md-8">
+					<input type="text" class="form-control" name="comp_srch" value="" />
+				</div>
+				<div class="col-md-4">
+					<input type="button" class="btn btn-primary form-control" style="" value="Search" />
+				</div>				
+			</div>
+			<div class="col-md-1">
+				<input type="button" data-toggle="modal"
+					data-target="#myModal" class="tab_button_plus"
+					onClick="clearFields('add_bank')">
+			</div>
+
+		</div>
+
+	</div>
+    <div class="get_tabel" id="showUsers">
+    </div>
+    <!--add data modal box-->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog" style="width:1148px;">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Bank</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <form id="add_bank">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label class="control-label col-md-4" >Bank Name:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" style="margin-bottom:20px;" value="" name="bank_name"  />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--col md 6-->
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label class="control-label col-md-4" >IFSC Code:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" style="margin-bottom:20px;" value="" name="ifsc_code"  />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--col md 6-->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>Address</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label class="control-label col-md-4" >Address line1:</label>
+                                    <div class="col-md-6">
+                                        <textarea class="form-control" style="margin-bottom:20px;"  name="address_line_1" /></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-4" >Address line 2:</label>
+                                    <div class="col-md-6">
+                                        <textarea class="form-control" style="margin-bottom:20px;" name="address_line_2" placeholder="Optional" /></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-4" >City:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" style="margin-bottom:20px;" value="" name="city"  />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-4" >State:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" style="margin-bottom:20px;" name="state" value=""  />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-4" >Country:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" style="margin-bottom:20px;" name="country" value=""  />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-4" >Pin Code:</label>
+                                    <div class="col-md-6">
+                                        <input type="number" class="form-control" style="margin-bottom:20px;" name="pin_code" value=""  />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--col md 6 main-->
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label class="control-label col-md-4" >Phone Number:</label>
+                                    <div class="col-md-6">
+                                        <input type="number" class="form-control" style="margin-bottom:20px;" name="phone_number" value="" placeholder="Optional" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-4" >Mobile Number:</label>
+                                    <div class="col-md-6">
+                                        <input type="number" class="form-control" style="margin-bottom:20px;" value="" name="mobile_number"  />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-4" >Fax Number:</label>
+                                    <div class="col-md-6">
+                                        <input type="number" class="form-control" style="margin-bottom:20px;" name="fax_number" value="" placeholder="Optional" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-4" >E-mail:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" style="margin-bottom:20px;" name="email" value="" placeholder="Optional" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-4" >Web Site:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" style="margin-bottom:20px;" name="website" value="" placeholder="Optional" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--col md 6 main-->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-2">
+                                        <input type="button" value="Save" id="save_data" class="btn btn-success form-control btn-md ">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+            </div>
+           
+        </div>
+    </div>
+    <!--add data modal box-->
+    <!--edit data modal box-->
+    <!-- Modal -->
+    <div class="modal fade" id="yModal" role="dialog">
+        <div class="modal-dialog" style="width:1148px;">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Bank</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="edit_bank">
+                        <input type="hidden" value="0" name="bank_id" />
+                        <div class="col-md-12">
+                            <div class="row">
+                                <label class="control-label col-md-4" >Bank Code:</label>
+                            </div>
+                        </div>
+                        <!--col md 12-->
+                        <div class="col-md-6">
+                            <div class="row">
+                                <label class="control-label col-md-4" >Bank Name:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" style="margin-bottom:20px;" value="" name="bank_name"  />
+                                </div>
+                            </div>
+                        </div>
+                        <!--col md 6-->
+                        <div class="col-md-6">
+                            <div class="row">
+                                <label class="control-label col-md-4" >IFSC Code:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" style="margin-bottom:20px;" value="" name="ifsc_code"  />
+                                </div>
+                            </div>
+                        </div>
+                        <!--col md 6-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Address</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <label class="control-label col-md-4" >Address line1:</label>
+                                <div class="col-md-6">
+                                    <textarea class="form-control" style="margin-bottom:20px;" name="address_line_1" /></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="control-label col-md-4" >Address line 2:</label>
+                                <div class="col-md-6">
+                                    <textarea class="form-control" style="margin-bottom:20px;" name="address_line_2" placeholder="Optional" /></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="control-label col-md-4" >City:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" style="margin-bottom:20px;" value="" name="city"  />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="control-label col-md-4" >State:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" style="margin-bottom:20px;" name="state" value=""  />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="control-label col-md-4" >Country:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" style="margin-bottom:20px;" name="country" value=""  />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="control-label col-md-4" >Pin Code:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" style="margin-bottom:20px;" name="pin_code" value=""  />
+                                </div>
+                            </div>
+                        </div>
+                        <!--col md 6 main-->
+                        <div class="col-md-6">
+                            <div class="row">
+                                <label class="control-label col-md-4" >Phone Number:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" style="margin-bottom:20px;" name="phone_number" value="" placeholder="Optional" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="control-label col-md-4" >Mobile Number:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" style="margin-bottom:20px;" value="" name="mobile_number"  />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="control-label col-md-4" >Fax Number:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" style="margin-bottom:20px;" name="fax_number" value="" placeholder="Optional" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="control-label col-md-4" >E-mail:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" style="margin-bottom:20px;" name="email" value="" placeholder="Optional" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="control-label col-md-4" >Web Site:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" style="margin-bottom:20px;" name="website" value="" placeholder="Optional" />
+                                </div>
+                            </div>
+                        </div>
+                        <!--col md 6 main-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-2">
+                                    <input type="button" value="Save" id="save_edited_data" class="btn btn-success form-control btn-md ">
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                </div>                
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!--edit data modal box-->
+</div>
+<!--container fluid-->
+<script>
+    $(document).ready(function() {
+
+        showBanks();
+        $('#save_data').on('click', function() {
+            var path = "addbank";
+            var vals = createJson('add_bank');
+            if (vals == null) {
+            	$('#snackbar').html('Please fill all fields to proceed next!');
+				$('#snackbar').addClass('show');
+				setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+            } else {
+                vals = JSON.stringify(vals);
+                $.ajax({
+                    type: 'POST',
+                    url: 'AddServlet',
+                    data: {
+                        data: vals,
+                        path: path
+                    },
+                    success: function(respo) {
+                        if (respo == '1') {
+                        	$('#snackbar').html('New bank profile saved successfully!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                            $('#add_bank')[0].reset();
+                            $('#myModal').modal('toggle'); 
+                            showBanks();
+                        } else {
+                        	$('#snackbar').html('Oops!, Something went wrong. Try again. ');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                            $('#add_bank')[0].reset();
+                        }
+                    }
+
+                });
+            }
+        });
+
+
+        function createJson(formId) {
+            var out_params = [];
+            var elements = document.getElementById(formId).elements;
+            var obj = {};
+            var chk = 0;
+            console.log(formId);
+            for (var i = 0; i < elements.length; i++) {
+                var item = elements.item(i);
+                if (item.value.length <= 0) {
+					if(item.name == 'address_line_2' || item.name == 'phone_number' || item.name == 'fax_number' || item.name == 'email' || item.name == 'website' ){
+						$('input[name="'+item.name+'"]').removeAttr("style");
+						$('input[name="'+item.name+'"]').css('marginBottom','20px');
+						obj[item.name] = item.value;
+					} else{
+                   		 $('input[name="' + item.name + '"]').css('borderBottom', '1px solid #FF5722 ');
+                   		 return null;
+					}
+                } else {
+					$('input[name="'+item.name+'"]').removeAttr("style");
+					$('input[name="'+item.name+'"]').css('marginBottom','20px');
+					obj[item.name] = item.value;
+                }
+
+            }
+            out_params.push(obj);
+            return out_params;
+        }
+
+
+
+        //Save data after Edit
+
+        $('#save_edited_data').on('click', function() {
+            var path = "updatebank";
+            var vals = createJson('edit_bank');
+            //console.log('Result:\t'+JSON.stringify(vals));
+            if (vals == null) {
+            	$('#snackbar').html('Fill all fields to proceed next!');
+				$('#snackbar').addClass('show');
+				setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+            } else {
+                vals = JSON.stringify(vals);
+                $.ajax({
+                    type: 'POST',
+                    url: 'UpdateServlet',
+                    data: {
+                        data: vals,
+                        path: path
+                    },
+                    success: function(respo) {
+                        if (respo == '1') {
+                        	$('#snackbar').html('Bank profile updated successfully!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                            $('#edit_bank')[0].reset();
+                            $('#yModal').modal('toggle'); 
+                        } else {
+                        	$('#snackbar').html('Oops!, Something went wrong. Try again.');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                            $('#edit_bank')[0].reset();
+                        }
+                        showBanks();
+                    }
+
+                });
+            }
+        });
+    });
+
+    function clearFields(id) {
+        $('#' + id)[0].reset();
+    }
+
+    function get_bank(id) {
+        var path = "editbank";
+        $.ajax({
+            type: 'GET',
+            url: 'EditServlet',
+            dataType: "json",
+            data: {
+                path: path,
+                id: id
+            },
+            success: function(respo) {
+                $('input[name="bank_id"]').val(id);
+                $('input[name="bank_name"]').val(respo[0].val2);
+                $('input[name="ifsc_code"]').val(respo[0].val3);
+                $('textarea[name="address_line_1"]').val(respo[0].val4);
+                $('textarea[name="address_line_2"]').val(respo[0].val5);
+                $('input[name="city"]').val(respo[0].val6);
+                $('input[name="state"]').val(respo[0].val7);
+                $('input[name="country"]').val(respo[0].val8);
+                $('input[name="pin_code"]').val(respo[0].val9);
+                $('input[name="phone_number"]').val(respo[0].val10);
+                $('input[name="mobile_number"]').val(respo[0].val11);
+                $('input[name="fax_number"]').val(respo[0].val12);
+                $('input[name="email"]').val(respo[0].val13);
+                $('input[name="website"]').val(respo[0].val14);
+            }
+
+        });
+    }
+
+    function delete_bank(id) {
+        var path = "deletebank";
+        var answer = confirm("Are you sure you want to delete from the database?");
+        if (answer) {
+            $.ajax({
+                type: 'GET',
+                url: 'DeleteServlet',
+                dataType: "json",
+                data: {
+                    path: path,
+                    id: id
+                },
+                success: function(respo) {
+                    if (respo == '1') {
+                    	$('#snackbar').html('Bank profile deleted successfully!');
+						$('#snackbar').addClass('show');
+						setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                    } else {
+                    	$('#snackbar').html('Deletion failed!');
+						$('#snackbar').addClass('show');
+						setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                    }
+                    showBanks();
+                }
+            });
+        }
+
+    }
+
+    function showBanks() {
+        var path = "getBanks";
+        $.ajax({
+            type: 'GET',
+            url: 'RetrieveServlet',
+            dataType: "json",
+            data: {
+                path: path
+            },
+            success: function(respo) {
+                var table = "<table><tr>";
+                table += "<th>S.NO</th>";
+                table += "<th>Bank code</th><th>Bank Name</th>";
+                table += "<th>IFSC code</th><th>Adress 1</th>";
+                table += "<th>Adress 2</th><th>City</th>";
+                table += "<th>State</th><th>Country</th>";
+                table += "<th>Mobile Number</th><th>Edit</th><th>Delete</th>";
+                table += "</tr>";
+                for (var i = 0; i < respo.length; i++) {
+                    //document.write(respo[i].bankCode);
+                    table += "<tr><td>" + respo[i].val1 + "</td><td>" + respo[i].val2 + "</td><td>" + respo[i].val3 + "</td><td>" + respo[i].val4 + "</td><td>" + respo[i].val5 + "</td><td>" + respo[i].val6 + "</td><td>" + respo[i].val7 + "</td><td>" + respo[i].val8 + "</td><td>" + respo[i].val9 + "</td><td>" + respo[i].val10 + "</td><td><input type='button' id='' data-toggle='modal' data-target='#yModal' class='tab_button_edit' onClick='get_bank(" + respo[i].val1 + ")'></td><td><input type='button' id=''  class='tab_button_delete' onClick='delete_bank(" + respo[i].val1 + ")'></td></tr>";
+                }
+                table += "</table>";
+                $('.get_tabel').html(table);
+            }
+        });
+    }
+</script>

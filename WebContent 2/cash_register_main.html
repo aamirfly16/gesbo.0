@@ -1,0 +1,1070 @@
+
+<div class="container-fluid">
+	<div class="tab_div" style="margin-bottom: 20px;">
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Cash Register Details</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-7"></div>
+
+			<div class="col-md-4">
+				<div class="col-md-8">
+					<input type="text" class="form-control" name="comp_srch" value="" />
+				</div>
+				<div class="col-md-4">
+					<input type="button" class="btn btn-primary form-control" style="" value="Search" />
+				</div>				
+			</div>
+			<div class="col-md-1">
+				<input type="button" data-toggle="modal"
+					data-target="#add_cash_register" class="tab_button_plus"
+					onClick="clearFields('add_cash_register_main')">
+			</div>
+
+		</div>
+
+	</div>
+<div class="get_tabel_cash_register">
+</div>
+    
+    
+<!--add data modal box-->
+
+ <!-- Modal -->
+  <div class="modal fade" id="add_cash_register" role="dialog">
+    <div class="modal-dialog" style="width:1148px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" >
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Cash Register</h4>
+        </div>
+        <div class="modal-body">
+	<form id="add_cash_register_main">	
+        <div class="container-fluid">
+           <div class="col-md-6">
+		     <div class="row">
+				<label class="control-label col-md-4" >Business Location:</label>
+				<div class="col-md-5">
+				         <select class="form-control" name="buisness_location" style="margin-bottom:20px;" id="buisness_location">
+             </select>
+                    </div>
+                          <div class="col-md-2">
+                                          <div class="call_modal">
+                                          <input type="button" data-toggle="modal" data-target="#open_bus" class="tab_button_plus">
+<!--                                              <a href="buisness_location_main.html" data-toggle="modal" data-target="#open_bus" class="tab_button_plus"></a> -->
+                                             </div><!--call modal-->
+                                        </div><!--add company location-->
+				</div>
+				
+		
+		<div class="row">
+						<label class="control-label col-md-4"  >Cash Register Number:</label>
+				<div class="col-md-7">
+				         <input type="text" class="form-control" style="margin-bottom:20px;" name="cash_register_number" value="" />
+				</div>
+		</div>
+		
+	</div><!--row-->
+              
+              
+	<div class="col-md-6">			
+		<div class="row">
+						<label class="control-label col-md-4" >Cash Register Name:</label>
+				<div class="col-md-7">
+				         <input type="text" class="form-control" style="margin-bottom:20px;" name="cash_register_name" value="" />
+				</div>
+			</div>
+            		
+		</div><!--col md 6-->
+		
+	<div class="row">
+		<div class="col-md-12">
+		
+				<div class="col-md-2">	
+					<input type="button" value="Save" id="save_cash_register" class="btn btn-success form-control btn-md ">
+				</div>
+		  </div>
+        </div>
+    </div>
+  </form>
+      </div>
+        <div class="modal-footer" >
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+    <!--open Business Location-->
+        <div class="index_model1 modal fade" id="open_bus" role="dialog">
+        <div class="modal-dialog" style="width: 1088px;">
+            <!-- Modal content--> 
+           <div class="modal-content" style="height: 600px; overflow: scroll;">
+                <div class="modal-header" >
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add State</h4>
+                </div>
+                <div class="modal-body">
+               			
+               <form id="save_busloc">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>Buisness Loctaion Details</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Company Name:</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-control" name="company_name" id="company_name" style="margin-bottom: 20px;" >
+                                 			</select>
+                                        </div>
+                                        
+                                        <div class="col-md-2">
+                                          <div class="call_modal">
+<!--                                           	<input type="button" data-toggle="modal" data-target="#add_business" class="tab_button_plus" onClick="clearFields('save_busloc')"> -->
+                                             <input type="button" data-toggle="modal" data-target="#open_company" class="tab_button_plus" />
+                                            </div><!--call modal-->
+                                        </div><!--add company location-->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Shop
+                                 Name (Buisness Location):</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="shop_name" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>
+                                   <!-- <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Start
+                                 Number For all Documents:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="start_number" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>-->
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Address
+                                 Line 1:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="bus_address_line_1" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Address
+                                 Line 2:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="bus_address_line_2" value="" style="margin-bottom: 20px;" placeholder="Optional" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">City:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="bus_city" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">State:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="bus_state" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Country:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="bus_country" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Pin
+                                 No:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="bus_pin_no" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Place
+                                 Of Supply:</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-control" name="place_of_supply" id="place_of_supply" style="                                   margin-bottom: 20px;"> </select>
+                                        </div>
+                                        
+                                        <div class="col-md-2">
+                                          <div class="call_modal">
+                                           <input type="button" data-toggle="modal" data-target="#open_state" class="tab_button_plus" />
+<!--                                              <a href="state_master.html" data-toggle="modal" data-target="#open_state" class="tab_button_plus"></a> -->
+                                             </div><!--call modal-->
+                                        </div><!--add company location-->
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Phone
+                                 No:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="number" class="form-control" name="bus_phone_no" value="" style="margin-bottom: 20px;" placeholder="Optional" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Mobile
+                                 No:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="number" class="form-control" name="bus_mobile_no" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--col md 6-->
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Email:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="bus_email" placeholder="Optional" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Website:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="bus_website" placeholder="Optional" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Buisness
+                                 Location TIN No:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="buisness_location_tin_no" placeholder="Optional" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">ESIC
+                                 No:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="esic_no" placeholder="Optional" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">LBT
+                                 No:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="lbt_no" placeholder="Optional" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">PT
+                                 Registration No:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="pt_registration_no" placeholder="Optional" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Fax
+                                 No:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="fax_no" placeholder="Optional" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Service
+                                 Tax No:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="service_tax_no" placeholder="Optional" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">GST
+                                 No:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="gst_no" placeholder="Optional" value="" style="margin-bottom: 20px;" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Term & Condition:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <textarea class="form-control" name="term_condition" placeholder="Optional" /></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                   <div class="col-md-2">
+                                        <input type="button" value="Save" id="save_bus_loc_data" class="btn btn-success form-control btn-md" />
+                                    </div>
+                                </div>
+							</div>
+						</form>                   
+    
+                </div>
+                <div class="modal-footer" >
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!--open Business Loc-->
+     
+      <!--open Company-->
+     
+  <div class="index_model2 modal fade" id="open_company" role="dialog" style="z-index: 1060">
+        <div class="modal-dialog" style="width: 1148px; ">
+            <!-- Modal content--> 
+           <div class="modal-content" style="height: 600px; overflow: scroll;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Company</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="add_company">
+						<div class="container-fluid">
+							<div class="col-md-12">
+								<h4>Company Details</h4>
+							</div>
+							<div class="col-md-6">
+								<div class="row">
+									<label class="control-label col-md-4"> Company
+										Name:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="company_name" value="" />
+									</div>
+								</div>
+
+
+								<!--<div class="row">
+									<label class="control-label col-md-4">Tin
+										Number:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="tin_number" value="" />
+									</div>
+								</div>-->
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Alternate
+										Company Name:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="alternate_company_name" placeholder="Optional" value="" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Tan
+										Number:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="tan_number" value="" />
+									</div>
+								</div>
+
+
+
+							</div>
+							<!--col md 6-->
+							<!--col md 6-->
+							<div class="col-md-6">
+
+								<div class="row">
+									<label class="control-label col-md-4">Pan
+										Number:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="pan_number" value="" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Iso
+										Certificate Number:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="iso_cert_num" value="" placeholder="Optional" />
+									</div>
+								</div>
+
+								<div class="row">
+									<label class="control-label col-md-4">Excise
+										Duty Number:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="exc_duty_num" value="" />
+									</div>
+								</div>
+							</div>
+							<!-- col md 6-->
+
+
+							<!--contact Details-->
+
+							<div class="col-md-12">
+								<h4>Contact Details</h4>
+							</div>
+							<div class="col-md-6">
+
+								<div class="row">
+									<label class="control-label col-md-4"> Address
+										Line 1:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="add_line_1" value="" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4"> Address
+										Line 2:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="add_line_2" value="" placeholder="Optional"/>
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">City:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="city_addcompany" value="" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">State:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="state_addcompany" value="" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Country:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="country_addcompany" value="" />
+									</div>
+								</div>
+
+								<div class="row">
+									<label class="control-label col-md-4">Pin:</label>
+									<div class="col-md-8">
+										<input type="number" class="form-control" style="margin-bottom: 20px;" name="pin_addcompany" value="" />
+									</div>
+								</div>
+
+
+							</div>
+							<!--col md 6-->
+							<!--col md 6-->
+							<div class="col-md-6">
+
+								<div class="row">
+									<label class="control-label col-md-4">Phone
+										Number:</label>
+									<div class="col-md-8">
+										<input type="number" class="form-control" style="margin-bottom: 20px;" name="phone_num" value="" placeholder="Optional" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Mobile
+										Number:</label>
+									<div class="col-md-8">
+										<input type="number" class="form-control" style="margin-bottom: 20px;" name="mob_num" value="" />
+									</div>
+								</div>
+
+								<div class="row">
+									<label class="control-label col-md-4">Fax
+										Number:</label>
+									<div class="col-md-8">
+										<input type="number" class="form-control" style="margin-bottom: 20px;" name="fax_num" value="" placeholder="Optional" />
+									</div>
+								</div>
+
+
+								<div class="row">
+									<label class="control-label col-md-4">Email:</label>
+									<div class="col-md-8">
+										<input type="email" class="form-control" style="margin-bottom: 20px;" name="email_company" value="" placeholder="Optional" />
+									</div>
+								</div>
+
+								<div class="row">
+									<label class="control-label col-md-4">Website:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="website_company" value="" placeholder="Optional" />
+									</div>
+								</div>
+
+							</div>
+							<!-- col md 6-->
+
+
+							<!--contact details-->
+							<div class="row">
+								<div class="col-md-12">
+									<div class="col-md-2">
+										<input type="button" value="Save" id="save_company" class="btn btn-primary form-control btn-md ">
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+
+                </div>
+                <div class="modal-footer" >
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--open Company-->
+  
+  
+  
+ <!--open State-->
+      <div class="index_model2 modal fade" id="open_state" role="dialog">
+        <div class="modal-dialog" style="width: 1148px;">
+            <!-- Modal content--> 
+           <div class="modal-content" style="height: 600px; overflow: scroll;">
+                <div class="modal-header" >
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add State</h4>
+                </div>
+                <div class="modal-body">
+                  <form id="add_state">			    
+		   				 <div class="container-fluid">
+		    				<div class="row">
+								<label class="control-label col-md-4" style="margin-top:8px;" > State Name:</label>
+							<div class="col-md-4">
+						         <input type="text" class="form-control" style="margin-bottom:20px;" name="state_name" value="" id="" />
+							</div>
+						</div>
+					<div class="row">
+								<label class="control-label col-md-4" style="margin-top:8px;" >State Code:</label>
+						<div class="col-md-4">
+						         <input type="text" class="form-control" style="margin-bottom:20px;" name="state_code" value="" id="" />
+						</div>
+					</div>
+				<div class="row">
+					<div class="col-md-4"></div>
+			        <div class="col-md-2">	
+							<input type="button" value="Save" id="save" class="btn btn-primary form-control btn-md ">
+						</div>
+		           </div>   
+				</div>
+		</form>
+                  
+                </div>
+                <div class="modal-footer" >
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <!--open State-->
+  
+  
+  
+    <!--edit data modal box-->
+
+ <!-- Modal -->
+  <div class="modal fade" id="edit_cash_register" role="dialog">
+    <div class="modal-dialog" style="width:1148px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" >
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" >Edit Cash Register</h4>
+        </div>
+      <div class="modal-body">
+      <form id="edit_cash_register_main">	
+      <input type="hidden" name=cashReg_id>
+         <div class="container-fluid">
+           <div class="col-md-6">
+		     <div class="row">
+				<label class="control-label col-md-4" >Business Location:</label>
+				<div class="col-md-7">
+				         <select class="form-control" name="b_location" style="margin-bottom:20px;" id="buisness_location2">
+                         </select>
+                    </div>
+				</div>
+				
+		
+		<div class="row">
+						<label class="control-label col-md-4"  >Cash Register Number:</label>
+				<div class="col-md-7">
+				         <input type="text" class="form-control" style="margin-bottom:20px;" name="cash_register_number" value="" />
+				</div>
+		</div>
+		<!-- <div class="row">
+            <label class="control-label"  ><input type="checkbox" value="register" name="iscashmain"> Is cash Main Register</label>
+		</div>	
+        <div class="row">
+		<label class="control-label"  ><input type="checkbox" value="current" name="iscashmain"> Is cash Main Current</label>
+		</div> -->
+	</div><!--row-->
+              
+              
+	<div class="col-md-6">			
+		<div class="row">
+						<label class="control-label col-md-4" >Cash Register Name:</label>
+				<div class="col-md-7">
+				         <input type="text" class="form-control" style="margin-bottom:20px;" name="cash_register_name" value="" />
+				</div>
+			</div>
+		
+		</div><!--col md 6-->
+		
+	<div class="row">
+		<div class="col-md-12">
+		
+	        <div class="col-md-2">
+					<input type="button" value="Update" id="save_edit_cash_register" class="btn btn-success form-control btn-md ">
+				</div>
+		  </div>
+        </div>
+    </div>
+  </form>
+	
+      </div>
+        <div class="modal-footer" >
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<!--edit data modal box--> 
+     
+</div><!--container fluid-->
+
+<script>
+			$(document).ready(function(){
+				fetch_state_placeofsupply();
+				fetch_businessloc();
+				fetch_company();
+				refresh();    
+				
+				
+				//Save State
+		        
+		        $('#save').on('click',function(){
+					var path = "add_statemaster";
+					var vals = createJsonstate('add_state');
+					//console.log('Result:\t'+JSON.stringify(vals));
+					if(vals == null){
+						alert('Please fill all fields!');
+					} else{
+						vals = JSON.stringify(vals);
+					 $.ajax({
+							type: 'POST',
+							url : 'AddServlet',
+							//dataType: "json",
+							data : {data:vals, path:path},
+							success : function(respo) {
+								if(respo=='1'){
+									$('#snackbar').html('State details created successfully!');
+									$('#snackbar').addClass('show');
+									setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+									$('#open_state').modal('toggle'); 
+									fetch_state_placeofsupply();
+								}else{
+									$('#snackbar').html('Oops!, something went wrong. Please try again!');
+									$('#snackbar').addClass('show');
+									setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+									$('#add_state')[0].reset();
+								}
+								refresh();
+							}
+							
+						});
+					}
+				});
+		 function createJsonstate(formId){
+				var out_params = [];
+				var elements = document.getElementById(formId).elements;
+				var obj ={};
+				var chk = 0;
+				console.log(formId);
+				for(var i = 0; i < elements.length ; i++){
+					var item = elements.item(i);
+					if(item.value.length <= 0){
+						$('input[name="'+item.name+'"]').css('borderBottom','1px solid #FF5722 ');
+						return null;            
+					}
+					else{
+						$('input[name="'+item.name+'"]').removeAttr("style");
+						$('input[name="'+item.name+'"]').css('marginBottom','20px');
+						obj[item.name] = item.value;
+					}
+					
+				}
+				out_params.push(obj);            
+				return out_params;
+			}	
+				
+				
+				//Save Business Location
+				
+				$('#save_bus_loc_data').on('click', function() {
+            var path = "add_busloc";
+            var vals = createJsonbus('save_busloc');
+            if (vals == null) {
+                alert('Please fill all fields!');
+            } else {
+                vals = JSON.stringify(vals);
+                $.ajax({
+                    type: 'POST',
+                    url: 'AddServlet',
+                    data: {
+                        data: vals,
+                        path: path
+                    },
+                    success: function(respo) {
+                        if (respo == '1') {
+                        	$('#snackbar').html('New business location added successfully!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                            $('#open_bus').modal('toggle'); 
+                            fetch_businessloc();
+                        } else {
+                        	$('#snackbar').html('Oops!, something went wrong. Please try again!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                            
+                        }
+                        refresh();
+                    }
+
+                });
+            }
+        });
+
+        function createJsonbus(formId) {
+            var out_params = [];
+            var elements = document.getElementById(formId).elements;
+            var obj = {};
+            console.log(formId);
+            for (var i = 0; i < elements.length; i++) {
+                var item = elements.item(i);
+                if(item.value.length <= 0){
+					if(item.name == 'bus_address_line_2' || item.name == 'bus_phone_no' || item.name == 'bus_email' || item.name == 'bus_email' || item.name == 'bus_website' || item.name == 'buisness_location_tin_no' || item.name == 'esic_no' || item.name == 'lbt_no'|| item.name == 'pt_registration_no' || item.name == 'fax_no'|| item.name == 'service_tax_no' || item.name == 'gst_no' || item.name == 'term_condition'){
+						$('input[name="'+item.name+'"]').removeAttr("style");
+						$('input[name="'+item.name+'"]').css('marginBottom','20px');
+						obj[item.name] = item.value;
+					}else{
+						$('input[name="'+item.name+'"]').css('borderBottom','1px solid #FF5722 ');
+						return null;    
+					}					
+                }
+                else{
+                	$('input[name="'+item.name+'"]').removeAttr("style");
+					$('input[name="'+item.name+'"]').css('marginBottom','20px');
+					obj[item.name] = item.value;
+                }
+
+            }
+            out_params.push(obj);
+            return out_params;
+        }
+
+				
+				
+				
+				
+				
+				
+				
+      			$('#save_cash_register').on('click',function(){
+      						var path = "add_cashregistermain";
+      						var vals = createJson('add_cash_register_main');
+      						if(vals == null){
+      							$('#snackbar').html('Please fill all fields!');
+								$('#snackbar').addClass('show');
+								setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+      						} else{
+      							vals = JSON.stringify(vals);
+      						 $.ajax({
+      								type: 'POST',
+      								url : 'AddServlet',
+      								data : {data:vals, path:path},
+      								success : function(respo) {
+      									if(respo=='1'){
+      										$('#snackbar').html('New cash register saved successfully!');
+											$('#snackbar').addClass('show');
+											setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+      										$('#add_cash_register_main')[0].reset();
+											$('#myModal').modal('toggle'); 
+      									}else{
+      										$('#snackbar').html('Oops!, something went wrong. Try again!');
+											$('#snackbar').addClass('show');
+											setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+      										$('#add_cash_register_main')[0].reset();
+      									}
+      									refresh();
+      								}
+      								
+      							});
+      						}
+      					});
+   			 function createJson(formId){
+   					var out_params = [];
+   					var elements = document.getElementById(formId).elements;
+   					var obj ={};
+   					var chk = 0;
+   					for(var i = 0; i < elements.length ; i++){
+   						var item = elements.item(i);
+   						if(item.value.length <= 0){
+   							$('input[name="'+item.name+'"]').css('borderBottom','1px solid #FF5722 ');
+   							return null;            
+   						}
+   						else{
+   							$('input[name="'+item.name+'"]').removeAttr("style");
+							$('input[name="'+item.name+'"]').css('marginBottom','20px');
+   							obj[item.name] = item.value;
+   						}
+   						
+   					}
+   					out_params.push(obj);            
+   					return out_params;
+   				}	
+   			 
+   			 
+   			 
+   		// SAVE DATA AFTER EDIT
+			 
+ 			$('#save_edit_cash_register').on('click',function(){
+					var path ="updatecashregister";
+					var vals = createJson('edit_cash_register_main');
+					if(vals == null){
+						$('#snackbar').html('Please fill all fields!');
+						$('#snackbar').addClass('show');
+						setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+					} else{
+						vals = JSON.stringify(vals);
+					 $.ajax({
+							type: 'POST',
+							url : 'UpdateServlet',
+							data : {data:vals, path:path},
+							success : function(respo) {
+								if(respo=='1'){
+									$('#snackbar').html('Details updated successfully!');
+									$('#snackbar').addClass('show');
+									setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+									$('#edit_cash_register_main')[0].reset();
+									$('#yModal').modal('toggle'); 
+								} else{
+									$('#snackbar').html('Oops!, updation failed. Please try again!');
+									$('#snackbar').addClass('show');
+									setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+									$('#edit_cash_register_main')[0].reset();
+								}
+								refresh();
+							}
+							
+						});
+					}
+				}); 
+			
+	
+			});
+			
+		function refresh(){
+			var path="getcashregister";
+       		$.ajax({
+                   type: 'GET',
+                   url : 'RetrieveServlet',
+                   dataType: "json",
+                   data : {path:path},
+                   success : function(respo) {
+                       
+                           if(respo.length > 0){
+                        	  var html_str = '<table cellpadding="0" id="tblExport1" cellspacing="0" class="db-table" align="center"><thead><tr><th>Sr.No</th><th>Location Name</th><th>Register Number</th><th>Register Name</th><th>Edit</th><th>Delete</th></tr></thead><tbody>';
+                              for(var i=0;i<respo.length;i++){
+                                   html_str = html_str +'<tr><td>'+(i+1)+'</td><td>'+respo[i].val2+'</td><td>'+respo[i].val3+'</td><td>'+respo[i].val4+'</td><td><input type="button" data-toggle="modal" data-target="#edit_cash_register" class="tab_button_edit" onClick="get_cashregister('+respo[i].val1+')"></td><td><input type="button"  class="tab_button_delete" onClick="delete_category('+respo[i].val1+')"></td></tr>';
+                               }
+                               $('.get_tabel_cash_register').html(html_str+'</tbody></table>');    
+                           }else{
+                               //alert('No ads associated with this customer!');
+                           } 
+                      
+                    //   alert(JSON.stringify(respo));
+                   }
+               }); 
+		}
+		//reset field
+			 function clearFields(id){
+				 $('#'+id)[0].reset();
+		}
+		
+				//CODE TO EDIT THE DATA AND OPEN EDIT FORM
+
+				function get_cashregister(id){
+					    	//alert(id);
+							var path ="editcashregister";
+							 $.ajax({
+									type: 'GET',
+									url : 'EditServlet',
+									dataType: "json",
+									data : {path:path, id:id},
+									success : function(respo){
+										
+									//	alert(JSON.stringify(respo));
+									$('input[name="cashReg_id"]').val(id);
+								 		$('select[name="b_location"]').val(respo[0].val1);
+										$('input[name="cash_register_number"]').val(respo[0].val2);
+										$('input[name="cash_register_name"]').val(respo[0].val3);
+										//$('input[name="cash_register_prefix"]').val(respo[0].val4); 
+										//alert(respo[0].val1+respo[0].val2+respo[0].val3+respo[0].val4);
+									}
+								});
+				  		}
+				
+				
+				
+				//CODE TO DELETE THE PARTICULAR DATA
+								function delete_category(id){
+									var path ="deletecashregister";
+									var answer = confirm ("Are you sure you want to delete from the database?");
+									if(answer){
+									$.ajax({
+										type: 'GET',
+										url: 'DeleteServlet',
+										dataType: "json",
+										data : {path:path, id:id},
+										success : function(respo){
+											if(respo=='1'){
+												$('#snackbar').html('Deleted successfully!');
+												$('#snackbar').addClass('show');
+												setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+											} else{
+												$('#snackbar').html('Deletion failed. Try again!');
+												$('#snackbar').addClass('show');
+												setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+											}
+											refresh();
+										}
+									});
+									}
+									
+								}
+		
+//  Function for dynamic Busness Location list           
+    function fetch_businessloc(){
+     var path="getbusinessloc";
+		$.ajax({
+         type: 'GET',
+         url : 'RetrieveServlet',
+         dataType: "json",
+         data : {path:path},
+         success : function(respo) {
+         		var drop = '';
+ 				for(var i = 0; i< respo.length; i++){
+ 					drop = drop+'<option value="'+respo[i].val2+'">'+respo[i].val2+'</option>';
+ 				}
+ 				$('#buisness_location').html(drop);	
+ 				$('#buisness_location2').html(drop);	
+            
+            // alert(respo);
+         }
+     }); 
+}
+
+
+	function fetch_state_placeofsupply() {
+
+        var path = "getstatemaster";
+        $.ajax({
+            type: 'GET',
+            url: 'RetrieveServlet',
+            dataType: "json",
+            data: {
+                path: path
+            },
+            success: function(respo) {
+
+                console.log(JSON.stringify(respo));
+                var drop = '';
+                for (var i = 0; i < respo.length; i++) {
+                    drop = drop + '<option value="' + respo[i].val2 + '">' +
+                        respo[i].val2 + '</option>';
+                }
+                $('#place_of_supply').html(drop);
+                $('#place_of_supply_edit').html(drop);
+
+            }
+        });
+    }
+	
+
+	function fetch_company() {
+
+        var path = "getcompany";
+        $.ajax({
+            type: 'GET',
+            url: 'RetrieveServlet',
+            dataType: "json",
+            data: {
+                path: path
+            },
+            success: function(respo) {
+                var drop = '';
+                for (var i = 0; i < respo.length; i++) {
+                    drop = drop + '<option value="' + respo[i].val2 + '">' +
+                        respo[i].val2 + '</option>';
+                }
+                $('#company_name').html(drop);
+                $('#company_name_edit').html(drop);
+            }
+        });
+    }
+  
+ 
+
+</script>

@@ -1,0 +1,733 @@
+<div class="container-fluid">
+    <div class="tab_div" style="margin-bottom: 20px;">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Supplier Details</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7"></div>
+            <div class="col-md-4">
+                <div class="col-md-8">
+                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="comp_srch" value="" />
+                </div>
+                <div class="col-md-4">
+                    <input type="button" class="btn btn-primary form-control" value="Search" />
+                </div>
+            </div>
+            <div class="col-md-1">
+                <input type="button" data-toggle="modal" data-target="#myModal" class="tab_button_plus" onClick="clearFields('add_suppilier')">
+            </div>
+        </div>
+    </div>
+    <div class="get_tabel"></div>
+    <!--add data modal box-->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog" style="width:1148px;">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Supplier</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form id="add_suppilier">
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <label class="control-label col-md-3">Supplier Name</label>
+                                                <div class="col-md-5">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="supplier_name" value="" />
+                                                </div>
+                                                <!---col-md-4--->
+                                            </div>
+                                            <!---row--->
+                                            <!-- <div class="row">
+                                    <label class="control-label col-md-3" >Search Code</label>
+                                    	 <div class="col-md-5">
+                                    					 <input type="text" style="margin-bottom: 20px;" class="form-control" name="sup_search_code" value="" />
+                                    	</div>-col-md-4-
+                                    </div> -->
+                                            <!---row--->
+                                            <h4>General</h4>
+                                            <div class="row">
+                                                <label class="control-label col-md-3">Vat No</label>
+                                                <div class="col-md-5">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="vat_no" value="" />
+                                                </div>
+                                                <!---col-md-4--->
+                                            </div>
+                                            <!---col-md-4--->
+                                            <div class="row">
+                                                <label class="control-label col-md-3">PAN No</label>
+                                                <div class="col-md-5">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="pan_no" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-3">GST No</label>
+                                                <div class="col-md-5">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="gst_no" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                            </div>
+                                            <!---row--->
+                                            <!-- <div class="row">
+                                    <div class="control-label">
+                                    		 <label><input type="checkbox" value=""> Under Decomposition Scheme</label>
+                                    </div>-col-md-4-
+                                    </div> -->
+                                            <!---row--->
+                                            <div class="row">
+                                                <h4>Address</h4>
+                                                <label class="control-label col-md-4">Address Line 1</label>
+                                                <div class="col-md-8">
+                                                    <textarea style="margin-bottom: 20px;" class="form-control" name="add_line_1" value="" /></textarea>
+                                                </div>
+                                                <!---col-md-3--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-4">Address Line 2</label>
+                                                <div class="col-md-8">
+                                                    <textarea style="margin-bottom: 20px;" class="form-control" name="add_line_2" placeholder="Optional" value="" /></textarea>
+                                                </div>
+                                                <!---col-md-3--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-2">City</label>
+                                                <div class="col-md-4">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="city" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                                <label class="control-label col-md-2">State</label>
+                                                <div class="col-md-4">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="state" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-2">Country</label>
+                                                <div class="col-md-4">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="country" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                                <label class="control-label col-md-2">Zip Code</label>
+                                                <div class="col-md-4">
+                                                    <input type="number" style="margin-bottom: 20px;" class="form-control" name="zip" value="" placeholder="Optional" />
+                                                </div>
+                                                <!---col-md-3--->
+                                            </div>
+                                            <!---row--->
+                                        </div>
+                                        <div class="col-md-6">
+                                            <!-- <div class="row">
+                                    <div class="control-label">
+                                    		 <label><input type="checkbox" name="sup_pre_sup" value=""> Preferred Supplier</label>
+                                    </div>-col-md-4-	
+                                    <div class="control-label">
+                                    		 <label><input type="checkbox" name="sup_is_act" value=""> is Active</label>
+                                    </div>-col-md-4-
+                                    </div> -->
+                                            <!---row--->
+                                            <div class="row">
+                                                <h4>Payment Terms</h4>
+                                                <label class="control-label col-md-10">Payments need to be setteled within number of days</label>
+                                                <div class="col-md-3">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="pay_settle_need" placeholder="Optional" value="" />
+                                                </div>
+                                                <!---col-md-4--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <h4>Contact Info</h4>
+                                                <label class="control-label col-md-3">First Name</label>
+                                                <div class="col-md-3">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="first_name" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                                <label class="control-label col-md-3">Last Name</label>
+                                                <div class="col-md-3">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="last_name" placeholder="Optional" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-3">Telephone Number</label>
+                                                <div class="col-md-3">
+                                                    <input type="number" style="margin-bottom: 20px;" class="form-control" name="tele_num" placeholder="Optional" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                                <label class="control-label col-md-3">Fax Number</label>
+                                                <div class="col-md-3">
+                                                    <input type="number" style="margin-bottom: 20px;" class="form-control" name="fax_num" placeholder="Optional" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-4">Mobile Number</label>
+                                                <div class="col-md-8">
+                                                    <input type="number" style="margin-bottom: 20px;" class="form-control" name="mob_num" value="" />
+                                                </div>
+                                                <!---col-md-6--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-4">Website</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="web" placeholder="Optional" value="" />
+                                                </div>
+                                                <!---col-md-6--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-4">Email</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="email" placeholder="Optional" value="" />
+                                                </div>
+                                                <!---col-md-6--->
+                                            </div>
+                                            <!---row--->
+                                            <!-- <div class="row">
+                                    <label class="control-label col-md-3" >Place Of Supply</label>
+                                    	 <div class="col-md-5">
+                                    		<div class="input-group-btn" >
+                                    			 <select name="nri_place_of_supply" class="form-control " name="sup_place_of_sup">
+                                    			 <option></option>
+                                    			 </select>
+                                    		</div>-button-
+                                    	</div>-col-md-4-
+                                    </div> -->
+                                            <!---row--->
+                                            <div class="row">
+                                                <h4>Financial Account</h4>
+                                                <label class="control-label col-md-4">Opening Balance</label>
+                                                <div class="col-md-8">
+                                                    <input type="number" style="margin-bottom: 20px;" class="form-control" name="open_bal" placeholder="Optional" value="" />
+                                                </div>
+                                                <!---col-md-4--->
+                                                <!-- 							<input type="button" class="btn btn-info" name="sup_open_bal_1" value="Change" /> -->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <h4>Supplier Name </h4>
+                                                <label class="control-label col-md-4">Supplier Name For Display</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="sup_name_for_disp" value="" />
+                                                </div>
+                                                <!---col-md-4--->
+                                                <!-- 				<input type="button" class="btn btn-info" name="sup__name_for_disp_1" value="Name By Template" /> -->
+                                            </div>
+                                            <!---row--->
+                                        </div>
+                                        <!---<div class="col-md-4">
+                                 <input type="file">
+                                 
+                                 </div><!---col-md-4--->
+                                    </div>
+                                    <!---form-group-->
+                                </form>
+                            </div>
+                            <!---col-md-12--->
+                        </div>
+                        <!---row--->
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="button" id="save_data" class="btn btn-success form-control" name="sup_save" value="Save" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--edit data modal box-->
+    <!-- Modal -->
+    <div class="modal fade" id="yModal" role="dialog">
+        <div class="modal-dialog" style="width:1148px;">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Supplier</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form id="edit_suppilier">
+                                    <input type="hidden" value="0" name="supplier_id" />
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <!-- <div class="row">
+                                    <label class="control-label col-md-3" >Supplier Code</label>
+                                    	 <div class="col-md-5">
+                                    		<input type="text" style="margin-bottom: 20px;" class="form-control" name="sup_supplier_code" name="nri_recieved_item_entry_number" value="" />
+                                    	</div>-col-md-4-
+                                    	<input type="button" class="btn btn-info" value="Define My Own Code" />
+                                    </div> -->
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-3">Supplier Name</label>
+                                                <div class="col-md-5">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="supplier_name" value="" />
+                                                </div>
+                                                <!---col-md-4--->
+                                            </div>
+                                            <!---row--->
+                                            <!-- <div class="row">
+                                    <label class="control-label col-md-3" >Search Code</label>
+                                    	 <div class="col-md-5">
+                                    					 <input type="text" style="margin-bottom: 20px;" class="form-control" name="sup_search_code" value="" />
+                                    	</div>-col-md-4-
+                                    </div> -->
+                                            <!---row--->
+                                            <h4>General</h4>
+                                            <div class="row">
+                                                <label class="control-label col-md-3">Vat No</label>
+                                                <div class="col-md-5">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="vat" value="" />
+                                                </div>
+                                                <!---col-md-4--->
+                                            </div>
+                                            <!---col-md-4--->
+                                            <div class="row">
+                                                <label class="control-label col-md-3">PAN No</label>
+                                                <div class="col-md-5">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="pan" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-3">GST No</label>
+                                                <div class="col-md-5">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="gst" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                            </div>
+                                            <!---row--->
+                                            <!-- <div class="row">
+                                    <div class="control-label">
+                                    		 <label><input type="checkbox" value=""> Under Decomposition Scheme</label>
+                                    </div>-col-md-4-
+                                    </div> -->
+                                            <!---row--->
+                                            <div class="row">
+                                                <h4>Address</h4>
+                                                <label class="control-label col-md-3">Address Line 1</label>
+                                                <div class="col-md-8">
+                                                    <textarea class="form-control" style="margin-bottom: 20px;" name="add1" value="" /></textarea>
+                                                </div>
+                                                <!---col-md-3--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-3">Address Line 2</label>
+                                                <div class="col-md-8">
+                                                    <textarea class="form-control" style="margin-bottom: 20px;" name="add2" placeholder="Optional" value="" /></textarea>
+                                                </div>
+                                                <!---col-md-3--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-2">City</label>
+                                                <div class="col-md-4">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="city" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                                <label class="control-label col-md-2">State</label>
+                                                <div class="col-md-4">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="state" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-2">Country</label>
+                                                <div class="col-md-4">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="country" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                                <label class="control-label col-md-2">Zip Code</label>
+                                                <div class="col-md-4">
+                                                    <input type="number" style="margin-bottom: 20px;" class="form-control" name="zip" placeholder="Optional" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                            </div>
+                                            <!---row--->
+                                        </div>
+                                        <div class="col-md-6">
+                                            <!-- <div class="row">
+                                    <div class="control-label">
+                                    		 <label><input type="checkbox" name="sup_pre_sup" value=""> Preferred Supplier</label>
+                                    </div>-col-md-4-	
+                                    <div class="control-label">
+                                    		 <label><input type="checkbox" name="sup_is_act" value=""> is Active</label>
+                                    </div>-col-md-4-
+                                    </div> -->
+                                            <!---row--->
+                                            <div class="row">
+                                                <h4>Payment Terms</h4>
+                                                <label class="control-label col-md-10">Payments need to be setteled within number of days</label>
+                                                <div class="col-md-3">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="pay_need" placeholder="Optional" value="" />
+                                                </div>
+                                                <!---col-md-4--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <h4>Contact Info</h4>
+                                                <label class="control-label col-md-3">First Name</label>
+                                                <div class="col-md-3">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="first_name" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                                <label class="control-label col-md-3">Last Name</label>
+                                                <div class="col-md-3">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="last_name" placeholder="Optional" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-3">Telephone Number</label>
+                                                <div class="col-md-3">
+                                                    <input type="number" style="margin-bottom: 20px;" class="form-control" name="phone_number" placeholder="Optional" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                                <label class="control-label col-md-3">Fax Number</label>
+                                                <div class="col-md-3">
+                                                    <input type="number" style="margin-bottom: 20px;" class="form-control" name="fax_number" placeholder="Optional" value="" />
+                                                </div>
+                                                <!---col-md-3--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-4">Mobile Number</label>
+                                                <div class="col-md-8">
+                                                    <input type="number" style="margin-bottom: 20px;" class="form-control" name="mobile_number" value="" />
+                                                </div>
+                                                <!---col-md-6--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-4">Website</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="website" placeholder="Optional" value="" />
+                                                </div>
+                                                <!---col-md-6--->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <label class="control-label col-md-4">Email</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="email" placeholder="Optional" value="" />
+                                                </div>
+                                                <!---col-md-6--->
+                                            </div>
+                                            <!---row--->
+                                            <!-- <div class="row">
+                                    <label class="control-label col-md-3" >Place Of Supply</label>
+                                    	 <div class="col-md-5">
+                                    		<div class="input-group-btn" >
+                                    			 <select name="nri_place_of_supply" class="form-control " name="sup_place_of_sup">
+                                    			 <option></option>
+                                    			 </select>
+                                    		</div>-button-
+                                    	</div>-col-md-4-
+                                    </div> -->
+                                            <!---row--->
+                                            <div class="row">
+                                                <h4>Financial Account</h4>
+                                                <label class="control-label col-md-4">Opening Balance</label>
+                                                <div class="col-md-8">
+                                                    <input type="number" style="margin-bottom: 20px;" class="form-control" name="open_bal" placeholder="Optional" value="" />
+                                                </div>
+                                                <!---col-md-4--->
+                                                <!-- 							<input type="button" class="btn btn-info" name="sup_open_bal_1" value="Change" /> -->
+                                            </div>
+                                            <!---row--->
+                                            <div class="row">
+                                                <h4>Supplier Name </h4>
+                                                <label class="control-label col-md-4">Supplier Name For Display</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" style="margin-bottom: 20px;" class="form-control" name="name_for_disp" value="" />
+                                                </div>
+                                                <!---col-md-4--->
+                                                <!-- 				<input type="button" class="btn btn-info" name="sup__name_for_disp_1" value="Name By Template" /> -->
+                                            </div>
+                                            <!---row--->
+                                        </div>
+                                        <!---<div class="col-md-4">
+                                 <input type="file">
+                                 
+                                 </div><!---col-md-4--->
+                                    </div>
+                                    <!---form-group-->
+                                </form>
+                            </div>
+                            <!---col-md-12--->
+                        </div>
+                        <!---row--->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form id="add_suppilier">
+                                    <div class="form-group">
+                                        <!-- <h4>User Field List</h4>
+                                 <div class="row">
+                                 				<div class="col-md-4">
+                                 							 <textarea class="form-control" name="sup_user"  value="" /></textarea>
+                                 			</div>-col-md-4-
+                                 </div> --><br>
+                                        <!---row--->
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <input type="button" id="save_edited_data" class="form-control btn btn-success" name="sup_save" value="Update" />
+                                            </div>
+                                            <!---col-md-12--->
+                                        </div>
+                                        <!---row-->
+                                    </div>
+                                    <!---form-group-->
+                                </form>
+                            </div>
+                            <!---col-md-12--->
+                        </div>
+                        <!---row--->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--edit data modal box-->
+</div>
+<!--container fluid-->
+<script>
+    $(document).ready(function() {
+    	refresh();
+        $('#save_data').on('click', function() {
+            var path = "add_supplier";
+            var vals = createJson('add_suppilier');
+            if (vals == null) {
+            	$('#snackbar').html('Please fill all fields!');
+				$('#snackbar').addClass('show');
+				setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+            } else {
+                vals = JSON.stringify(vals);
+                $.ajax({
+                    type: 'POST',
+                    url: 'AddServlet',
+                    data: {
+                        data: vals,
+                        path: path
+                    },
+                    success: function(respo) {
+                        if (respo == '1') {
+                        	$('#snackbar').html('New Supplier added successfully!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+							$('#myModal').modal('toggle'); 
+                            $('#add_suppilier')[0].reset();
+                        } else {
+                        	$('#snackbar').html('Oops!, something went wrong. Try again!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                            $('#add_suppilier')[0].reset();
+                        }
+                        refresh();
+                    }
+
+                });
+            }
+        });
+
+        function createJson(formId) {
+            var out_params = [];
+            var elements = document.getElementById(formId).elements;
+            var obj = {};
+            var chk = 0;
+            for (var i = 0; i < elements.length; i++) {
+                var item = elements.item(i);
+                if(item.value.length <= 0){
+                	if(item.name == 'zip' || item.name == 'open_bal' || item.name == 'email' || item.name == 'add_line_2' || item.name == 'add2' || item.name == 'pay_need' || item.name == 'pay_settle_need' || item.name == 'last_name' || item.name == 'tele_num' || item.name == 'fax_num' || item.name == 'fax_number' || item.name == 'phone_number' || item.name == 'web' || item.name == 'website'){
+						$('input[name="'+item.name+'"]').removeAttr("style");
+						$('input[name="'+item.name+'"]').css('marginBottom','20px');
+						obj[item.name] = item.value;
+					} else{
+                   		 $('input[name="' + item.name + '"]').css('borderBottom', '1px solid #FF5722 ');
+                   		 return null;
+					}            
+                }
+                else{
+                	$('input[name="'+item.name+'"]').removeAttr("style");
+					$('input[name="'+item.name+'"]').css('marginBottom','20px');
+					obj[item.name] = item.value;
+                }
+
+            }
+            out_params.push(obj);
+            return out_params;
+        }
+
+        // SAVE DATA AFTER EDIT
+
+        $('#save_edited_data').on('click', function() {
+            var path = "updatesupplier";
+            var vals = createJson('edit_suppilier');
+            if (vals == null) {
+            	$('#snackbar').html('Please fill all fields!');
+				$('#snackbar').addClass('show');
+				setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+            } else {
+                vals = JSON.stringify(vals);
+                $.ajax({
+                    type: 'POST',
+                    url: 'UpdateServlet',
+                    data: {
+                        data: vals,
+                        path: path
+                    },
+                    success: function(respo) {
+                       if (respo == '1') {
+                    	   $('#snackbar').html('Details updated successfully!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+							$('#yModal').modal('toggle'); 
+                            $('#edit_suppilier')[0].reset();
+                        } else {
+                        	$('#snackbar').html('Updation failed!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                            $('#edit_suppilier')[0].reset();
+                        }
+                        refresh();
+                    }
+
+                });
+            }
+        });
+
+
+
+    });
+
+     //reset field
+    function clearFields(id) {
+        $('#' + id)[0].reset();
+    }
+
+    //function for edit	
+    function get_suplier(id) {
+        var path = "editsupplier";
+        $.ajax({
+            type: 'GET',
+            url: 'EditServlet',
+            dataType: "json",
+            data: {
+                path: path,
+                id: id
+            },
+            success: function(respo) {
+                $('input[name="supplier_id"]').val(id);
+                $('input[name="supplier_name"]').val(respo[0].val2);
+                $('input[name="vat"]').val(respo[0].val3);
+               // $('input[name="cst"]').val(respo[0].val4);
+               // $('input[name="tin"]').val(respo[0].val5);
+                $('input[name="pan"]').val(respo[0].val6);
+                $('input[name="gst"]').val(respo[0].val7);
+                $('textarea[name="add1"]').val(respo[0].val8);
+                $('textarea[name="add2"]').val(respo[0].val9);
+                $('input[name="city"]').val(respo[0].val10);
+                $('input[name="state"]').val(respo[0].val11);
+                $('input[name="country"]').val(respo[0].val12);
+                $('input[name="zip"]').val(respo[0].val13);
+                $('input[name="pay_need"]').val(respo[0].val14);
+                $('input[name="first_name"]').val(respo[0].val15);
+                $('input[name="last_name"]').val(respo[0].val16);
+                $('input[name="phone_number"]').val(respo[0].val17);
+                $('input[name="fax_number"]').val(respo[0].val18);
+                $('input[name="mobile_number"]').val(respo[0].val19);
+                $('input[name="website"]').val(respo[0].val20);
+                $('input[name="email"]').val(respo[0].val21);
+                $('input[name="open_bal"]').val(respo[0].val22);
+                $('input[name="name_for_disp"]').val(respo[0].val23);
+            }
+        });
+
+
+
+
+    }
+
+    //CODE TO DELETE THE PARTICULAR DATA
+    function delete_supplier(id) {
+        var path = "deletesupplier";
+        var answer = confirm("Are you sure you want to delete from the database?");
+        if (answer) {
+            $.ajax({
+                type: 'GET',
+                url: 'DeleteServlet',
+                dataType: "json",
+                data: {
+                    path: path,
+                    id: id
+                },
+                success: function(respo) {
+                    if (respo == '1') {
+                    	$('#snackbar').html('Supplier details deleted successfully!');
+						$('#snackbar').addClass('show');
+						setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                    } else {
+                    	$('#snackbar').html('Oops!, something went wrong. Try again!');
+						$('#snackbar').addClass('show');
+						setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+                    }
+                    refresh();
+                }
+            });
+        }
+
+    }
+
+
+    function refresh() {
+        var path = "getsupplier";
+        $.ajax({
+            type: 'GET',
+            url: 'RetrieveServlet',
+            dataType: "json",
+            data: {
+                path: path
+            },
+            success: function(respo) {
+
+                if (respo.length > 0) {
+                    var html_str = '<table cellpadding="0" id="tblExport1" cellspacing="0" class="db-table" align="center"><thead><tr><th>Sr.No</th><th>Supplier Code</th><th>Name</th><th>Vat Number</th><th>Pan Number</th><th>GST Number</th><th>Payment Terms</th><th>Address 1</th><th>Address 2</th><th>City</th><th>State</th><th>Mobile Number</th><th>Name For Display</th><th>Edit</th><th>Delete</th></tr></thead><tbody>';
+                    for (var i = 0; i < respo.length; i++) {
+                        html_str = html_str = html_str + '<tr><td>' + (i+1) + '</td><td>' + respo[i].val2 + '</td><td>' + respo[i].val3 + '</td><td>' + respo[i].val4 + '</td><td>' + respo[i].val7 + '</td><td>' + respo[i].val8 + '</td><td>' + respo[i].val15 + '</td><td>' + respo[i].val9 + '</td><td>' + respo[i].val10 + '</td><td>' + respo[i].val11 + '</td><td>' + respo[i].val12 + '</td><td>' + respo[i].val19 + '</td><td>' + respo[i].val23 + '</td><td><input type="button" data-toggle="modal" data-target="#yModal" onClick="get_suplier(' + respo[i].val1 + ')" class="tab_button_edit" ></td><td><input type="button" class="tab_button_delete" onClick="delete_supplier(' + respo[i].val1 + ')"></td></tr>';
+                    }
+                    $('.get_tabel').html(html_str + '</tbody></table>');
+                } else {
+                	
+                }
+            }
+        });
+    }
+</script>

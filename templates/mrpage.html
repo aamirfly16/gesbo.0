@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% include 'header.html' %}
+
+
+
+{% block body%}
+
+ <script>
+function populate(s1,s2){
+	var s1 = document.getElementById(s1);
+	var s2 = document.getElementById(s2);
+	s2.innerHTML = "";
+	if(s1.value == "New Laptop"){
+		var optionArray = ["|","mews|MEWS","fsn|FSN","afsn|AFSN","msn|MSN"];
+	} else if(s1.value == "New PC"){
+		var optionArray = ["|","sews|SEWS","desktop|DESKTOP"];
+	} else if(s1.value == "Relocation"){
+		var optionArray = ["|","mews|MEWS","fsn|FSN","afsn|AFSN","msn|MSN","sews|SEWS"];
+	} else if(s1.value == "Asset-upgrade/Replacement"){
+		var optionArray = ["|","mews|MEWS","fsn|FSN","afsn|AFSN","msn|MSN","sews|SEWS"];
+	}
+	for(var option in optionArray){
+		var pair = optionArray[option].split("|");
+		var newOption = document.createElement("option");
+		newOption.value = pair[0];
+		newOption.innerHTML = pair[1];
+		s2.options.add(newOption);
+	}
+}
+</script>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col md-12">
+
+            <div class="jumbotron">
+                <div class="well text-center">
+              <h1 class="display-4">Request Raising page</h1>
+                </div>
+            </div>
+</div>
+            </div>
+
+<div class="container">
+    {% if message%}
+    <p class="message">{{message|safe}}</p>
+    {%endif%}
+    <form action={{ url_for('mrpage')}} method='post'>
+    <div class="form-group">
+        <h3>Cdsid</h3>
+        <input
+        type="text"
+        name="cdsid"
+        placeholder="Enter Cdsid"
+        >
+    </div>
+
+    <div class="form-group">
+          <h3>Request type</h3>
+        <select id="slct1" name="request_type" onchange="populate(this.id,'slct2')">
+<!--        <select name="request_type">-->
+        <option value="">Select Request_type</option>
+        <option value="New Laptop">New Laptop</option>
+        <option value="New PC">New PC</option>
+        <option value="Relocation">Relocation</option>
+        <option value="Asset-upgrade/Replacement">Asset-upgrade/Replacement</option>
+        </select>
+<!--    </div>-->
+<!--         <div class="form-group">-->
+        <h3>Asset Type</h3>
+        <select id="slct2" name="new_assert_type" value=""> </select>
+<!--        <input type="radio" name="new_assert_type" value="fsn" /> fsn-->
+<!--        <input type="radio" name="new_assert_type" value="msn" /> Msn-->
+<!--        <input type="radio" name="new_assert_type" value="afsn" /> Afsn-->
+<!--        <input type="radio" name="new_assert_type" value="mews" /> Mews-->
+<!--        <input type="radio" name="new_assert_type" value="sews" checked /> Sews-->
+    </div>
+
+
+    <div class="form-group">
+        <h3>Location</h3>
+        <input
+        type="text"
+        name="new_location"
+        placeholder="Enter New location"
+        >
+    </div>
+
+    <div class="form-group">
+        <h3>Service tag</h3>
+        <input
+        type="text"
+        name="service_tag"
+        placeholder="Enter Service tag"
+        >
+    </div>
+    <div class="form-group">
+        <h3>Sharing</h3>
+        <select name="sharing">
+            <option value="">Sharing</option>
+            <option value="true">Yes</option>
+            <option value="false">no</option>
+<!--            <input name="unshare" type="checkbox" value="yes"> <h3>unshare</h3>-->
+        </select>
+    </div>
+    <div class="form-group">
+        <h3>Unshare</h3>
+        <input name="unshare" value="yes" type=checkbox>
+    </div>
+    <input type="submit" value="Submit" class="btn"/>
+
+    </form>
+
+</div>
+
+
+{%endblock%}

@@ -1,0 +1,362 @@
+
+<div class="container-fluid">
+
+	<div class="tab_div" style="margin-bottom: 20px;">
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Godown Details</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-7"></div>
+
+			<div class="col-md-4">
+				<div class="col-md-8">
+					<input type="text" class="form-control" name="comp_srch" value="" />
+				</div>
+				<div class="col-md-4">
+					<input type="button" class="btn btn-primary form-control" style="" value="Search" />
+				</div>				
+			</div>
+			<div class="col-md-1">
+				<input type="button" data-toggle="modal"
+					data-target="#myModal" class="tab_button_plus"
+					onClick="clearFields('add_godown')">
+			</div>
+
+		</div>
+
+	</div>
+    <div class="get_tabel"></div>
+    <!--add data modal box-->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog" style="width:1148px;">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Godown</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+						<form id="add_godown">
+                            <div class="row">
+                                <label class="control-label col-md-4" > Godown Name:</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" style="margin-bottom:20px;" name="godown_name" value="" id="" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="control-label col-md-4" >Description:</label>
+                                <div class="col-md-4">
+                                    <textarea class="form-control" style="margin-bottom:20px;" name="description" placeholder="Optional" id="" /></textarea>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-2">
+                                    <input type="button" value="Save" id="save_godown" class="btn btn-primary form-control btn-md ">
+                                </div>
+                            </div>
+						</form>
+                    </div>                   
+                </div>
+				<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--edit data modal box-->
+    <!-- Modal -->
+    <div class="modal fade" id="yModal" role="dialog">
+        <div class="modal-dialog" style="width:1148px;">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Godown</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="edit_godown">
+                        <input type="hidden" name="godown_id">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <label class="control-label col-md-4" > Godown Name:</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" style="margin-bottom:20px;" name="godown" value="" id="" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="control-label col-md-4" >Description:</label>
+                                <div class="col-md-4">
+                                    <textarea class="form-control" style="margin-bottom:20px;" name="description" placeholder="Optional" id="" /></textarea>
+                                </div>
+                            </div>
+                            <!--  <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <label class="control-label col-md-4" style="margin-top:8px;"><input type="checkbox" checked /disabled>Is Active</label>
+                        </div>
+                        </div> -->
+                            <br>
+                            <div class="row">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-2">
+                                    <input type="button" value="Save" id="save_edit_godown" class="btn btn-primary form-control btn-md ">
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="button" value="Cancel" class="btn btn-primary form-control btn-md ">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--edit data modal box-->
+</div>
+<!--container fluid-->
+<script>
+    $(document).ready(function() {
+    	 refresh();
+        $('#save_godown').on('click', function() {
+            var path = "add_godown";
+            var vals = createJson('add_godown');
+            if (vals == null) {
+                $('#snackbar').html('Please fill all fields to proceed next!');
+                $('#snackbar').addClass('show');
+                setTimeout(function() {
+                    $('#snackbar').removeClass('show');
+                }, 3000);
+            } else {
+                vals = JSON.stringify(vals);
+                $.ajax({
+                    type: 'POST',
+                    url: 'AddServlet',
+                    //dataType: "json",
+                    data: {
+                        data: vals,
+                        path: path
+                    },
+                    success: function(respo) {
+                        if (respo == '1') {
+                            $('#snackbar').html('Godown created successfully!');
+                            $('#snackbar').addClass('show');
+                            setTimeout(function() {
+                                $('#snackbar').removeClass('show');
+                            }, 3000);
+                            $('#add_godown')[0].reset();
+                            $('#myModal').modal('toggle'); 
+                            refresh();
+                        } else {
+                            $('#snackbar').html('Oops!, Something went wrong. Try again!');
+                            $('#snackbar').addClass('show');
+                            setTimeout(function() {
+                                $('#snackbar').removeClass('show');
+                            }, 3000);
+                        }
+                        
+                    }
+
+                });
+            }
+        });
+
+        function createJson(formId) {
+            var out_params = [];
+            var elements = document.getElementById(formId).elements;
+            var obj = {};
+            var chk = 0;
+            console.log(formId);
+            for (var i = 0; i < elements.length; i++) {
+                var item = elements.item(i);
+                if (item.value.length <= 0) {
+                    if (item.name == 'description') {
+                        $('input[name="' + item.name + '"]').removeAttr("style");
+                        $('input[name="' + item.name + '"]').css('marginBottom', '20px');
+                        obj[item.name] = item.value;
+                    } else {
+                        $('input[name="' + item.name + '"]').css('borderBottom', '1px solid #FF5722 ');
+                        return null;
+                    }
+                } else {
+                    $('input[name="' + item.name + '"]').removeAttr("style");
+                    $('input[name="' + item.name + '"]').css('marginBottom', '20px');
+                    obj[item.name] = item.value;
+                }
+
+            }
+            out_params.push(obj);
+            return out_params;
+        }
+
+
+        // SAVE DATA AFTER EDIT
+
+        $('#save_edit_godown').on('click', function() {
+            var path = "updategodown";
+            var vals = createJson('edit_godown');
+            //console.log('Result:\t'+JSON.stringify(vals));
+            if (vals == null) {
+                $('#snackbar').html('Please fill all fields to proceed next!');
+                $('#snackbar').addClass('show');
+                setTimeout(function() {
+                    $('#snackbar').removeClass('show');
+                }, 3000);
+            } else {
+                vals = JSON.stringify(vals);
+                $.ajax({
+                    type: 'POST',
+                    url: 'UpdateServlet',
+                    data: {
+                        data: vals,
+                        path: path
+                    },
+                    success: function(respo) {
+                        if (respo == '1') {
+                            $('#snackbar').html('Godown details updated successfully!');
+                            $('#snackbar').addClass('show');
+                            setTimeout(function() {
+                                $('#snackbar').removeClass('show');
+                            }, 3000);
+                            $('#yModal').modal('toggle');
+                            $('#edit_godown')[0].reset();
+                            refresh();
+                        } else {
+                            $('#snackbar').html('Oops!, Somwthing went wrong. Try again!');
+                            $('#snackbar').addClass('show');
+                            setTimeout(function() {
+                                $('#snackbar').removeClass('show');
+                            }, 3000);
+                        }
+                       
+                    }
+
+                });
+            }
+        });
+
+
+    });
+
+    function refresh() {
+        var path = "getgodown";
+        $.ajax({
+            type: 'GET',
+            url: 'RetrieveServlet',
+            dataType: "json",
+            data: {
+                path: path
+            },
+            success: function(respo) {
+
+                if (respo.length > 0) {
+                    var html_str = '<table cellpadding="0" id="tblExport1" cellspacing="0" class="db-table" align="center"><thead><tr><th>Sr.No</th><th>Name</th><th>Description</th><th>Edit</th><th>Delete</th></tr></thead><tbody>';
+                    for (var i = 0; i < respo.length; i++) {
+                        html_str = html_str + '<tr><td>' + respo[i].val1 + '</td><td>' + respo[i].val2 + '</td><td>' + respo[i].val3 + '</td><td><input type="button" id="" data-toggle="modal" data-target="#yModal" class="tab_button_edit" onClick="get_godown(' + respo[i].val1 + ')"></td><td><input type="button" id=""  class="tab_button_delete" onClick="delete_godown(' + respo[i].val1 + ')"></td></tr>';
+                    }
+                    $('.get_tabel').html(html_str + '</tbody></table>');
+                } else {
+                    $('#snackbar').html('No data available in database!');
+                    $('#snackbar').addClass('show');
+                    setTimeout(function() {
+                        $('#snackbar').removeClass('show');
+                    }, 3000);
+                }
+            }
+        });
+    }
+
+    function clearFields(id) {
+        $('#'+id)[0].reset();
+    }
+
+    function get_godown(id) {
+        var path = "editgodown";
+        $.ajax({
+            type: 'GET',
+            url: 'EditServlet',
+            dataType: "json",
+            data: {
+                path: path,
+                id: id
+            },
+            success: function(respo) {
+                $('input[name="godown_id"]').val(id);
+                $('input[name="godown"]').val(respo[0].val1);
+                $('textarea[name="description"]').val(respo[0].val2);
+            }
+        });
+    }
+
+
+    //CODE TO DELETE THE PARTICULAR DATA
+    function delete_godown(id) {
+        var path = "deletegodown";
+        var answer = confirm("Are you sure you want to delete from the database?");
+        if (answer) {
+            $.ajax({
+                type: 'GET',
+                url: 'DeleteServlet',
+                dataType: "json",
+                data: {
+                    path: path,
+                    id: id
+                },
+                success: function(respo) {
+                    if (respo == '1') {
+                        $('#snackbar').html('Godown details deleted successfully!');
+                        $('#snackbar').addClass('show');
+                        setTimeout(function() {
+                            $('#snackbar').removeClass('show');
+                        }, 3000);
+                    } else {
+                        $('#snackbar').html('Oops!, Something went wrong. Try again!');
+                        $('#snackbar').addClass('show');
+                        setTimeout(function() {
+                            $('#snackbar').removeClass('show');
+                        }, 3000);
+                    }
+                    refresh();
+                }
+            });
+        }
+
+    }
+
+    //show and hide on check box
+    $(".hide_check").show();
+
+    $(".coupon_question").click(function() {
+        if ($(this).is(":checked")) {
+            $(".hide_check").show();
+        } else {
+            $(".hide_check").hide();
+        }
+    });
+
+    // preview image
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function() {
+        readURL(this);
+    });
+</script>

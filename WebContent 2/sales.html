@@ -1,0 +1,2309 @@
+<html>
+<script type="text/javascript" src="jquery.scannerdetection.js"></script>
+
+<head>
+
+</head>
+<style>table,
+table tr td,
+table tr th {
+    page-break-inside: avoid;
+}</style>
+<div class="container-fluid">
+   <div class="row">
+		<div class="col-md-12">
+			<h3 style="text-align: center;color: #A8766B;">SALES</h3>
+		</div>
+   </div>
+<input type="hidden" name="customer_name" id="cust_name" value="">
+   <form id="main_frm">
+   
+   <!-- <div class="row">
+   <div class="col-md-12">
+			<label class="control-label col-md-2" style="margin-top:8px; " >Select From Template:</label>
+			<div class="col-md-3">
+				<select name="template" class="form-control" id="select_template" onchange="getTemplateData(this.value)" required="required">
+					<option>Select Template</option>
+				</select>
+			</div>
+			</div>
+			<div></div>
+   </div>-->
+   <div class="row">
+		<div class="col-md-12">
+			<label class="control-label col-md-2" style="margin-top:8px; " >Customer Name:</label>
+			<div class="col-md-3">
+				<select name="cus_name" class="form-control" id="select_cus_name" onchange="getCustomersData(this.value)" required="required">
+					<option>Select Customer</option>
+				</select>
+			</div>
+			<div class="col-md-1">
+				<input type="button" data-toggle="modal"
+					data-target="#myModal" class="tab_button_plus"
+					>
+			</div>
+			
+			<div id="shops" style="display: none;">
+			<label class="control-label col-md-2" style="margin-top:8px; " >Select Shop:</label>
+			<div class="col-md-3">
+				<select name="selshop" class="form-control" id="selshop" onchange="addShopValue(this.value)" required="required">
+					<option>Select Shop</option>
+				</select>
+			</div>
+			</div>
+			<input type="hidden" name="shopval" id="shopval" value="0">
+		</div>
+   </div>
+  
+				<input type="hidden" class="form-control" style="margin-bottom:20px;" id="cus_addr" name="cus_addr" value="" />
+				<input type="hidden" class="form-control" style="margin-bottom:20px;" id="cus_gst" name="cus_gst" value="" />
+				<input type="hidden" class="form-control" style="margin-bottom:20px;" id="cus_pan" name="cus_pan" value="" />
+				<input type="hidden" class="form-control" style="margin-bottom:20px;" id="cus_city" name="cus_city" value="" />
+				<input type="hidden" class="form-control" style="margin-bottom:20px;" id="cus_pin" name="cus_pin" value="" />
+			    <input type="hidden" class="form-control" style="margin-bottom:20px;" id="cus_pin" name="cus_pin" value="" />
+			    <input type="hidden" class="form-control" style="margin-bottom:20px;" id="credit" name="credit" value="0" />
+			    <input type="hidden" class="form-control" style="margin-bottom:20px;" name="cus_num" value="" id="cus_num"/>
+				<input type="hidden" class="form-control" style="margin-bottom:20px;" name="cus_mail" value="" id="cus_mail"/>
+			
+			
+			
+			<div class="row">
+		   <div class="col-md-12">
+			<label class="control-label col-md-2" style="margin-top:8px; " > Barcode:</label>
+			<div class="col-md-4">
+				<input type="text" id="barc" class="form-control" name="barc" value="" onchange="getBarcode()" onload="getBarcode()">
+			</div>
+			
+			<label class="control-label col-md-2" style="margin-top:8px; " >Date:</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control" style="margin-bottom:20px;" name="cus_date" value="" id="cus_date" required="required" />
+			</div>
+			
+			
+		</div>
+   </div>
+			
+    <div class="row">
+		<div class="col-md-12">
+			<label class="control-label col-md-2" style="margin-top:8px; " > Barcode:</label>
+			<div class="col-md-4">
+				<input type="text" id="barcode" class="form-control" name="barcode" value="" onchange="getBarcode()" oninput="getBarcode(this.value)">
+			</div>
+			 <label class="control-label col-md-2" style="margin-top:8px; " >SGST :</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control" style="margin-bottom:20px;" name="taxamt123" value="2.5" id="taxamount123" oninput="taxamount1()"/>
+			</div>
+		</div> 
+   </div>
+    <div class="row">
+		<div class="col-md-12">
+			<label class="control-label col-md-2" style="margin-top:8px; " >Time:</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control" style="margin-bottom:20px;" name="cus_time" value="" id="cus_time" />
+			</div>
+			<label class="control-label col-md-2" style="margin-top:8px; " >CGST :</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control" style="margin-bottom:20px;" name="taxamt" value="2.5" id="taxamount" oninput="taxamount1()"/>
+			</div>
+			
+		</div>
+			</div>
+   
+
+    <div class="row">
+		<div class="col-md-12">
+			<label class="control-label col-md-2" style="margin-top:8px; " >Total :</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control" style="margin-bottom:20px;" name="total" value="" id="totalamt" />
+				<input type="hidden" class="form-control" style="margin-bottom:20px;" name="total1" value="" id="totalamt1" />
+				<input type="hidden" class="form-control" style="margin-bottom:20px;" name="modeofpay" value="" id="modeofpay" />
+				<input type="hidden" class="form-control" style="margin-bottom:20px;" name="purchase" value="" id="purtot" />
+				<input type="hidden" class="form-control" style="margin-bottom:20px;" name="margin" value="" id="martot" />
+				<input type="hidden" class="form-control" style="margin-bottom:20px;" name="purchasetotal1" value="" id="purchasetotal1" />
+			</div>
+			<label class="control-label col-md-2" style="margin-top:8px; " >Discount :</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control" style="margin-bottom:20px;" name="discount" value="0" id="discount" oninput="taxamount1()"/>
+			</div>
+		</div>
+   </div>
+   
+   <input type="hidden" value="0" id="invoid" name="invoid">
+   <div align="center">
+             <table id="ssss">
+			<tr style=" background-color:white;">
+								<td colspan="1" style="float: right;font-size: medium;">
+									<button type="button" class="btn btn-danger"  id="printReportscus">Update Receipt</button>
+									<button type="button" class="btn" style="background-color: blue;color: white;" id="pay" onclick="cashpayment()" data-toggle="modal"
+					data-target="#paymode">Pay&Update</button>
+				                   <!--  <button type="button" class="btn btn-danger" id="print">Print</button>
+				                    <button type="button" class="btn" style="background-color: green;color: white;" id="save">Reserve</button>	 -->	
+				                    <button type="button"  class="btn btn-info"  id="delete"   onclick="cancelData()" name="cus_cancel">Cancel</button>
+								</td>
+							</tr>
+						</table>
+   </div>
+      </form>
+   
+   <br>
+   <div class="row">
+		<div class="col-md-12">
+			<table id="main_table">
+				<tr><td>
+					<!-- <table id="main_table1"><tr><th style="width: 30px">S. No</th>
+					<th style="width: 80px">IMEI</th>
+					<th style="width: 78px">Barcode</th>
+					<th style="width: 120px">Item Name</th>
+					<th style="width: 20px">HSN/SAC</th>
+					<th style="width: 40px">Qty</th>
+					<th style="width: 60px">Condition</th>
+					<th style="width: 60px">Total Price</th> -->
+					<table id="main_table1"><tr><th style="width: 10%">S. No</th>
+					<th style="width: 15%">Barcode</th>
+					<th style="width: 15%">Category</th>
+					<th style="width: 15%">Brand</th>
+					<th style="width: 15%">Varity</th>
+					<th style="width: 10%">Qty</th>
+					<th style="width: 10%">Price</th>
+					<th style="width: 10%">Total Price</th>
+					</tr></table>
+					</td>
+					<td>
+						<span onclick="addRow()" class="add_button" style="float:none; margin:0;display: block;"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<form id="sub_frm1"><table><tr>
+						<td style="width:28px;"><input type="number" class="cus_input" name="sno" value="1" readonly /></td>
+						<td style="width:68px;"><input type="text" class="cus_input" name="imei" id="imei" value="" /></td>
+						<td style="width:68px;"><input type="text" class="cus_input" name="barcode" id="barcode1" value="" /></td>
+						<td style="width:77px;"><input list="liitem1" id="item1" class="cus_input" name="item" value="" oninput="getItems(this.id)" onblur="fillFields(this.id)"/>
+						<datalist id="liitem1"><option>One</option><option>Two</option></datalist></td>
+						<td style="width:34px;"><input type="number" class="cus_input" name="qty" id="qty1" oninput="checkQty(this.id)" value="0" /></td>
+						<td style="width:50px;"><input type="number" class="cus_input" name="unit_price" id="unit_price1" value="0" readonly /></td>
+						</tr>
+					</table></form>
+					</td>
+					<td>
+						<span id="del_row" class="remCF del_button" style="float:none; margin:0;display: block;"></span>
+					</td>
+				</tr>
+			</table>
+		</div>
+   </div>
+   
+   
+   <div id="pdfdiv" style="display: none;"></div>
+   
+   <div class="modal fade" id="paymode" role="dialog">
+		<div class="modal-dialog" style="width: 1148px;height: 800px">
+
+		
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Payment</h4>
+				   <br><br>
+			
+		<div class="col-md-12">
+			<div class="container">
+					  <ul class="nav nav-tabs">
+					    <li class="active"><a data-toggle="tab" href="#home" onclick="cashpayment()">Cash</a></li>
+					    <li><a data-toggle="tab" href="#menu1" onclick="cardpayment()">Card</a></li>
+					  </ul>
+					
+					  <div class="tab-content">
+					    <div id="home" class="tab-pane fade in active">
+					      <h3></h3>
+					      <div class="col-md-6">
+	
+							<div class="row">
+						
+								<label class="control-label col-md-4"> Received Amount</label>
+								<div class="col-md-8">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="cash_received_amt"  value="" id="cash_received_amt" placeholder="0.00" />
+								</div>
+								
+								
+								<div class="col-md-8">
+									<input type="button" class="btn btn-info" style="margin-bottom: 20px;" name="PAY"  value="PAY" id="payandprintcus" placeholder="0.00" />
+								</div>
+								
+								</div>
+								</div>
+								</div>
+								<div id="menu1" class="tab-pane fade">
+					      <h3></h3>
+					      <div class="col-md-10">
+							<div class="row">
+								<label class="control-label col-md-2">Amount</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="card_received_amt"  id="card_received_amt" value="" />
+								</div>
+								<label class="control-label col-md-2"> Card Hoder Name:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="card_holder_name" value="" placeholder="Optional"/>
+								</div>
+							</div>
+	
+							<div class="row">
+								<label class="control-label col-md-2"> Bank Name:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="card_bank_name" value="" placeholder="Optional"/>
+								</div>
+								<label class="control-label col-md-2">Approval Number:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" style="margin-bottom: 20px;" name="card_approval_num" value="" placeholder="Optional"/>
+								</div>
+							</div>
+						   <div class="col-md-8">
+									<input type="button" class="btn btn-info" style="margin-bottom: 20px;" name="PAY"  value="PAY" id="payandprintmer" placeholder="0.00" />
+								</div>
+							</div>
+							</div>
+							</div>
+							</div>
+							</div>
+							</div>
+							</div>
+							
+    
+    </div>
+    </div>
+    
+   
+   
+   <!--add data modal box-->
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog" style="width: 1148px;">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Add Customer</h4>
+				</div>
+				<div class="modal-body">
+					<form id="add_customer">
+						<div class="container-fluid">
+							
+							<div class="col-md-6">
+								<div class="row">
+									<label class="control-label col-md-4"> Customer
+										Name:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="customer_name" id="customer_name" value="" />
+									</div>
+								</div>
+								<!-- <div class="row">
+									<label class="control-label col-md-4">Credit
+										Limit(Use system default credit limit):</label>
+									<div class="col-md-8">
+										<input type="checkbox" class="form-control" style="margin-bottom: 20px;" name="credit_limit" value="">
+									</div>
+								</div> -->
+
+								<div class="row">
+									<label class="control-label col-md-4">Address:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" id="cust_dob" name="address" id="address" placeholder="Optional" value="na" />
+									</div>
+								</div>
+							</div>
+						
+							<div class="col-md-6">
+								<div class="row">
+									<label class="control-label col-md-2">Contact:</label>
+									<div class="col-md-8">
+										<input type="number" class="form-control" style="margin-bottom: 20px;" name="contact" id="contact" value="" />
+									</div>
+								</div>
+								<div class="row">
+									<label class="control-label col-md-2">Email:</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" style="margin-bottom: 20px;" name="email" value="na" />
+									</div>
+								</div>
+							</div>
+					
+							<!--contact details-->
+							<div class="row">
+								<div class="col-md-12">
+									<div class="col-md-2">
+										<input type="button" value="Save" id="save_customer" class="btn btn-primary form-control btn-md ">
+									</div>
+								</div>
+							</div>
+					</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+   
+</div>
+<!--container fluid-->
+
+<script>
+
+	//var avai_qty = 1;
+	//var sale_tax_value=0;
+	
+    $(document).ready(function() {
+    	
+    	var eid=localStorage.getItem('eid');
+    	var x = document.getElementById("shops");
+    	if(eid==1)
+    		{
+    	        x.style.display = "block";
+    		}
+    	else
+    		{
+    		getShopDetails(eid);
+    		x.style.display = "none";
+    		}
+    	
+    	selectLot();
+    	getShops();
+    	getCustomersList();
+    	getLotName();
+    	deleterows();
+    	getTemplates();
+    	//genratePdf();
+		   $("#main_table").on('click', '.remCF', function() {
+				$(this).parent().parent().remove();
+			});
+       var months = [
+	  'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Oct', 'November', 'December'
+	];
+
+	var days = [
+	  'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
+	];
+
+		function update(){
+		  var date = new Date();
+		  
+		  var ampm = date.getHours() < 12
+					 ? 'AM'
+					 : 'PM';
+		  
+		  var hours = date.getHours() == 0
+					  ? 12
+					  : date.getHours() > 12
+						? date.getHours() - 12
+						: date.getHours();
+		  
+		  var minutes = date.getMinutes() < 10 
+						? '0' + date.getMinutes() 
+						: date.getMinutes();
+		  
+		  var seconds = date.getSeconds() < 10 
+						? '0' + date.getSeconds() 
+						: date.getSeconds();
+		  
+		  var dayOfWeek = days[date.getDay()];
+		  var month = date.getMonth();
+		  var day = date.getDate();
+		  var year = date.getFullYear();
+		  
+		  var dateString = year+'-'+ month + '-' + day;
+		  
+			$('input[name="cus_time"]').val(hours +':'+ minutes +' '+ ampm);		
+		} 
+		update();
+		window.setInterval(update, 1000);
+		
+		$('input[name="cus_date"]').datepicker({
+			dateFormat: 'yy-mm-dd'
+		});
+		
+		
+		
+		$('#save_customer').on('click', function() {
+			var path = "add_onspot_customer";
+		//	var vals = createJsoncus('add_customer');
+			var cusname=$('#customer_name').val();
+			var contact=$('#contact').val();
+			if(cusname==''||contact=='')
+				{
+				alert('Plese Fill All the Feilds');
+				}
+			else
+				{
+		//	console.log('Input datass:\t'+JSON.stringify(vals));
+			/*if (vals == null) {
+				$('#snackbar').html('Fill required fields to add customer!');
+				$('#snackbar').addClass('show');
+				setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+			} else {*/
+			 //	vals = JSON.stringify(vals);
+				$.ajax({
+					type : 'POST',
+					url : 'AddServlet',
+					data : {
+						cusname:cusname,contact:contact,
+						path : path
+					},
+					success : function(respo) {
+						if (respo == '1') {
+							$('#snackbar').html('New Customer added successfully!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+							$('#customer_name').val('');
+							$('#contact').val('');
+						//	$('#add_customer')[0].reset();
+							$('#myModal').modal('toggle');
+							getCustomersList();
+						} else {
+							$('#snackbar').html('Oops!, Something went wrong. Please check input once again!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+							$('#add_customer')[0].reset();
+						}
+					}
+
+				});
+			}
+				
+		});
+		
+		function createJsoncus(formId) {
+			var out_params = [];
+			var elements = document.getElementById(formId).elements;
+			var obj = {};
+			var chk = 0;
+			console.log(formId);
+			for (var i = 0; i < elements.length; i++) {
+				var item = elements.item(i);
+		//		console.log("Elements length "+elements.length);
+				console.log("Item name "+elements.item(i).name);
+				if(item.value.length <= 0){
+						if(item.name == 'address' || item.name == 'contact' || item.name== 'email'){
+							$('input[name="'+item.name+'"]').removeAttr("style");
+							$('input[name="'+item.name+'"]').css('marginBottom','20px');
+							obj[item.name] = item.value;
+						}else{
+							$('input[name="'+item.name+'"]').css('borderBottom','1px solid #FF5722 ');
+							return null;  
+						}
+				}
+				else{
+					$('input[name="'+item.name+'"]').removeAttr("style");
+					$('input[name="'+item.name+'"]').css('marginBottom','20px');
+					obj[item.name] = item.value;
+				}
+
+			}
+			out_params.push(obj);
+			return out_params;
+		}
+
+		
+		//Print Customer Receipt
+		
+	/*	$('#printReports').on('click',function(){
+			
+			saveData();
+			
+			var path = "getSalesReportByDateFilter";
+		
+			var cus_name = $('#select_cus_name').val();
+			var number = $('#cus_num').val();
+			var address = $('#cus_addr').val();
+			var email = $('#cus_mail').val();
+			var cus_date = $('#cus_date').val();
+			var cus_time = $('#cus_time').val();
+			var custr_name = $('#cust_name').val();
+			
+			 var obj_aaary = [];
+			var table_data = "";
+			
+			var table = document.getElementById("main_table");
+			console.log(table);
+	        var forms = table.getElementsByTagName("form");
+	        console.log(forms);
+	        for(var i=0; i< forms.length; i++)
+	        {
+	        	console.log("asdfgasdfg "+forms[i].getAttribute('id'));
+	        	var tb_data = readTable(forms[i].getAttribute('id'));
+	        	if(tb_data == null){
+	        		alert("Please Select Item!");
+	        		break;
+	        	}else{
+	        		obj_aaary.push(tb_data);
+	        	}	       	
+	        }
+	        console.log(obj_aaary);
+	      //  table_data = JSON.stringify(obj_aaary);
+	     //   console.log("Table data "+JSON.stringify(obj_aaary));
+	    //	console.log(cus_name +" "+ number +" "+ address +" "+ email +" "+ cus_date +" "+ cus_time+ " "+ custr_name);
+			 
+	    var myWindow = window.open('', 'print', 'height=400,width=600');
+				
+				myWindow.document.write('<html><head><title></title>');
+				myWindow.document.write('<link rel="stylesheet" href="css/print.css" type="text/css" media="print" />');
+				myWindow.document.write('</head><body>');
+				myWindow.document.write('<div class="div2"><b>Fashion Focus</b><br><span>Prashanti fields, Whitefield Railway station Road, Kadugodi, Bangalore 67.</span></div>');
+				//myWindow.document.write('<tr><td>-------------------------------------------------------------------------------------------------------------------</td></tr>');
+				myWindow.document.write('<tr><td><b>Customer Name: </b>'+custr_name+'</td></tr>');
+				myWindow.document.write('<tr><td><b>Customer Code: </b>'+cus_name+'</td></tr>');	
+				myWindow.document.write('<tr><td><b>Number : </b>'+number+'</td></tr>');
+				myWindow.document.write('<tr><td><b>Address :</b>'+address+'</td></tr>');
+				myWindow.document.write('<tr><td><b>Email : </b>'+email+'</td></tr>');
+				myWindow.document.write('<tr><td><b>Date : </b>'+cus_date+'</td></tr>');
+				myWindow.document.write('<tr><td><b>Time : </b>'+cus_time+'</td></tr>');
+			//	myWindow.document.write('<tr><td>--------------------------------------------------------------------------------------------------------------------</td></tr></table>');
+				myWindow.document.write('<tr><td><b>Item Detailed Itenary:</b></td></tr>');
+				myWindow.document.write('<table border="1" cellpadding="2" width="100%"><tr><th>S.No</th><th>IMEI</th><th>Barcode</th><th>Item Name</th><th>HSN/SCA</th><th>Quantity</th><th>Amount</th></tr>');
+		
+				for(var i=0 ; i<obj_aaary.length; i++)
+				{
+				
+					myWindow.document.write('<tr><td>'+obj_aaary[i].sno+'</td><td>'+obj_aaary[i].imei+'</td><td>'+obj_aaary[i].barcode+'</td><td>'+obj_aaary[i].item+'</td><td>'+obj_aaary[i].hsnsac+'</td><td>'+obj_aaary[i].qty+'</td><td>'+obj_aaary[i].unit_price+'</td></tr>');
+				
+				}
+				myWindow.document.write('</table>');
+				myWindow.document.write('(Signature not required for system genereted slip)');
+				myWindow.document.write('</body></html>');
+				myWindow.document.close(); // necessary for IE >= 10
+				myWindow.onload=function(){ // necessary if the div contain images
+					myWindow.focus(); // necessary for IE >= 10
+					myWindow.print();
+					myWindow.close();	
+			}
+		});
+  });*/
+    
+
+  
+  
+  
+  
+  
+  $('#printReportscus').on('click',function(){
+		var cusname=$('#select_cus_name').val();
+		var credit=$('#credit').val();
+		var total=$('#totalamt').val();
+		var date=$('#cus_date').val();
+		if(cusname==0)
+			{
+			alert("Please Select Customer");
+			}
+		else
+			{
+			if(total==''||date=='')
+				{
+				alert("Please Check all the feilds");
+				}
+			else
+				{
+			console.log("Credit "+credit+" "+total);
+		          saveDatacus();
+				}
+			}
+	});
+});
+    
+$('#printReportsmer').on('click',function(){
+	var cusname=$('#select_cus_name').val();
+	var date=$('#cus_date').val();
+	alert(cusname);
+	if(cusname==0)
+		{
+		alert("Please Select Customer");
+		}
+	else
+		{
+	saveDatamer();
+		}
+});
+    
+    $('#payandprintcus').on('click',function()
+    {
+    	var cusname=$('#select_cus_name').val();
+    	var total=$('#totalamt').val();
+    	var date=$('#cus_date').val();
+    	//alert(cusname);
+    	if(cusname==0)
+		{
+		alert("Please Select Customer");
+		}
+	else
+		{
+		if(total==''||date=='')
+		{
+		alert("Please Check all the feilds");
+		}
+	else
+		{
+    	payamount();
+		}
+		}
+    });
+    
+    $('#payandprintmer').on('click',function()
+    {
+    	var cusname=$('#select_cus_name').val();
+    	var total=$('#totalamt').val();
+    	//alert(cusname);
+    	if(cusname==0)
+		{
+		alert("Please Select Customer");
+		}
+	else
+		{
+		
+    	payamount();
+		}
+    });
+    
+    
+    
+    
+    $('#print').on('click',function()
+    {
+	
+		 var obj_aaary = [];
+		var table_data = "";
+		var total = $('#totalamt').val();
+		var table = document.getElementById("main_table");
+		console.log(table);
+        var forms = table.getElementsByTagName("form");
+        console.log(forms);
+        for(var i=0; i< forms.length; i++)
+        {
+        	console.log("asdfgasdfg "+forms[i].getAttribute('id'));
+        	var tb_data = readTable1(forms[i].getAttribute('id'));
+        	if(tb_data == null){
+        		alert("Please Select Item!");
+        		break;
+        	}else{
+        		obj_aaary.push(tb_data);
+        	}	       	
+        }
+        console.log(obj_aaary);
+      //  table_data = JSON.stringify(obj_aaary);
+     //   console.log("Table data "+JSON.stringify(obj_aaary));
+    //	console.log(cus_name +" "+ number +" "+ address +" "+ email +" "+ cus_date +" "+ cus_time+ " "+ custr_name);
+		 
+    var myWindow = window.open('', 'print', 'height=400,width=600');
+			
+    myWindow.document.write('<html><head><title></title>');
+	  myWindow.document.write('<link rel="stylesheet" href="css/print.css" type="text/css" media="print" />');
+		myWindow.document.write('</head><body>');
+		myWindow.document.write('<div align="right" style="width: 950px;"><span><b>E-mail : info@mobistocksystems.com</b></span></div>');
+		myWindow.document.write('<div align="right" style="width: 950px;"><span><b>Ph : 08043713965 | 08023654449&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>');
+		myWindow.document.write('<div align="right" style="width: 950px;"><span><b>CIN : U74999KA2017PTC108485&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>');
+		myWindow.document.write('<div align="right" style="width: 950px;"><span><b>GSTIN : 29AAACM481OA1ZP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>');
+		myWindow.document.write('<div align="right" style="width: 950px;"><span><b>State Code : 29&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>');
+		myWindow.document.write('<div style="width:1000px" height:auto; float:left;>');
+	/*	myWindow.document.write('<div style="display:table; width:20%; float:center;" align="center"><img style="vertical-align: middle;display: table-cell;float:left;" src="images/Finallogo.png" height="350px" width="450px"></div><br>');*/
+	//	myWindow.document.write('<div style="float:right; padding-top:10px;"><span><b>CIN :U74999KA2017PTC108485</b><br><b>GSTIN :29AAACM481OA1ZP</b><br><b>State Code : 29</b></span></div><br>');
+		
+		myWindow.document.write('<div align="center"><img src="images/Finallogo1.png" height="255px" width="300px"></div><br>');
+		myWindow.document.write('</div>');
+		myWindow.document.write('<table style="page-break-inside: avoid;"><tr style="page-break-inside: avoid;"><td style="page-break-inside: avoid;"></td></tr>');
+		myWindow.document.write('<tr style="page-break-inside: avoid;"><td style="page-break-inside: avoid;"></td></tr>');
+		myWindow.document.write('<tr style="page-break-inside: avoid;"><td style="page-break-inside: avoid;"></td></tr>');
+		myWindow.document.write('<tr style="page-break-inside: avoid;"><td style="page-break-inside: avoid;"></td></tr></table>');
+		myWindow.document.write('<div style="width: 950px;margin-top:-50px; hight:30px; float:left;padding:30px;"><p align="center"><br><b style="font-size:20px;"><b>#140/2 N.A Complex Opp Fun World, J.C.Nagar, Main Road, Bangalore-560006.</b></p></div>');
+		
+		
+		
+		myWindow.document.write('<table><tr><td></td></tr></table>');
+			myWindow.document.write('<div><div align="center"><b style="font-size:30px">Item Details</b></div><br>');
+            myWindow.document.write('<table><tr><td></td></tr></table>');
+			
+			myWindow.document.write('<div style="width: 900px;"><table border="1"   cellpadding="2"><tr style="font-size:20px"><th height="50px">S.No</th><th height="70px">IMEI</th><th height="50px">Barcode</th><th height="50px" width="50px">Item Name</th><th height="50px">HSN/SCA</th><th height="50px">QTY</th><th height="50px">Condition</th><th height="50px">Amount</th></tr>');
+	
+			for(var i=0 ; i<obj_aaary.length; i++)
+			{
+			
+				myWindow.document.write('<tr style="font-size:20px;page-break-inside:avoid; page-break-after:auto" ><td height="51px" style="text-align:center;">'+obj_aaary[i].sno+'</td><td height="50px" style="text-align:center;">'+obj_aaary[i].imei+'</td><td height="50px" style="text-align:center;">'+obj_aaary[i].barcode+'</td><td height="50px" width="50px" style="text-align:center;max-width:250px;word-wrap:break-word;">'+obj_aaary[i].item+'</td><td height="50px" style="text-align:center;">'+obj_aaary[i].hsnsac+'</td><td height="50px" style="text-align:center;">'+obj_aaary[i].qty+'</td><td height="50px" style="text-align:center;">'+obj_aaary[i].condition+'</td><td height="50px" style="text-align:center;">'+obj_aaary[i].unit_price+'</td></tr>');
+			
+			}
+			myWindow.document.write('<tr style="font-size:20px;page-break-inside:avoid; page-break-after:auto"><td colspan="7" height="52px">&nbsp;&nbsp;&nbsp;&nbsp;Total (Inclusive of GST)</td><td height="55px">&nbsp;&nbsp;&nbsp;Rs.'+total+'</td></tr>');
+			myWindow.document.write('<tr style="font-size:20px;page-break-inside:avoid; page-break-after:auto"><td colspan="3" height="50px">&nbsp;&nbsp;&nbsp;&nbsp;Amount in Words (Inclusive of GST)</td><td height="50px" style="text-align:center;" colspan="5">'+convertNumberToWords(total)+'&nbsp;Only</td></tr>');
+			myWindow.document.write('<tr style="page-break-inside:avoid; page-break-after:auto"><td colspan="8" style="border:none;text-align:right;" height="50px">For Mobistock Systems Pvt Ltd&nbsp;&nbsp;&nbsp;</td></tr>');
+			myWindow.document.write('<tr style="page-break-inside:avoid; page-break-after:auto"><td colspan="8" style="border:none;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;Value of supply is determined in accordance to the section  15(5) of the <br>&nbsp;&nbsp;&nbsp;&nbsp;Central Goods and Services Tax Act read with Rule 6(5) of<br>&nbsp;&nbsp;&nbsp;&nbsp;"Determination of Value of Supply" rules. The credit for the GST input<br>&nbsp;&nbsp;&nbsp;&nbsp;shall not be available to the buyer.</td></tr>');
+			myWindow.document.write('<tr style="page-break-inside:avoid; page-break-after:auto"><td colspan="8" style="border:none;text-align:right;" height="50px">Authorised signatory&nbsp;&nbsp;&nbsp;</td></tr>');
+
+			myWindow.document.write('</table></div>');
+			myWindow.document.write('</body></html>');
+			myWindow.document.close(); // necessary for IE >= 10
+			myWindow.onload=function()
+			{ // necessary if the div contain images
+				myWindow.focus(); // necessary for IE >= 10
+				myWindow.print();
+				myWindow.close();	
+			}
+
+});
+    
+    
+    
+    function convertNumberToWords(amount) {
+        var words = new Array();
+        words[0] = '';
+        words[1] = 'One';
+        words[2] = 'Two';
+        words[3] = 'Three';
+        words[4] = 'Four';
+        words[5] = 'Five';
+        words[6] = 'Six';
+        words[7] = 'Seven';
+        words[8] = 'Eight';
+        words[9] = 'Nine';
+        words[10] = 'Ten';
+        words[11] = 'Eleven';
+        words[12] = 'Twelve';
+        words[13] = 'Thirteen';
+        words[14] = 'Fourteen';
+        words[15] = 'Fifteen';
+        words[16] = 'Sixteen';
+        words[17] = 'Seventeen';
+        words[18] = 'Eighteen';
+        words[19] = 'Nineteen';
+        words[20] = 'Twenty';
+        words[30] = 'Thirty';
+        words[40] = 'Forty';
+        words[50] = 'Fifty';
+        words[60] = 'Sixty';
+        words[70] = 'Seventy';
+        words[80] = 'Eighty';
+        words[90] = 'Ninety';
+        amount = amount.toString();
+        var atemp = amount.split(".");
+        var number = atemp[0].split(",").join("");
+        var n_length = number.length;
+        var words_string = "";
+        if (n_length <= 9) {
+            var n_array = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
+            var received_n_array = new Array();
+            for (var i = 0; i < n_length; i++) {
+                received_n_array[i] = number.substr(i, 1);
+            }
+            for (var i = 9 - n_length, j = 0; i < 9; i++, j++) {
+                n_array[i] = received_n_array[j];
+            }
+            for (var i = 0, j = 1; i < 9; i++, j++) {
+                if (i == 0 || i == 2 || i == 4 || i == 7) {
+                    if (n_array[i] == 1) {
+                        n_array[j] = 10 + parseInt(n_array[j]);
+                        n_array[i] = 0;
+                    }
+                }
+            }
+            value = "";
+            for (var i = 0; i < 9; i++) {
+                if (i == 0 || i == 2 || i == 4 || i == 7) {
+                    value = n_array[i] * 10;
+                } else {
+                    value = n_array[i];
+                }
+                if (value != 0) {
+                    words_string += words[value] + " ";
+                }
+                if ((i == 1 && value != 0) || (i == 0 && value != 0 && n_array[i + 1] == 0)) {
+                    words_string += "Crores ";
+                }
+                if ((i == 3 && value != 0) || (i == 2 && value != 0 && n_array[i + 1] == 0)) {
+                    words_string += "Lakhs ";
+                }
+                if ((i == 5 && value != 0) || (i == 4 && value != 0 && n_array[i + 1] == 0)) {
+                    words_string += "Thousand ";
+                }
+                if (i == 6 && value != 0 && (n_array[i + 1] != 0 && n_array[i + 2] != 0)) {
+                    words_string += "Hundred and ";
+                } else if (i == 6 && value != 0) {
+                    words_string += "Hundred ";
+                }
+            }
+            words_string = words_string.split("  ").join(" ");
+        }
+        return words_string;
+    }
+    
+    
+    
+    //date picker
+	function readTable(formId)
+    {
+    	console.log(formId);
+		var elements = document.getElementById(formId).elements;
+		var obj ={};
+		var chk = 0;
+		for(var i = 0; i < elements.length ; i++){
+			var item = elements.item(i);
+            if (item.value.length <= 0) {
+            	$('input[name="' + item.name + '"]').css('borderBottom', '1px solid #FF5722 ');
+               	return null;
+            } else {
+            	 $('input[name="'+item.name+'"]').removeAttr("style");
+ 				$('input[name="'+item.name+'"]').css('marginBottom','20px');
+                 obj[item.name] = item.value;
+            }
+		}
+		return obj;
+	}
+    
+    
+	function readTable1(formId)
+    {
+    	console.log(formId);
+		var elements = document.getElementById(formId).elements;
+		var obj ={};
+		var chk = 0;
+		for(var i = 0; i < elements.length ; i++){
+			var item = elements.item(i);
+            if (item.value.length <= 0) {
+            	$('input[name="' + item.name + '"]');
+               	return null;
+            } else {
+            	 $('input[name="'+item.name+'"]');
+ 				$('input[name="'+item.name+'"]');
+                 obj[item.name] = item.value;
+            }
+		}
+		return obj;
+	}    
+    
+    
+	function createJson(formId) {
+        var out_params = [];
+        var elements = document.getElementById(formId).elements;
+        var obj = {};
+        var chk = 0;
+        console.log(formId);
+        for (var i = 0; i < elements.length; i++) {
+            var item = elements.item(i);
+           /*  if (item.value.length <= 0) {
+            	$('input[name="'+item.name+'"]').removeAttr("style");
+				$('input[name="'+item.name+'"]').css('marginBottom','20px');
+                return null;
+            } else {
+                $('input[name="' + item.name + '"]').css('borderBottom', '1px solid #3aab83 '); */
+                obj[item.name] = item.value;
+        //    }
+
+        }
+        out_params.push(obj);
+        return out_params;
+    }
+	
+    function clearFields(id) 
+    {
+    	//alert(id);
+    	//document.getElementById(id).reset();
+       // $('#' + id)[0].reset();
+    }
+
+    function delete_category(id) {
+        var path = "deletecategory";
+        var answer = confirm("Are you sure you want to delete from the database?");
+        if (answer) {
+            $.ajax({
+                type: 'GET',
+                url: 'DeleteServlet',
+                dataType: "json",
+                data: {
+                    path: path,
+                    id: id
+                },
+                success: function(respo) {
+                    if (respo == '1') {
+                        alert('Success');
+                    } else {
+                        alert('Failed');
+                    }
+                }
+            });
+        }
+
+    }
+    
+    
+    
+	function getItems1(id){
+		var path = 'getSalesItems';
+		var srch = $('#'+id).val();
+		$.ajax({
+			type: 'POST',
+			url: 'RetrieveServlet',
+			dataType: "json",
+			data: {
+				path: path,
+				search: srch 
+			},
+			success: function(respo) {
+				if(respo.length > 0){
+					var opt_list = '';
+					for(var i=0; i< respo.length; i++){
+						opt_list = opt_list+'<option>'+respo[i].val2+'</option>';
+					}
+					$('#li'+id).html(opt_list);
+				} else{
+					//alert('No data available for given item name!');
+				}
+			}
+		});
+	}
+	
+	function fillFields(id){
+		var path = 'getItemsDetails';
+		var srch = $('#'+id).val();
+		var last = id.charAt(id.length-1);
+		$.ajax({
+			type: 'POST',
+			url: 'RetrieveServlet',
+			dataType: "json",
+			data: {
+				path: path,
+				search: srch 
+			},
+			success: function(respo) 
+			{
+				if(respo.length>0)
+					{
+				var qty = 1;
+				var unit_price = parseFloat(respo[0].val10).toFixed(2);
+				console.log(respo[0].val15+" "+respo[0].val16);
+				$('#barcode'+last).val(respo[0].val1);
+				$('#imei'+last).val(respo[0].val12);
+				$('#item'+last).val(respo[0].val2);
+				avai_qty = parseInt(respo[0].val11);
+				$('#qty'+last).val(1);
+				$('#unit_price'+last).val(respo[0].val10);
+				$('#hsnsac'+last).val(respo[0].val13);
+				$('#condition'+last).val(respo[0].val14);
+				$('#purchaseprice'+last).val(respo[0].val15);
+				$('#salemargin'+last).val(respo[0].val16);
+					}
+				else
+					{
+					alert("Available quantity is 0");
+					}
+			}
+		});		
+	}
+	
+	function getTaxAmount(tax_type, item_code){
+		var path = "gettaxvalue";
+		$.ajax({
+			type: 'POST',
+			url: 'RetrieveServlet',
+			dataType: "json",
+			data: {
+				path: path,
+				tax_type: tax_type,
+				item_code:item_code
+			},
+			success: getTaxValue
+		});
+	}
+	
+	function getTaxValue(vale){
+		sale_tax_value = vale[0].val1;
+	//	console.log("Sale tax value in function"+sale_tax_value);
+	}
+	
+	function getItemTax(id){
+		
+		var last = id.charAt(id.length-1);
+		var tax_type = $('#'+id).val();
+		var item_code = $('#barcode'+last).val();
+		getTaxAmount(tax_type,item_code);
+		var unit_price = parseFloat($('#unit_price'+last).val()).toFixed(2);
+	//	console.log("Sale tax "+sale_tax_value +" Unit price "+unit_price);
+		var total_inc_tax = (sale_tax_value /100)*unit_price;
+		var total_ic_tax_float = parseFloat(total_inc_tax)+parseFloat(unit_price);
+		$('#totalinctax'+last).val(total_ic_tax_float.toFixed(2));
+		$('#taxpercent'+last).val(sale_tax_value);
+	//	console.log(tax_type+" Percent tax "+total_inc_tax);
+		
+	}
+	
+	/* function checkQty(id){
+		var last = id.charAt(id.length-1);
+		var usr_qty = parseInt($('#'+id).val());
+		if(usr_qty > avai_qty){
+			alert('Available Stock is: '+avai_qty);
+			$('#'+id).val(1);
+		}
+		var qty = parseInt($('#'+id).val());
+		var unit_price = parseFloat($('#unit_price'+last).val()).toFixed(2);
+		var total = qty*unit_price;
+		$('#total'+last).val(total);
+	} */
+	
+	function addRow(){
+		var table = document.getElementById("main_table");
+        var forms = table.getElementsByTagName("form");
+	    $('#main_table > tbody:last-child').append('<tr><td><form id="sub_frm'+(forms.length+1)+'"><table><tr>'
+				+'<td style="width:10%;"><input type="number" class="cus_input" name="sno" value="'+(forms.length+1)+'" readonly /></td>'
+				+'<td style="width:15%;"><input type="text" class="cus_input" name="barcode" id="barcode'+(forms.length+1)+'" value="' + respo[i].val1 + '" readonly /></td>'
+				+'<td style="width:15%;"><input type="text" class="cus_input" name="category" id="category'+(forms.length+1)+'" value="' + respo[i].val4 + '" /></td>'
+				+'<td style="width:15%;"><input list="liitem'+(forms.length+1)+'" type="text"  id="brand'+(forms.length+1)+'" class="cus_input" name="brand" value="' + respo[i].val7 + '"/>'
+				+'<datalist id="liitem'+(forms.length+1)+'"><option>One</option><option>Two</option></datalist></td>'
+				+'<td style="width:15%;"><input type="text" class="cus_input" name="varity" id="varity'+(forms.length+1)+'" value="' + respo[i].val6 + '"/></td>'
+				+'<td style="width:10%;"><input type="number" class="cus_input" name="qty" id="qty'+(forms.length+1)+'" oninput="checkQty(this.id)" value="1" /></td>'
+				+'<td style="width:10%;"><input type="text" class="cus_input" name="saleprice" id="saleprice'+(forms.length+1)+'"  value="' + respo[i].val10 + '"  /></td>'
+				+'<td style="width:10%;"><input type="number" class="cus_input" name="total" id="total'+(forms.length+1)+'" value="' + respo[i].val10 + '" readonly /></td>'
+				+'<input type="hidden" class="cus_input" name="pruchaseprice" id="purchaseprice'+(forms.length+1)+'" value="' + respo[i].val9 + '" />'
+				+'<input type="hidden" class="cus_input" name="smargin" id="salemargin'+(forms.length+1)+'" value="' + respo[i].val9 + '" readonly />'
+				+'</tr></table></form></td><td>'
+			+'<span id="del_row"  type="button" class="remCF del_button" style="float:none; margin:0;display: block;"></span>'
+			+'</td></tr>');
+	}
+	
+	function cancelData()
+	{   deleterows();
+		clearFields('main_frm');
+		
+	}
+	
+	
+	
+	function payamount()
+	{
+		var path = "sale_invoice1";
+		var obj_aaary = [];
+		var vals = createJson("main_frm");
+		var table_data = "";
+		if(vals == null)
+		{
+			alert("Please fill all fields!");
+		} 
+		else
+		{
+			var table = document.getElementById("main_table");
+	        var forms = table.getElementsByTagName("form");
+	        for(var i=0; i< forms.length; i++){
+	        	var tb_data = readTable(forms[i].getAttribute('id'));
+	        	if(tb_data == null)
+	        	{
+	        		alert("Please fill grid fields!");
+	        		break;
+	        	}
+	        	else
+	        	{
+	        		obj_aaary.push(tb_data);
+	        	}	        	
+	        }
+	        vals = JSON.stringify(vals);
+	        table_data = JSON.stringify(obj_aaary);
+	  //      console.log("Table data in real "+table_data);
+	        $.ajax({
+				type: 'POST',
+				url : 'AddServlet',
+				data : {data:vals, path:path, table_data: table_data},
+				success : function(respo) 
+				{
+					console.log("REspomnse in savedata "+respo)
+					$('#snackbar').html('Sale successfull!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+							$('#main_frm')[0].reset();
+							deleterows();
+				}
+	        });
+		}
+	}
+	
+	
+	
+	function saveDatacus()
+	{
+		var path = "sale_invoice";
+		var obj_aaary = [];
+		var vals = createJson("main_frm");
+		var table_data = "";
+		if(vals == null)
+		{
+			alert("Please fill all fields!");
+		} 
+		else
+		{
+			var table = document.getElementById("main_table");
+	        var forms = table.getElementsByTagName("form");
+	        for(var i=0; i< forms.length; i++){
+	        	var tb_data = readTable(forms[i].getAttribute('id'));
+	        	if(tb_data == null)
+	        	{
+	        		alert("Please fill grid fields!");
+	        		break;
+	        	}
+	        	else
+	        	{
+	        		obj_aaary.push(tb_data);
+	        	}	        	
+	        }
+	        vals = JSON.stringify(vals);
+	        table_data = JSON.stringify(obj_aaary);
+	        $.ajax({
+				type: 'POST',
+				url : 'AddServlet',
+				data : {data:vals, path:path, table_data: table_data},
+				success : function(respo) 
+				{
+					console.log("REspomnse in savedata "+respo)
+					alert(respo);
+							$('#main_frm')[0].reset();
+							deleterows();
+				}
+				
+	        });
+		}
+	}
+	
+	
+	/* function payamount()
+	{
+		var path = "sale_invoice1";
+		var obj_aaary = [];
+		var vals = createJson("main_frm");
+		var table_data = "";
+		if(vals == null)
+		{
+			alert("Please fill all fields!");
+		} 
+		else
+		{
+			var table = document.getElementById("main_table");
+	        var forms = table.getElementsByTagName("form");
+	        for(var i=0; i< forms.length; i++){
+	        	var tb_data = readTable(forms[i].getAttribute('id'));
+	        	if(tb_data == null)
+	        	{
+	        		alert("Please fill grid fields!");
+	        		break;
+	        	}
+	        	else
+	        	{
+	        		obj_aaary.push(tb_data);
+	        	}	        	
+	        }
+	        vals = JSON.stringify(vals);
+	        table_data = JSON.stringify(obj_aaary);
+	  //      console.log("Table data in real "+table_data);
+	        $.ajax({
+				type: 'POST',
+				url : 'AddServlet',
+				data : {data:vals, path:path, table_data: table_data},
+				success : function(respo) 
+				{
+					console.log("REspomnse in savedata "+respo)
+					if(respo.length>1)
+					{
+						invoid=respo;
+						$('#invoid').val(respo);
+					       
+						var path = "getSalesReportByDateFilter";
+						
+						var cus_name = $('#select_cus_name').val();
+						var number = $('#cus_num').val();
+						var address = $('#cus_addr').val();
+						var email = $('#cus_mail').val();
+						var cus_date = $('#cus_date').val();
+						var cus_time = $('#cus_time').val();
+						var custr_name = $('#cust_name').val();
+						var custr_gst = $('#cus_gst').val();
+						var custr_pan = $('#cus_pan').val();
+						var custr_city = $('#cus_city').val();
+						var custr_pin = $('#cus_pin').val();
+						var lotname = $('#choose_category1').val();
+						var lotno = $('#choose_category').val();
+						var total = $('#totalamt').val();
+						var invo=$('#invoid').val();
+						var mode=$('#modeofpay').val();
+						console.log(invoid);
+						 var obj_aaary = [];
+						var table_data = "";
+						
+						var table = document.getElementById("main_table");
+						console.log(table);
+				      var forms = table.getElementsByTagName("form");
+				      console.log(forms);
+				      for(var i=0; i< forms.length; i++)
+				      {
+				      	console.log("asdfgasdfg "+forms[i].getAttribute('id'));
+				      	var tb_data = readTable(forms[i].getAttribute('id'));
+				      	if(tb_data == null){
+				      		alert("Please Select Item!");
+				      		break;
+				      	}else{
+				      		obj_aaary.push(tb_data);
+				      	}	       	
+				      }
+				      console.log(obj_aaary);
+				    //  table_data = JSON.stringify(obj_aaary);
+				   //   console.log("Table data "+JSON.stringify(obj_aaary));
+				  //	console.log(cus_name +" "+ number +" "+ address +" "+ email +" "+ cus_date +" "+ cus_time+ " "+ custr_name);
+						 
+				  var myWindow = window.open('', 'print', 'height=400,width=600');
+							
+				  myWindow.document.write('<html><head><title></title>');
+				  myWindow.document.write('<link rel="stylesheet" href="css/print.css" type="text/css" media="print" />');
+					myWindow.document.write('</head><body>');
+					myWindow.document.write('<div align="right" style="width: 950px;"><span><b>E-mail : info@mobistocksystems.com</b></span></div>');
+					myWindow.document.write('<div align="right" style="width: 950px;"><span><b>Ph : 08043713965 | 08023654449&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>');
+					myWindow.document.write('<div align="right" style="width: 950px;"><span><b>CIN : U74999KA2017PTC108485&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>');
+					myWindow.document.write('<div align="right" style="width: 950px;"><span><b>GSTIN : 29AAACM481OA1ZP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>');
+					myWindow.document.write('<div align="right" style="width: 950px;"><span><b>State Code : 29&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>');
+					myWindow.document.write('<div style="width:1000px" height:auto; float:left;>');
+				/*	myWindow.document.write('<div style="display:table; width:20%; float:center;" align="center"><img style="vertical-align: middle;display: table-cell;float:left;" src="images/Finallogo.png" height="350px" width="450px"></div><br>');
+				//	myWindow.document.write('<div style="float:right; padding-top:10px;"><span><b>CIN :U74999KA2017PTC108485</b><br><b>GSTIN :29AAACM481OA1ZP</b><br><b>State Code : 29</b></span></div><br>');
+					
+					myWindow.document.write('<div align="center"><img src="images/Finallogo1.png" height="255px" width="300px"></div><br>');
+					myWindow.document.write('</div>');
+					myWindow.document.write('<table style="page-break-inside: avoid;"><tr style="page-break-inside: avoid;"><td style="page-break-inside: avoid;"></td></tr>');
+					myWindow.document.write('<tr style="page-break-inside: avoid;"><td style="page-break-inside: avoid;"></td></tr>');
+					myWindow.document.write('<tr style="page-break-inside: avoid;"><td style="page-break-inside: avoid;"></td></tr>');
+					myWindow.document.write('<tr style="page-break-inside: avoid;"><td style="page-break-inside: avoid;"></td></tr></table>');
+					myWindow.document.write('<div style="width: 950px;margin-top:-50px; hight:30px; float:left;padding:30px;"><p align="center"><br><b style="font-size:20px;"><b>#140/2 N.A Complex Opp Fun World, J.C.Nagar, Main Road, Bangalore-560006.</b></p></div>');
+					
+					
+					
+					myWindow.document.write('<table><tr><td></td></tr></table>');
+					
+					
+							myWindow.document.write('<div><div align="center"><b style="font-size:30px">Invoice</b></div>');
+							myWindow.document.write('<div><div align="center"><b style="font-size:20px">(Customer Copy)</b></div><br>');
+				            myWindow.document.write('<table><tr><td></td></tr></table>');
+							//myWindow.document.write('<tr><td>-------------------------------------------------------------------------------------------------------------------</td></tr>');
+						    myWindow.document.write('<div class="nav" align="left" style="width: 400px; margin-bottom:10px; height: 175px; border: 1px solid black;align-content: space-around;"><div style="padding-left:10px; float:left;" ><b style="font-size:25px">Invoice Details : </b><br><b>Invoice No : </b>&nbsp;'+invo+'</br><b>Total : </b>&nbsp;Rs.'+total+'</br><b>Date : </b>&nbsp;'+cus_date+'</br><b>Time : </b>&nbsp;'+cus_time+'</br><b>Payment Mode : </b>&nbsp;'+mode+'</div></div>');		  
+						    myWindow.document.write('<div class="column" align="left" style="width: 525px; height: 175px; border: 1px solid black;margin-left:10px;style="padding-left:10px;"><div style="padding-left:10px; float:left;" ><b style="font-size:20px">Bill To : </b><br><b>Customer Name : </b>&nbsp;'+custr_name+'</br><b>Customer Ph : </b>&nbsp;'+number+' </br><b>Address :</b>&nbsp;'+custr_city+'-'+custr_pin+'</br><b>Email : </b>&nbsp;'+email+'</br><b>GSTIN : </b>&nbsp;'+custr_gst+'</br><b>PAN : </b>&nbsp;'+custr_pan+'</div></div><br>');
+							
+							myWindow.document.write('<table><tr><td></td></tr></table>');
+							
+                            myWindow.document.write('<div style="width: 950px;"><table border="4"   cellpadding="2" width="100%"><tr style="font-size:20px"><th height="51px">S.No</th><th height="50px">IMEI</th><th height="51px">Barcode</th><th height="51px">Item Name</th><th height="51px">HSN/SCA</th><th height="51px">QTY</th><th height="51px">Amount</th></tr>');
+							
+							for(var i=0 ; i<obj_aaary.length; i++)
+							{
+							
+								myWindow.document.write('<tr style="font-size:20px;page-break-inside:avoid; page-break-after:auto"><td height="51px" style="text-align:center;">'+obj_aaary[i].sno+'</td><td height="51px" style="text-align:center;">'+obj_aaary[i].imei+'</td><td height="51px" style="text-align:center;">'+obj_aaary[i].barcode+'</td><td height="51px" style="text-align:center;max-width:250px;word-wrap:break-word;">'+obj_aaary[i].item+'</td><td height="51px" style="text-align:center;">'+obj_aaary[i].hsnsac+'</td><td height="51px" style="text-align:center;">'+obj_aaary[i].qty+'</td><td height="51px" style="text-align:center;">'+obj_aaary[i].unit_price+'</td></tr>');
+							
+							}
+							myWindow.document.write('<tr style="font-size:20px;page-break-inside:avoid; page-break-after:auto"><td colspan="6" height="52px">&nbsp;&nbsp;&nbsp;&nbsp;Total (Inclusive of GST)</td><td height="55px">&nbsp;&nbsp;&nbsp;Rs.'+total+'</td></tr>');
+							myWindow.document.write('<tr style="font-size:20px;page-break-inside:avoid; page-break-after:auto"><td colspan="3" height="50px">&nbsp;&nbsp;&nbsp;&nbsp;Amount in Words (Inclusive of GST)</td><td height="50px" style="text-align:center;" colspan="4">'+convertNumberToWords(total)+'&nbsp;Only</td></tr>');
+							myWindow.document.write('<tr style="page-break-inside:avoid; page-break-after:auto"><td colspan="7" style="border:none;text-align:right;page-break-inside:avoid; " height="50px">For Mobistock Systems Pvt Ltd&nbsp;&nbsp;&nbsp;</td></tr>');
+							myWindow.document.write('<tr style="page-break-inside:avoid; page-break-after:auto"><td colspan="7" style="border:none;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;Value of supply is determined in accordance to the section  15(5) of the <br>&nbsp;&nbsp;&nbsp;&nbsp;Central Goods and Services Tax Act read with Rule 6(5) of<br>&nbsp;&nbsp;&nbsp;&nbsp;"Determination of Value of Supply" rules. The credit for the GST input<br>&nbsp;&nbsp;&nbsp;&nbsp;shall not be available to the buyer.</td></tr>');
+							myWindow.document.write('<tr style="page-break-inside:avoid; page-break-after:auto"><td colspan="7" style="border:none;text-align:right;" height="50px">Authorised signatory&nbsp;&nbsp;&nbsp;</td></tr>');
+
+							myWindow.document.write('</table></div>');
+							myWindow.document.write('</body></html>');
+							myWindow.document.close(); // necessary for IE >= 10
+							myWindow.onload=function(){ // necessary if the div contain images
+								myWindow.focus(); // necessary for IE >= 10
+								myWindow.print();
+								myWindow.close();	
+						}
+			
+							//Merchent Copy
+							
+							
+						
+					//	alert('Success');
+					$('#snackbar').html('Sale successfull!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+							$('#main_frm')[0].reset();
+							deleterows();
+					}
+					else
+					{
+						alert('Failed');
+					}
+				}
+		
+			});
+	}
+	}
+	 */
+
+	/* function saveDatacus()
+	{
+		var path = "sale_invoice";
+		var obj_aaary = [];
+		var vals = createJson("main_frm");
+		var table_data = "";
+		if(vals == null)
+		{
+			alert("Please fill all fields!");
+		} 
+		else
+		{
+			var table = document.getElementById("main_table");
+	        var forms = table.getElementsByTagName("form");
+	        for(var i=0; i< forms.length; i++){
+	        	var tb_data = readTable(forms[i].getAttribute('id'));
+	        	if(tb_data == null)
+	        	{
+	        		alert("Please fill grid fields!");
+	        		break;
+	        	}
+	        	else
+	        	{
+	        		obj_aaary.push(tb_data);
+	        	}	        	
+	        }
+	        vals = JSON.stringify(vals);
+	        table_data = JSON.stringify(obj_aaary);
+	  //      console.log("Table data in real "+table_data);
+	        $.ajax({
+				type: 'POST',
+				url : 'AddServlet',
+				data : {data:vals, path:path, table_data: table_data},
+				success : function(respo) 
+				{
+					console.log("REspomnse in savedata "+respo)
+					if(respo.length>1)
+					{
+						invoid=respo;
+						$('#invoid').val(respo);
+					       
+						var path = "getSalesReportByDateFilter";
+						
+						var cus_name = $('#select_cus_name').val();
+						var number = $('#cus_num').val();
+						var address = $('#cus_addr').val();
+						var email = $('#cus_mail').val();
+						var cus_date = $('#cus_date').val();
+						var cus_time = $('#cus_time').val();
+						var custr_name = $('#cust_name').val();
+						var lotname = $('#choose_category1').val();
+						var lotno = $('#choose_category').val();
+						var total = $('#totalamt').val();
+						var custr_gst = $('#cus_gst').val();
+						var custr_pan = $('#cus_pan').val();
+						var custr_city = $('#cus_city').val();
+						var custr_pin = $('#cus_pin').val();
+						var invo=$('#invoid').val();
+						console.log(invoid);
+						 var obj_aaary = [];
+						var table_data = "";
+						
+						var table = document.getElementById("main_table");
+						console.log(table);
+				      var forms = table.getElementsByTagName("form");
+				      console.log(forms);
+				      for(var i=0; i< forms.length; i++)
+				      {
+				      	console.log("asdfgasdfg "+forms[i].getAttribute('id'));
+				      	var tb_data = readTable(forms[i].getAttribute('id'));
+				      	if(tb_data == null){
+				      		alert("Please Select Item!");
+				      		break;
+				      	}else{
+				      		obj_aaary.push(tb_data);
+				      	}	       	
+				      }
+				      console.log(obj_aaary);
+				    //  table_data = JSON.stringify(obj_aaary);
+				   //   console.log("Table data "+JSON.stringify(obj_aaary));
+				  //	console.log(cus_name +" "+ number +" "+ address +" "+ email +" "+ cus_date +" "+ cus_time+ " "+ custr_name);
+						 
+				 var myWindow = window.open('', 'print', 'height=400,width=600');
+							
+				  myWindow.document.write('<html><head><title></title>');
+				  myWindow.document.write('<link rel="stylesheet" href="css/print.css" type="text/css" media="print" />');
+					myWindow.document.write('</head><body>');
+					myWindow.document.write('<div align="right" style="width: 950px;"><span><b>E-mail : info@mobistocksystems.com</b></span></div>');
+					myWindow.document.write('<div align="right" style="width: 950px;"><span><b>Ph : 08043713965 | 08023654449&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>');
+					myWindow.document.write('<div align="right" style="width: 950px;"><span><b>CIN : U74999KA2017PTC108485&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>');
+					myWindow.document.write('<div align="right" style="width: 950px;"><span><b>GSTIN : 29AAACM481OA1ZP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>');
+					myWindow.document.write('<div align="right" style="width: 950px;"><span><b>State Code : 29&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>');
+					myWindow.document.write('<div style="width:1000px" height:auto; float:left;>');
+				/*	myWindow.document.write('<div style="display:table; width:20%; float:center;" align="center"><img style="vertical-align: middle;display: table-cell;float:left;" src="images/Finallogo.png" height="350px" width="450px"></div><br>');
+				//	myWindow.document.write('<div style="float:right; padding-top:10px;"><span><b>CIN :U74999KA2017PTC108485</b><br><b>GSTIN :29AAACM481OA1ZP</b><br><b>State Code : 29</b></span></div><br>');
+					
+					myWindow.document.write('<div align="center"><img src="images/Finallogo1.png" height="255px" width="300px"></div><br>');
+					myWindow.document.write('</div>');
+					myWindow.document.write('<table style="page-break-inside: avoid;"><tr style="page-break-inside: avoid;"><td style="page-break-inside: avoid;"></td></tr>');
+					myWindow.document.write('<tr style="page-break-inside: avoid;"><td style="page-break-inside: avoid;"></td></tr>');
+					myWindow.document.write('<tr style="page-break-inside: avoid;"><td style="page-break-inside: avoid;"></td></tr>');
+					myWindow.document.write('<tr style="page-break-inside: avoid;"><td style="page-break-inside: avoid;"></td></tr></table>');
+					myWindow.document.write('<div style="width: 950px;margin-top:-50px; hight:30px; float:left;padding:30px;"><p align="center"><br><b style="font-size:20px;"><b>#140/2 N.A Complex Opp Fun World, J.C.Nagar, Main Road, Bangalore-560006.</b></p></div>');
+					
+					
+					
+					myWindow.document.write('<table><tr><td></td></tr></table>');
+					
+					
+							myWindow.document.write('<div><div align="center"><b style="font-size:30px">Invoice</b></div>');
+							myWindow.document.write('<div><div align="center"><b style="font-size:20px">(Customer Copy)</b></div><br>');
+				            myWindow.document.write('<table><tr><td></td></tr></table>');
+							//myWindow.document.write('<tr><td>-------------------------------------------------------------------------------------------------------------------</td></tr>');
+						    myWindow.document.write('<div class="nav" align="left" style="width: 400px; margin-bottom:10px; height: 175px; border: 1px solid black;align-content: space-around;"><div style="padding-left:10px; float:left;" ><b style="font-size:25px">Invoice Details : </b><br><b>Invoice No : </b>&nbsp;'+invo+'</br><b>Total : </b>&nbsp;Rs.'+total+'</br><b>Date : </b>&nbsp;'+cus_date+'</br><b>Time : </b>&nbsp;'+cus_time+'</div></div>');		  
+						    myWindow.document.write('<div class="column" align="left" style="width: 525px; height: 175px; border: 1px solid black;margin-left:10px;style="padding-left:10px;"><div style="padding-left:10px; float:left;" ><b style="font-size:20px">Bill To : </b><br><b>Customer Name : </b>&nbsp;'+custr_name+'</br><b>Customer Ph : </b>&nbsp;'+number+' </br><b>Address :</b>&nbsp;'+custr_city+'-'+custr_pin+'</br><b>Email : </b>&nbsp;'+email+'</br><b>GSTIN : </b>&nbsp;'+custr_gst+'</br><b>PAN : </b>&nbsp;'+custr_pan+'</div></div><br>');
+							
+							myWindow.document.write('<table><tr><td></td></tr></table>');
+							
+							
+							myWindow.document.write('<div style="width: 950px;"><table border="4"   cellpadding="2" width="100%"><tr style="font-size:20px"><th height="51px">S.No</th><th height="50px">IMEI</th><th height="51px">Barcode</th><th height="51px">Item Name</th><th height="51px">HSN/SCA</th><th height="51px">QTY</th><th height="51px">Amount</th></tr>');
+							
+							for(var i=0 ; i<obj_aaary.length; i++)
+							{
+							
+								myWindow.document.write('<tr style="font-size:20px;page-break-inside:avoid; page-break-after:auto"><td height="51px" style="text-align:center;">'+obj_aaary[i].sno+'</td><td height="51px" style="text-align:center;">'+obj_aaary[i].imei+'</td><td height="51px" style="text-align:center;">'+obj_aaary[i].barcode+'</td><td height="51px" style="text-align:center;max-width:250px;word-wrap:break-word;">'+obj_aaary[i].item+'</td><td height="51px" style="text-align:center;">'+obj_aaary[i].hsnsac+'</td><td height="51px" style="text-align:center;">'+obj_aaary[i].qty+'</td><td height="51px" style="text-align:center;">'+obj_aaary[i].unit_price+'</td></tr>');
+							
+							}
+							myWindow.document.write('<tr style="font-size:20px;page-break-inside:avoid; page-break-after:auto"><td colspan="6" height="52px">&nbsp;&nbsp;&nbsp;&nbsp;Total (Inclusive of GST)</td><td height="55px">&nbsp;&nbsp;&nbsp;Rs.'+total+'</td></tr>');
+							myWindow.document.write('<tr style="font-size:20px;page-break-inside:avoid; page-break-after:auto"><td colspan="3" height="50px">&nbsp;&nbsp;&nbsp;&nbsp;Amount in Words (Inclusive of GST)</td><td height="50px" style="text-align:center;" colspan="4">'+convertNumberToWords(total)+'&nbsp;Only</td></tr>');
+							myWindow.document.write('<tr style="page-break-inside:avoid; page-break-after:auto"><td colspan="7" style="border:none;text-align:right;" height="50px">For Mobistock Systems Pvt Ltd&nbsp;&nbsp;&nbsp;</td></tr>');
+							myWindow.document.write('<tr style="page-break-inside:avoid; page-break-after:auto"><td colspan="7" style="border:none;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;Value of supply is determined in accordance to the section  15(5) of the <br>&nbsp;&nbsp;&nbsp;&nbsp;Central Goods and Services Tax Act read with Rule 6(5) of<br>&nbsp;&nbsp;&nbsp;&nbsp;"Determination of Value of Supply" rules. The credit for the GST input<br>&nbsp;&nbsp;&nbsp;&nbsp;shall not be available to the buyer.</td></tr>');
+							myWindow.document.write('<tr style="page-break-inside:avoid; page-break-after:auto"><td colspan="7" style="border:none;text-align:right;" height="50px">Authorised signatory&nbsp;&nbsp;&nbsp;</td></tr>');
+
+							myWindow.document.write('</table></div>');
+							myWindow.document.write('</body></html>');
+							myWindow.document.close(); // necessary for IE >= 10
+							myWindow.onload=function(){ // necessary if the div contain images
+								myWindow.focus(); // necessary for IE >= 10
+								myWindow.print();
+								myWindow.close();	
+						}
+			
+						
+					//	alert('Success');
+					$('#snackbar').html('Sale successfull!');
+							$('#snackbar').addClass('show');
+							setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
+						$('#main_frm')[0].reset();
+						deleterows();
+					}
+					else
+					{
+						alert('Failed');
+					}
+				}
+		
+			});
+	}
+	} */
+	
+	$('#save').on('click',function()
+	{
+		var cusname=$('#select_cus_name').val();
+		//alert(cusname);
+		if(cusname==0)
+			{
+			alert("Please Select Customer to reserve the items");
+			}
+		else
+			{
+		//alert("From Sale Jahadees");
+		var path = "sale_template";
+		var obj_aaary = [];
+		var vals = createJson("main_frm");
+		var table_data = "";
+		if(vals == null)
+		{
+			alert("Please fill all fields!");
+		} 
+		else
+		{
+			var table = document.getElementById("main_table");
+	        var forms = table.getElementsByTagName("form");
+	        for(var i=0; i< forms.length; i++){
+	        	var tb_data = readTable(forms[i].getAttribute('id'));
+	        	if(tb_data == null)
+	        	{
+	        		alert("Please fill grid fields!");
+	        		break;
+	        	}
+	        	else
+	        	{
+	        		obj_aaary.push(tb_data);
+	        	}	        	
+	        }
+	        vals = JSON.stringify(vals);
+	        table_data = JSON.stringify(obj_aaary);
+	  //      console.log("Table data in real "+table_data);
+	        $.ajax({
+				type: 'POST',
+				url : 'AddServlet',
+				data : {data:vals, path:path, table_data: table_data},
+				success : function(respo) 
+				{
+
+						$('#main_frm')[0].reset();
+						deleterows();
+						getTemplates();
+				}
+		
+			});
+	}
+			}
+	});
+	
+
+	function getCustomersList(){
+		
+		var path = "getcustomer"
+		  $.ajax({
+				type: 'POST',
+				url : 'RetrieveServlet',
+				dataType: "json",
+				data : {path:path},
+				success : function(respo) {
+					var drop = '';
+	                for (var i = 0; i < respo.length; i++) {
+	                    drop = drop + '<option value="' + respo[i].val2 + '">' +respo[i].val3 + '</option>';
+	                }
+	                var drop1 = '<option value="0">Select Customer</option>';
+	                $('#select_cus_name').html(drop1+drop);
+				}
+			});
+	}
+	
+	function getCustomersData(cust_code){
+		
+		var path = "getcustomerbycode"
+		 $.ajax({
+				type: 'POST',
+				url : 'RetrieveServlet',
+				dataType: "json",
+				data : {path:path, cust_code:cust_code},
+				success : function(respo) {
+					if(respo.length > 0)
+					{
+						console.log(respo[0].val17+" "+respo[0].val16)
+						$('input[name="customer_name"]').val(respo[0].val3);
+						$('input[name="cus_num"]').val(respo[0].val14);
+						$('input[name="cus_addr"]').val(respo[0].val11);
+						$('input[name="cus_mail"]').val(respo[0].val19);
+						$('input[name="cus_gst"]').val(respo[0].val7);
+						$('input[name="cus_pan"]').val(respo[0].val6);
+						$('input[name="cus_city"]').val(respo[0].val13);
+						$('input[name="cus_pin"]').val(respo[0].val18);
+						$('input[name="credit"]').val(respo[0].val10);
+					} else{
+						$('input[name="buss_loc"]').val('');
+						$('input[name="sup_name"]').val('');
+						$('input[name="tot_amnt"]').val('');
+						$('input[name="sup_mail"]').val('');
+						alert('No records of customer!');
+					}
+				}
+				
+			});
+	}
+	
+	
+	function selectLot()
+	{
+		var path="selectLot"
+			
+			$.ajax({
+	            type: 'GET',
+	            url: 'RetrieveServlet',
+	            dataType: "json",
+	            data: {path:path},
+	            success: function(respo) 
+	            {
+	            	var html_str='';
+                   console.log(respo);
+                   for (var i = 0; i < respo.length; i++) {
+                       html_str = html_str + '<option value="' + respo[i].val1 + '" >' + respo[i].val2 + '</option>';
+                   }
+                   var html_str1 = html_str1 + '<option value="0" >0</option>';
+                   $('#choose_category').html(html_str1+html_str);
+               } 
+	            
+	            });
+	}
+	
+	
+	function getItems()
+	{
+		deleterows();
+		var path="getItemsofLot"
+		console.log("from getitems");
+		var item=$('#choose_category').val();
+		var lotname=$('#choose_category1').val();
+		if(lotname==0)
+			{
+			
+			}
+		else
+			{
+		console.log(item);
+		$.ajax({
+            type: 'GET',
+            url: 'RetrieveServlet',
+            dataType: "json",
+            data: {path:path,lot:item,lotname:lotname},
+            success: function(respo) 
+            {
+            	if(respo=="1")
+            		{
+            		alert("Please Clear Items From the Stored Template");
+            		}
+            	else
+            		{
+            	for(var i = 0; i < respo.length; i++)
+            		{
+                	var table = document.getElementById("main_table");
+                    var forms = table.getElementsByTagName("form");
+        		    $('#main_table > tbody:last-child').append('<tr><td><form id="sub_frm'+(forms.length+1)+'"><table><tr>'
+        					+'<td style="width:14px;"><input type="number" class="cus_input" name="sno" value="'+(forms.length+1)+'" readonly /></td>'
+        					+'<td style="width:32px;"><input type="text" class="cus_input" name="imei" value="' + respo[i].val1 + '" readonly /></td>'
+        					+'<td style="width:33px;"><input type="text" class="cus_input" name="barcode" id="barcode'+(forms.length+1)+'" value="' + respo[i].val2 + '" /></td>'
+        					+'<td style="width:40px;"><input list="liitem'+(forms.length+1)+'" id="item'+(forms.length+1)+'" class="cus_input" name="item" value="' + respo[i].val3 + '"/>'
+        					+'<datalist id="liitem'+(forms.length+1)+'"><option>One</option><option>Two</option></datalist></td>'
+        					+'<td style="width:30px;"><input type="number" class="cus_input" name="hsnsac" id="hsnsac'+(forms.length+1)+'" value="' + respo[i].val5 + '"/></td>'
+        					+'<td style="width:15px;"><input type="number" class="cus_input" name="qty" id="qty'+(forms.length+1)+'" oninput="checkQty(this.id)" value="1" /></td>'
+        					+'<td style="width:28px;"><input type="text" class="cus_input" name="condition" id="condition'+(forms.length+1)+'"  value="' + respo[i].val6 + '"  /></td>'
+        					+'<td style="width:26px;"><input type="number" class="cus_input" name="unit_price" id="unit_price'+(forms.length+1)+'" value="' + respo[i].val4 + '"/></td>'
+        					+'<input type="hidden" class="cus_input" name="pruchaseprice" id="purchaseprice'+(forms.length+1)+'" value="' + respo[i].val7 + '" readonly />'
+        					+'<input type="hidden" class="cus_input" name="smargin" id="salemargin'+(forms.length+1)+'" value="' + respo[i].val8 + '" readonly />'
+        					+'</tr></table></form></td><td>'
+        				+'<span id="del_row"  type="button" class="remCF del_button" style="float:none; margin:0;display: block;"></span>'
+        				+'</td></tr>');
+            }
+            }
+            }
+            });
+			}
+	}
+	
+
+	
+	$('#totalamt').on('click',function()	
+		{
+		    var obj_aaary = [];
+			var table_data = "";
+		//var id=choose_category;
+		
+		var table = document.getElementById("main_table");
+		console.log(table);
+        var forms = table.getElementsByTagName("form");
+        console.log(forms);
+        for(var i=0; i< forms.length; i++)
+        {
+        	console.log("asdfgasdfg "+forms[i].getAttribute('id'));
+        	var tb_data = readTable1(forms[i].getAttribute('id'));
+        	
+        		obj_aaary.push(tb_data);
+        		       	
+        }
+        console.log(obj_aaary);
+			
+			var tot=0.00;
+			var purchasetot=0.00;
+			var salemargintot=0.00;
+		for(var i=0 ; i<obj_aaary.length; i++)
+			{
+			var twoPlacedFloat = parseFloat(obj_aaary[i].total);
+			var purchaseprice= parseFloat(obj_aaary[i].totalpruchaseprice);
+			//var margintot=parseFloat(obj_aaary[i].smargin);
+			tot = parseFloat(tot)+parseFloat(twoPlacedFloat);
+			 purchasetot=parseFloat(purchasetot)+parseFloat(purchaseprice);
+			/*salemargintot=parseFloat(salemargintot)+parseFloat(margintot); */
+			}
+		/* console.log(tot);
+		$('#purtot').val(purchasetot);
+		console.log(purchasetot);
+		console.log(salemargintot); */
+		$('#totalamt1').val(tot);
+		  $('#totalamt').val(tot);
+		  $('#purchasetotal1').val(purchasetot);
+		/* $('#martot').val(salemargintot);
+		$('#taxamount123').val('0');
+		$('#taxamount').val('0');
+		$('#discount').val('0'); */
+	});
+	
+	
+	
+	
+	function deleterows()
+	{
+        $("#main_table").find("tr:gt(1)").remove();
+    }
+	
+	
+	
+	
+	/*function taxamount1()
+	{
+		var total=$('#totalamt1').val();
+		var taxper=$('#taxamount').val();
+		var tot=0.00;
+		tot=((parseFloat(total))/(parseFloat(100)));
+		console.log(tot);
+		if(parseFloat(taxper)>0)
+		{
+	     tot=((tot)*(parseFloat(taxper)));
+	     console.log(tot);
+	     var total1=((parseFloat(total))+(parseFloat(tot)));
+	     console.log(total1);	
+         $('#totalamt').val(total1);
+		}
+		else
+		{
+		  $('#totalamt').val(total);
+		}
+	}*/
+	
+	
+	function taxamount2()
+	{
+		var total=$('#totalamt1').val();
+		var dicount=$('#discount').val();
+		var tot=0.00;
+		if(parseFloat(dicount)>0)
+		{
+	     var total1=((parseFloat(total))-(parseFloat(dicount)));
+	     console.log(total1);	
+         $('#totalamt').val(total1);
+		}
+		else
+		{
+		  $('#totalamt').val(total);
+		}
+	}
+	
+	
+	function taxamount1()
+	{
+		var total=$('#totalamt1').val();
+		var dicount=$('#discount').val();
+		//var taxper=$('#taxamount').val();
+		//var taxser=$('#taxamount123').val();
+		var taxper=0;
+		var taxser=0;
+		console.log("Tax per : "+taxper);
+		if(parseFloat(taxper)>0 && parseFloat(dicount)>0 && parseFloat(taxser)>0)
+			{
+			console.log("all gt");
+			var toaltax=parseFloat(taxper)+parseFloat(taxser);
+			var tot=0.00;
+			console.log("Discount : "+parseFloat(dicount));
+			tot=tot+(parseFloat(total)-parseFloat(dicount));
+			console.log("after tot"+tot);
+			tot=tot+((parseFloat(tot)*parseFloat(toaltax))/(parseFloat(100)));
+			
+			 $('#totalamt').val(tot);
+			/* var total=$('#totalamt1').val();
+			console.log("inside tax");
+			//taxper=parseFloat(taxper)-parseFloat(dicount);
+			var tot=0.00;
+			tot=((parseFloat(total))/(parseFloat(100)));
+			console.log(tot);
+			if(parseFloat(taxper)>=0)
+				{
+			     tot=((tot)*(parseFloat(taxper)));
+			     console.log(tot);
+			     var total1=((parseFloat(total))+(parseFloat(tot)));
+			     console.log(total1);	
+		         $('#totalamt').val(total1);
+				}
+			else
+				{
+				  $('#totalamt').val(total);
+				} */
+			}
+		if(parseFloat(taxper)==0 && parseFloat(dicount)==0 && parseFloat(taxser)==0)
+			{
+			 $('#totalamt').val(total);
+			}
+		if(parseFloat(taxper)==0 && parseFloat(dicount)>0 && parseFloat(taxser)==0)
+			{
+			var tot=0.00;
+			tot=(parseFloat(total)-parseFloat(dicount));
+			$('#totalamt').val(tot);
+			}
+		if(parseFloat(taxper)>0 && parseFloat(dicount)>0 && parseFloat(taxser)==0)
+			{
+			var tot=0.00;
+			var toaltax=parseFloat(taxper);
+			tot=(parseFloat(total)-parseFloat(dicount));
+			tot=tot+((parseFloat(tot)*parseFloat(toaltax))/(parseFloat(100)));
+			$('#totalamt').val(tot);
+			}
+		if(parseFloat(taxper)>0 && parseFloat(dicount)==0 && parseFloat(taxser)>0)
+			{
+			var tot=0.00;
+			var toaltax=parseFloat(taxper)+parseFloat(taxser);
+			tot=parseFloat(total)+((parseFloat(total)*parseFloat(toaltax))/(parseFloat(100)));
+			$('#totalamt').val(tot);
+			}
+		if(parseFloat(taxper)>0 && parseFloat(dicount)==0 && parseFloat(taxser)==0)
+		{
+		var tot=0.00;
+		var toaltax=parseFloat(taxper);
+		tot=parseFloat(total)+((parseFloat(total)*parseFloat(toaltax))/(parseFloat(100)));
+		$('#totalamt').val(tot);
+		}
+		if(parseFloat(taxper)==0 && parseFloat(dicount)==0 && parseFloat(taxser)>0)
+		{
+		var tot=0.00;
+		var toaltax=parseFloat(taxser);
+		tot=parseFloat(total)+((parseFloat(total)*parseFloat(toaltax))/(parseFloat(100)));
+		$('#totalamt').val(tot);
+		}
+		if(parseFloat(taxper)==0 && parseFloat(dicount)>0 && parseFloat(taxser)>0)
+		{
+			var tot=0.00;
+			var toaltax=parseFloat(taxser);
+			tot=(parseFloat(total)-parseFloat(dicount));
+			tot=tot+((parseFloat(tot)*parseFloat(toaltax))/(parseFloat(100)));
+			$('#totalamt').val(tot);
+		}
+		/*
+		if(parseFloat(taxper)<parseFloat(dicount))
+			{
+			console.log("inside discount");
+			taxper=parseFloat(dicount)-parseFloat(taxper);
+		var tot=0.00;
+		tot=((parseFloat(total))/(parseFloat(100)));
+		console.log(tot);
+		 if(parseFloat(taxper)>=0)
+			{
+		tot=((tot)*(parseFloat(taxper)));
+		console.log(tot);
+		var total1=((parseFloat(total))-(parseFloat(tot)));
+		console.log(total1);
+		
+	    $('#totalamt').val(total1);
+			}
+		  else
+			{
+			$('#totalamt').val(total);
+			}
+			}*/
+	
+	}
+	
+	
+	
+	function serviceTax()
+	{
+		var total=$('#totalamt1').val();
+		var tot=0.00;
+		tot=((parseFloat(total))/(parseFloat(100)));
+		var taxper=$('#taxamount123').val();
+		if(parseFloat(taxper)>=0)
+			{
+			 tot=((tot)*(parseFloat(taxper)));
+		     console.log(tot);
+		     var total1=((parseFloat(total))+(parseFloat(tot)));
+		     console.log(total1);	
+	         $('#totalamt').val(total1);
+			}
+		else
+			{
+			$('#totalamt').val(total);
+			}
+	}
+	
+	
+	
+	function getLotName()
+	{
+           var path="selectLotNames"
+			
+			$.ajax({
+	            type: 'GET',
+	            url: 'RetrieveServlet',
+	            dataType: "json",
+	            data: {path:path},
+	            success: function(respo) 
+	            {
+	            	var html_str='';
+                   console.log(respo);
+                   for (var i = 0; i < respo.length; i++) {
+                       html_str = html_str + '<option value='+ respo[i].val1 +'>' + respo[i].val1 + '</option>';
+                   }
+                   var html_str1 = html_str1 + '<option value="' + respo[0].val2 + '" >Lotname</option>';
+                   $('#choose_category1').html(html_str1+html_str);
+               } 
+	            
+	            });
+	}
+	
+	
+	
+	
+	function getBarcode(barcode)
+	{
+//	var barcode=$('#barc').val();
+	console.log(barcode);
+	//alert(barcode);
+	 var path="getItemonbarcode";
+	var shopdata=$('#shopval').val();	
+	if(shopdata==0)
+		{
+		alert("Please Select Shop");
+		}
+	else
+		{
+			$.ajax({
+	            type: 'GET',
+	            url: 'RetrieveServlet',
+	            dataType: "json",
+	            data: {path:path,barcode:barcode,shopdata:shopdata},
+	            success: function(respo) 
+	            {
+	            	console.log(respo);
+	            	if(respo=="1")
+            		{
+            		alert("Please Clear Item From the Stored Template");
+            		}
+	            	else
+	            		{
+	            	for(var i = 0; i < respo.length; i++)
+            		{
+                	var table = document.getElementById("main_table");
+                    var forms = table.getElementsByTagName("form");
+        		    $('#main_table > tbody:last-child').append('<tr><td><form id="sub_frm'+(forms.length+1)+'"><table><tr>'
+        					+'<td style="width:10%;"><input type="number" class="cus_input" name="sno" value="'+(forms.length+1)+'" readonly /></td>'
+        					+'<td style="width:15%;"><input type="text" class="cus_input" name="barcode" id="barcode'+(forms.length+1)+'" value="' + respo[i].val1 + '" readonly /></td>'
+        					+'<td style="width:15%;"><input type="text" class="cus_input" name="category" id="category'+(forms.length+1)+'" value="' + respo[i].val4 + '" /></td>'
+        					+'<td style="width:15%;"><input list="liitem'+(forms.length+1)+'" type="text"  id="brand'+(forms.length+1)+'" class="cus_input" name="brand" value="' + respo[i].val7 + '"/>'
+        					+'<datalist id="liitem'+(forms.length+1)+'"><option>One</option><option>Two</option></datalist></td>'
+        					+'<td style="width:15%;"><input type="text" class="cus_input" name="varity" id="varity'+(forms.length+1)+'" value="' + respo[i].val6 + '"/></td>'
+        					+'<td style="width:10%;"><input type="number" class="cus_input" name="qty" id="qty'+(forms.length+1)+'" oninput="calculateTotalbyqty(this.id,this.value)" value="1" /></td>'
+        					+'<td style="width:10%;"><input type="text" class="cus_input" name="saleprice" id="saleprice'+(forms.length+1)+'"  value="' + respo[i].val10 + '"  /></td>'
+        					+'<td style="width:10%;"><input type="number" class="cus_input" name="total" id="total'+(forms.length+1)+'" value="' + respo[i].val10 + '" readonly /></td>'
+        					+'<input type="hidden" class="cus_input" name="pruchaseprice" id="purchaseprice'+(forms.length+1)+'" value="' + respo[i].val9 + '" />'
+        					+'<input type="hidden" class="cus_input" name="totalpruchaseprice" id="totalpruchaseprice'+(forms.length+1)+'" value="' + respo[i].val9 + '" />'
+        					+'<input type="hidden" class="cus_input" name="smargin" id="salemargin'+(forms.length+1)+'" value="' + respo[i].val9 + '" readonly />'
+        					+'<input type="hidden" class="cus_input" name="shopid" id="shopid'+(forms.length+1)+'" value="' + respo[i].val11 + '" />'
+        					+'<input type="hidden" class="cus_input" name="shopname" id="shopname'+(forms.length+1)+'" value="' + respo[i].val12 + '" readonly />'
+        					+'<input type="hidden" class="cus_input" name="availqty" id="availqty'+(forms.length+1)+'" value="' + respo[i].val8 + '" readonly />'
+        					+'</tr></table></form></td><td>'
+        				+'<span id="del_row"  type="button" class="remCF del_button" style="float:none; margin:0;display: block;"></span>'
+        				+'</td></tr>');
+                           }
+                } 
+	            }
+	            });
+		}
+	}
+	
+	
+	
+	function sleep(milliseconds) {
+		  var start = new Date().getTime();
+		  for (var i = 0; i < 1e7; i++) {
+		    if ((new Date().getTime() - start) > milliseconds){
+		      break;
+		    }
+		  }
+		}
+	
+	
+	function calculateTotalbyqty(id,id1)
+	{
+		if(id1==0)
+			{
+			
+			}
+		else
+			{
+		var string = id;
+		var numbers = string.match(/\d+/g).map(Number);
+		var barcode=$('#barcode'+numbers).val();
+		var shopid=$('#shopid'+numbers).val();
+		var qty=$('#availqty'+numbers).val();
+     //	sleep(3000);
+		//alert(qty);
+		if(parseFloat(qty)<parseFloat(id1))
+			{
+			alert("Available Qty is : "+qty);
+			}
+		else
+			{
+		var saleprice=$('#saleprice'+numbers).val();
+		var purchaseprice=$('#purchaseprice'+numbers).val();
+		var total=parseFloat(id1)*parseFloat(saleprice);
+		var totalpur=parseFloat(id1)*parseFloat(purchaseprice);
+		//alert(total);
+		$('#total'+numbers).val(total);
+		$('#totalpruchaseprice'+numbers).val(totalpur);
+			}
+		}
+	}
+	
+	
+	function checkQuantity(id,barcode,shopid)
+	{
+		var path="cehckQty"
+	   var qty=0;
+		var i=0;
+			$.ajax({
+	            type: 'GET',
+	            url: 'RetrieveServlet',
+	           // dataType: "json",
+	            data: {path:path,id:id,barcode:barcode,shopid:shopid},
+	            success: function(respo) 
+	            {
+	            	console.log(respo);
+	            	qty=parseFloat(qty)+parseFloat(respo);
+	            	alert("Qty in data : "+qty);
+	            	//return respo;
+	            } 
+	            
+	            });
+		//	alert("Qty :"+qty)
+		//sleep(3000);
+			return qty;
+	}
+	
+	
+	function getTemplates()
+	{
+		  var path="selectTemplates"
+				
+				$.ajax({
+		            type: 'GET',
+		            url: 'RetrieveServlet',
+		            dataType: "json",
+		            data: {path:path},
+		            success: function(respo) 
+		            {
+		            	var html_str='';
+	                   console.log(respo);
+	                   for (var i = 0; i < respo.length; i++) {
+	                       html_str = html_str + '<option value='+ respo[i].val1 +'>' + respo[i].val3 + '</option>';
+	                   }
+	                   var html_str1 = html_str1 + '<option value="0" >Templates</option>';
+	                   $('#select_template').html(html_str1+html_str);
+	               } 
+		            
+		            });
+	}
+	
+	
+	
+	function getTemplateData(tid)
+	{
+		var ch="";
+		deleterows();
+		var path="getItemsOnTemplate";
+		if(tid==0)
+			{
+			
+			}
+		else
+			{
+		//console.log(item);
+		$.ajax({
+            type: 'GET',
+            url: 'RetrieveServlet',
+            dataType: "json",
+            data: {path:path,tid:tid},
+            success: function(respo) 
+            {
+            
+                var str='';
+            	var custData = JSON.parse(respo[0].invdata);
+		         // console.log(custData);
+		       //   str = str + '<option value='+ custData[0].val2 +'>' + custData[0].val3 + '</option>';
+		        //  $('#select_cus_name').html(str);
+		         getCustomersData(custData[0].val2);
+				  var c_report = JSON.parse(respo[0].itemdata); 
+				  for(var i=0 ; i<c_report.length; i++)
+            		{
+					  ch=ch+parseFloat(10);
+					 // alert("Jagadeesh");
+                	var table = document.getElementById("main_table");
+                    var forms = table.getElementsByTagName("form");
+        		    $('#main_table > tbody:last-child').append('<tr><td><form id="sub_frm'+(forms.length+1)+'"><table><tr>'
+        					+'<td style="width:14px;"><input type="number" class="cus_input" name="sno" value="'+(forms.length+1)+'" readonly /></td>'
+        					+'<td style="width:32px;"><input type="text" class="cus_input" name="imei" value="' + c_report[i].val6 + '" readonly /></td>'
+        					+'<td style="width:33px;"><input type="text" class="cus_input" name="barcode" id="barcode'+(forms.length+1)+'" value="' + c_report[i].val10 + '" /></td>'
+        					+'<td style="width:40px;"><input list="liitem'+(forms.length+1)+'" id="item'+(forms.length+1)+'" class="cus_input" name="item" value="' + c_report[i].val2 + '"/>'
+        					+'<datalist id="liitem'+(forms.length+1)+'"><option>One</option><option>Two</option></datalist></td>'
+        					+'<td style="width:30px;"><input type="number" class="cus_input" name="hsnsac" id="hsnsac'+(forms.length+1)+'" value="' + c_report[i].val9 + '"/></td>'
+        					+'<td style="width:15px;"><input type="number" class="cus_input" name="qty" id="qty'+(forms.length+1)+'" oninput="checkQty(this.id)" value="1" /></td>'
+        					+'<td style="width:28px;"><input type="text" class="cus_input" name="condition" id="condition'+(forms.length+1)+'"  value="' + c_report[i].val11 + '"  /></td>'
+        					+'<td style="width:26px;"><input type="number" class="cus_input" name="unit_price" id="unit_price'+(forms.length+1)+'" value="' + c_report[i].val4 + '"/></td>'
+        					+'<input type="hidden" class="cus_input" name="pruchaseprice" id="purchaseprice'+(forms.length+1)+'" value="' + c_report[i].val7 + '" readonly />'
+        					+'<input type="hidden" class="cus_input" name="smargin" id="salemargin'+(forms.length+1)+'" value="' + c_report[i].val8 + '" readonly />'
+        					+'</tr></table></form></td><td>'
+        				+'<span id="del_row"  type="button" class="remCF del_button" style="float:none; margin:0;display: block;"></span>'
+        				+'</td></tr>');
+        		    
+        		   
+            }
+				  //alert(ch);
+				    if(ch!=0)
+				    	{
+				    	console.log("from delete data")
+					    deleteda(tid);
+				    	}
+            }
+            });
+			}
+		
+			
+	}
+	
+	
+	
+	function deleteda(tid)
+	{
+		deleteTemplateData(tid);
+		getTemplates();
+	}
+	
+	function deleteTemplateData(tid)
+	{
+		var path="deleteTemplate"
+			
+			$.ajax({
+	            type: 'GET',
+	            url: 'RetrieveServlet',
+	            dataType: "json",
+	            data: {path:path,tid:tid},
+	            success: function(respo) 
+	            {
+	            	
+                } 
+	            
+	            });
+	}
+	
+	function cashpayment()
+	{
+		console.log("Cashpayment");
+		var amt=$('#totalamt').val();
+		console.log(amt);
+		$('#cash_received_amt').val(amt);
+		var mode="CASH";
+		$('#modeofpay').val(mode);
+	}
+	
+	function cardpayment()
+	{
+		console.log("Cardpayment");
+		var amt=$('#totalamt').val();
+		console.log(amt);
+		$('#card_received_amt').val(amt);
+		var mode="CARD";
+		$('#modeofpay').val(mode);
+	}
+	
+	
+	function getShops()
+	{
+       var path="getShops"
+  			
+  			$.ajax({
+  	            type: 'GET',
+  	            url: 'RetrieveServlet',
+  	            dataType: "json",
+  	            data: {path:path},
+  	            success: function(respo) 
+  	            {
+  	            	 var html_str='';
+                     console.log(respo);
+                     for (var i = 0; i < respo.length; i++) 
+                     {
+                         html_str = html_str + '<option value="' + respo[i].val2 + ','+ respo[i].val3 +'" >' + respo[i].val3 + '</option>';
+                     }
+                     var html_str1 = html_str1 + '<option value=0 >Select Shop</option>';
+                     $('#selshop').html(html_str1+html_str);
+                 } 
+  	            
+  	            });
+	}
+	
+	
+	function getShopDetails(eid)
+	{
+		if(eid=='S1')
+			{
+			 var path="getShops1"
+		  			
+		  			$.ajax({
+		  	            type: 'GET',
+		  	            url: 'RetrieveServlet',
+		  	            dataType: "json",
+		  	            data: {path:path},
+		  	            success: function(respo) 
+		  	            {
+		  	            	$('#shopval').val(respo[0].val2+','+respo[0].val3);
+		                 } 
+		  	            
+		  	            });
+			}
+		else if(eid=='S2')
+				{
+			 var path="getShops2"
+		  			
+		  			$.ajax({
+		  	            type: 'GET',
+		  	            url: 'RetrieveServlet',
+		  	            dataType: "json",
+		  	            data: {path:path},
+		  	            success: function(respo) 
+		  	            {
+		  	            	$('#shopval').val(respo[0].val2+','+respo[0].val3);
+		                } 
+		  	            
+		  	            });
+				}
+	}
+	
+	
+	function addShopValue(id)
+	{
+		$('#shopval').val(id);
+	}
+	
+	/* var doc = new jsPDF();
+	 
+	pdfFormat();
+	function genratePdf()
+	{
+	doc.fromHTML($('#pdfdiv').html(), 15, 15, {
+	'width': 170,
+	});
+	doc.save('sampleformat.pdf');
+	} */
+	
+	
+	</script>
+
+	<script>
+   $(document).scannerDetection({
+		   
+		  //https://github.com/kabachello/jQuery-Scanner-Detection
+
+		/*	timeBeforeScanTest: 200, // wait for the next character for upto 200ms
+			avgTimeByChar: 40, // it's not a barcode if a character takes longer than 100ms
+			preventDefault: true,
+
+			endChar: [13],*/
+				onComplete: function(barcode, qty){
+		   validScan = true;
+		   
+		   
+		    	$('#barc').val (barcode);
+		    	getBarcode(barcode);
+		    } // main callback function	,
+			/*,
+			onError: function(string, qty) {
+
+			$('#userInput').val ($('#userInput').val()  + string);
+
+			
+			}*/
+			
+			
+			
+		});
+   
+		</script>
