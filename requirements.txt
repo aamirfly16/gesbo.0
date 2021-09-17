@@ -1,4 +1,4 @@
-altgraph=0.16.1=py_0
+altgraph==0.16.1=py_0
 asn1crypto=0.24.0=py36_0
 auto-py-to-exe=2.8.0=py36_0
 beautifulsoup4=4.8.0=py36_0
