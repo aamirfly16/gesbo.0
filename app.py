@@ -52,7 +52,7 @@ from flask_sqlalchemy import SQLAlchemy
     # app.app_context().push()
     # return app
     
-ALLOWED_HOSTS = ['https://appbo.azurewebsites.net']
+ALLOWED_HOSTS = ['https://bogesapp.azurewebsites.net']
 
 main = Flask(__name__, template_folder='templates')
 
