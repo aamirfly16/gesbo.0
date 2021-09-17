@@ -65,7 +65,7 @@ sqlalchemy==1.2.12=py36he774522_0
 sqlite==3.34.0=h8ffe710_0
 sqlparse==0.3.1=py_0
 tk==8.6.10=he774522_0
-typing_extensions=3.10.0.0=pyha770c72_0
+typing_extensions==3.10.0.0=pyha770c72_0
 urllib3==1.25.10=py_0
 vc==14.1=h0510ff6_3
 vs2015_runtime=15.5.2=3
