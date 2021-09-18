@@ -7,10 +7,6 @@ import time
 from sqlalchemy import create_engine
 import io
 import xlwt
-import psycopg2
-import psycopg2.extras
-# from Autobo.Auth import main
-# from Autobo import db
 from flask import render_template, request, redirect, url_for, flash, session, Response, jsonify
 import pandas as pd
 from sqlalchemy import create_engine
